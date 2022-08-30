@@ -5,6 +5,8 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -13,7 +15,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "sourceMap": false,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@configurations": ["./src/configurations/index"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@models/*": ["./src/models/*"],
+      "~/*": ["./public/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

@@ -1,3 +1,25 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    // Add "prettier" last. This will turn off eslint rules conflicting with prettier. This is not what will format our code.
+    "prettier"
+  ],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-console": "warn",
+    "react/display-name": "off",
+    "react/jsx-curly-brace-presence": [
+      "warn",
+      { "props": "never", "children": "never" }
+    ],
+    // I suggest you add those two rules:
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-explicit-any": "warn"
+  },
+  "globals": {
+    "React": true,
+    "JSX": true
+  }
 }

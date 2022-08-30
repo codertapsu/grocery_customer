@@ -1,0 +1,16 @@
+node_modules/
+.next
+package.json
+package-lock.json
+dist
+e2e/**
+karma.conf.js
+commitlint.config.js
+*.spec.ts
+*.js
+!*.spec.js
+**/node_modules/**
+**/build/**
+**/*.scss
+*.config.ts
+*.config.js
