@@ -3,7 +3,7 @@ const runtimeCaching = require('next-pwa/cache');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: process.env.NODE_ENV !== 'production',
   swcMinify: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],

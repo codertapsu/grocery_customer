@@ -20,10 +20,13 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@configurations": ["./src/configurations/index"],
+      "@configs": ["src/configs/index"],
+      "@http": ["src/http/index"],
       "@contexts/*": ["./src/contexts/*"],
+      "@abi/*": ["./src/abi/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@reducers/*": ["./src/reducers/*"],
       "@models/*": ["./src/models/*"],
       "~/*": ["./public/*"]
     }
