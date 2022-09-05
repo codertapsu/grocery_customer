@@ -4,7 +4,8 @@ import { fingerprint } from '@helpers/fingerprint';
 import { isProduction } from '@configs';
 import { AuthResponse } from '@models/auth-response.model';
 
-export const API_URL = isProduction ? process.env.API_URL : `http://localhost:5000`;
+// export const API_URL = isProduction ? process.env.API_URL : `http://localhost:5000`;
+export const API_URL = `http://127.0.0.1:3030`;
 
 /**
  * @see https://developer.mozilla.org/ru/docs/Web/HTTP/CORS

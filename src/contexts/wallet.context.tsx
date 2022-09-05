@@ -70,7 +70,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(walletReducer, walletInitialState);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal>(null);
   const notificationService = useNotification();
-  const [autoConnectWallet] = useLocalStorage<boolean>('autoConnectWallet', false);
+  const [autoConnectWallet, setAutoConnectWallet] = useLocalStorage<boolean>('autoConnectWallet', false);
 
   const clearStoreAndProvider = useCallback(() => {
     if (web3Modal) {
@@ -312,6 +312,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (autoConnectWallet) {
       connectWallet().then(() => {
+        setAutoConnectWallet(true);
         // Noop
       });
     }
