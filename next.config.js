@@ -8,6 +8,26 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    // Important: return the modified config
+    return config
+  },
+  // headers: async() => {
+  //   return [
+  //     {
+  //       source: '/',
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: `default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';`
+  //         }
+  //       ]
+  //     }
+  //   ];
+  // }
 };
 const withPWA = require('next-pwa')({
   dest: 'public',

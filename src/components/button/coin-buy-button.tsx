@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 import { Button } from './button';
 
 interface ButtonBuyProps {
-  productPrice: string;
+  productPrice: number;
 }
 
 export const CoinBuyButton = ({ productPrice }: ButtonBuyProps) => {
@@ -31,7 +31,7 @@ export const CoinBuyButton = ({ productPrice }: ButtonBuyProps) => {
     try {
       const transaction = await groceryCoinContract.transfer(
         SHOP_OWNER_WALLET_ADDRESS,
-        ethers.utils.parseEther(productPrice),
+        ethers.utils.parseUnits(String(productPrice)),
       );
       const contractReceipt = await transaction.wait();
       console.log(contractReceipt);

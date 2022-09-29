@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/* <meta name='referrer' content='strict-origin-when-cross-origin' /> */}
           <link rel='preload' href='/fonts/inter-var-latin.woff2' as='font' type='font/woff2' crossOrigin='anonymous' />
         </Head>
         <body>

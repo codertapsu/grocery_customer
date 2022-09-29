@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 import { Button } from './button';
 
 interface ButtonBuyProps {
-  productPrice: string;
+  productPrice: number;
 }
 
 export const EthBuyButton = ({ productPrice }: ButtonBuyProps) => {
@@ -30,7 +30,7 @@ export const EthBuyButton = ({ productPrice }: ButtonBuyProps) => {
 
     const tx = {
       to: SHOP_OWNER_WALLET_ADDRESS,
-      value: ethers.utils.parseEther(productPrice),
+      value: ethers.utils.parseEther(String(productPrice)),
     };
 
     try {

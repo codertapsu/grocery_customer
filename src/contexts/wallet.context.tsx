@@ -1,10 +1,11 @@
 import { createContext, useCallback, useEffect, useReducer, useState } from 'react';
 
 import { ethers } from 'ethers';
-import Web3Modal, { IProviderOptions } from 'web3modal';
+import Web3Modal, { connectors, IProviderOptions } from 'web3modal';
 
 import groceryCoin from '@abi/GroceryCoinBep20.json';
 import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
+import { Web3Auth } from "@web3auth/web3auth";
 import {
   BLOCK_EXPLORER_URL,
   BSC_MAINNET,
@@ -25,37 +26,88 @@ import { walletInitialState, walletReducer } from '@reducers/wallet.reducer';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import type { IWalletConnectProviderOptions } from '@walletconnect/types';
-import { useLocalStorage } from 'usehooks-ts';
+import { useSessionStorage } from 'usehooks-ts';
 
 interface CatchError {
   code: number;
   message: string;
 }
 
-const connectProviderOptions: Partial<IWalletConnectProviderOptions> = {
+const detectCurrentBrowserProvider = () => {
+  let browserProvider: ethers.providers.ExternalProvider;
+  if (window?.ethereum) {
+    browserProvider = window.ethereum;
+  } else if (window?.web3) {
+    browserProvider = window.web3.currentProvider;
+  } else {
+    console.info('Non-Ethereum browser detected. You should consider trying MetaMask!');
+  }
+  return browserProvider;
+};
+
+const baseOption = {
   rpc: {
     [BSC_MAINNET.CHAIN_ID]: RPC_URL,
     [BSC_TESTNET.CHAIN_ID]: RPC_URL,
     [GROCERY_TESTNET.CHAIN_ID]: RPC_URL,
   },
   chainId: CHAIN_ID,
+};
+
+const connectProviderOptions: Partial<IWalletConnectProviderOptions> = {
+  ...baseOption,
   qrcode: true,
+  clientMeta: {
+    name: 'Tạp hoá PK',
+    description: 'Tạp hoá PK wallet',
+    url: 'https://grocery-customer.vercel.app',
+    icons: ['https://gblobscdn.gitbook.com/spaces%2F-LJJeCjcLrr53DcT1Ml7%2Favatar.png?alt=media'],
+  },
 };
 
 const providerOptions: IProviderOptions = {
-  binanceChainWallet: {
+  /* See Provider Options Section */
+  web3auth: {
+    package: Web3Auth,
+  },
+  binancechainwallet: {
     package: true,
   },
-  coinbaseWallet: {
-    options: connectProviderOptions,
+  coinbasewallet: {
     package: CoinbaseWalletSDK,
+    options: {
+      ...baseOption,
+      appName: 'Web3Modal Example App',
+    },
   },
-  walletConnect: {
+  // default walletconnect
+  // walletconnect: {
+  //   package: WalletConnectProvider,
+  // },
+  'custom-walletconnect': {
+    display: {
+      logo: 'https://toampk.xyz/images/bride.png',
+      name: 'WalletConnect',
+      description: 'Scan with WalletConnect to connect',
+    },
     package: WalletConnectProvider,
     options: connectProviderOptions,
-    connector: async (providerPackage?: any, opts?: unknown) => {
+    connector: async (providerPackage?: any, opts?: IWalletConnectProviderOptions) => {
       const provider = new providerPackage(opts);
       await provider.enable();
+      return provider;
+    },
+  },
+  'custom-bitkeep': {
+    display: {
+      logo: 'https://toampk.xyz/images/groom.png',
+      name: 'BitKeep',
+      description: 'Connect with the provider in your Browser',
+    },
+    options: baseOption,
+    package: connectors.injected,
+    connector: async (ProviderPackage, options) => {
+      const provider = new ProviderPackage(options);
       return provider;
     },
   },
@@ -70,7 +122,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(walletReducer, walletInitialState);
   const [web3Modal, setWeb3Modal] = useState<Web3Modal>(null);
   const notificationService = useNotification();
-  const [autoConnectWallet] = useLocalStorage<boolean>('autoConnectWallet', false);
+  const [autoConnectWallet, setAutoConnectWallet] = useSessionStorage<boolean>('autoConnectWallet', false);
 
   const clearStoreAndProvider = useCallback(() => {
     if (web3Modal) {
@@ -129,22 +181,13 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
       const errorConnection = error as { code: number; message: string };
       notificationService.error(errorConnection.message);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const detectCurrentBrowserProvider = useCallback(() => {
-    let browserProvider: ethers.providers.ExternalProvider;
-    if (window.ethereum) {
-      browserProvider = window.ethereum;
-    } else if (window.web3) {
-      browserProvider = window.web3.currentProvider;
-    } else {
-      notificationService.warn('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
-    return browserProvider;
-  }, [notificationService]);
 
   const connectWithWeb3Modal = useCallback(async () => {
     try {
+      console.log(web3Modal);
+
       let provider = await web3Modal.connect();
       let web3Provider = new ethers.providers.Web3Provider(provider);
       let network = await web3Provider.getNetwork();
@@ -165,6 +208,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           groceryCoinContract,
         } as WalletAction);
         notificationService.success('Connected to Web3');
+        setAutoConnectWallet(true);
       } else {
         notificationService.warn('Please change network to ' + NETWORK_NAME);
 
@@ -191,6 +235,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
             groceryCoinContract,
           } as WalletAction);
           notificationService.success('Connected to Web3');
+          setAutoConnectWallet(true);
         } catch (error) {
           const switchError = error as { code: number; message: string };
           if (switchError.code === 4902) {
@@ -248,13 +293,14 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
    * @method connectWallet
    */
   const connectWallet = useCallback(async () => {
-    const browserProvider = detectCurrentBrowserProvider();
-    if (browserProvider) {
-      await connectWithWeb3Modal();
-    } else {
-      await connectWithWalletConnect();
-    }
-  }, [connectWithWeb3Modal, connectWithWalletConnect, detectCurrentBrowserProvider]);
+    connectWithWeb3Modal();
+    // const browserProvider = detectCurrentBrowserProvider();
+    // if (browserProvider) {
+    //   await connectWithWeb3Modal();
+    // } else {
+    //   await connectWithWalletConnect();
+    // }
+  }, [connectWithWeb3Modal]);
 
   // EIP-1193 events
   useEffect(() => {
@@ -280,7 +326,10 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
       };
 
       const handleDisconnect = () => {
-        disconnectWallet();
+        const browserProvider = detectCurrentBrowserProvider();
+        if (browserProvider) {
+          disconnectWallet();
+        }
       };
 
       state.provider.on('accountsChanged', handleAccountsChanged);
@@ -310,12 +359,13 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Auto connect to the cached provider
   useEffect(() => {
-    if (autoConnectWallet) {
-      connectWallet().then(() => {
-        // Noop
-      });
+    if (web3Modal?.cachedProvider) {
+      connectWallet();
     }
-  }, []);
+    // if (autoConnectWallet && web3Modal) {
+    //   connectWallet();
+    // }
+  }, [connectWallet, web3Modal?.cachedProvider]);
 
   const value = {
     address: state.address,

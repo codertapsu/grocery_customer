@@ -2,11 +2,12 @@ import { CoinBuyButton, EthBuyButton } from '@components/button';
 import Layout from '@components/layout';
 import Seo from '@components/seo';
 import type { NextPage } from 'next';
+import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ products }: any) => {
   return (
     <Layout>
       <Seo templateTitle='Components' description='Pre-built components with awesome default' />
@@ -14,11 +15,11 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2>Test buy with ETH &rarr;</h2>
-            <EthBuyButton productPrice={'20'}></EthBuyButton>
+            <EthBuyButton productPrice={10.5}></EthBuyButton>
           </div>
           <div className={styles.card}>
             <h2>Test buy with coin &rarr;</h2>
-            <CoinBuyButton productPrice={'20'}></CoinBuyButton>
+            <CoinBuyButton productPrice={15.5}></CoinBuyButton>
           </div>
         </div>
       </main>
@@ -90,3 +91,14 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  const products = await fetch('https://fakestoreapi.com/products');
+
+  return {
+    props: {
+      products: [],
+    },
+  };
+}

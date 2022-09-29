@@ -3,3 +3,9 @@ interface Window {
 }
 
 type VoidFunction = (...args) => void;
+
+// declare global {
+//   interface WindowEventMap {
+//     'local-storage': CustomEvent;
+//   }
+// }

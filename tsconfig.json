@@ -19,16 +19,17 @@
     "sourceMap": false,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
+      "@components/*": ["src/components/*"],
       "@configs": ["src/configs/index"],
       "@http": ["src/http/index"],
-      "@contexts/*": ["./src/contexts/*"],
-      "@abi/*": ["./src/abi/*"],
-      "@helpers/*": ["./src/helpers/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@reducers/*": ["./src/reducers/*"],
-      "@models/*": ["./src/models/*"],
-      "~/*": ["./public/*"]
+      "@constants/*": ["src/constants/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@abi/*": ["src/abi/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@models/*": ["src/models/*"],
+      "~/*": ["public/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
