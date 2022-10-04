@@ -1,17 +1,89 @@
+import { AdsBanner } from '@components/ads-banner';
 import { CoinBuyButton, EthBuyButton } from '@components/button';
-import Layout from '@components/layout';
+import { ExplorePopularCategories } from '@components/explore-popular-categories';
+import { GoodOffer } from '@components/good-offers';
+import { GroupProductSlides } from '@components/group-product-slides';
+import { IntroSlide, IntroSlides } from '@components/intro-slide';
+import { Layout } from '@components/layout';
 import Seo from '@components/seo';
+import { ServicesBanner } from '@components/services-banner';
+import { SubBox } from '@components/sub-box';
 import type { NextPage } from 'next';
-import { getSession } from 'next-auth/react';
+// import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+
+const intros: IntroSlide[] = [
+  {
+    bgImage: `/assets/images/demos/demo-2/slider/slide-1.jpg`,
+    title: `Find Comfort <br />That Suits You.`,
+    subTittle: `Bedroom Furniture`,
+    actionLink: `/categories`,
+    actionTitle: `Shop Now`,
+  },
+  {
+    bgImage: `/assets/images/demos/demo-2/slider/slide-2.jpg`,
+    title: `
+    Ypperlig <br />
+    Coffee Table <br />
+    <span className='text-primary'>
+      <sup>$</sup>49,99
+    </span>`,
+    subTittle: `Deals and Promotions`,
+    actionLink: `/categories`,
+    actionTitle: `Shop Now`,
+  },
+  {
+    bgImage: `/assets/images/demos/demo-2/slider/slide-3.jpg`,
+    title: `
+    Make Your Living Room <br />
+    Work For You.
+    <br />
+    <span className='text-primary'>
+      <sup className='font-weight-light text-white'>from</sup>
+      <sup>$</sup>9,99
+    </span>`,
+    subTittle: `Living Room`,
+    actionLink: `/categories`,
+    actionTitle: `Shop Now`,
+  },
+];
 
 const Home: NextPage = ({ products }: any) => {
   return (
     <Layout>
       <Seo templateTitle='Components' description='Pre-built components with awesome default' />
-      <main className={styles.main}>
+      <main className='main'>
+        <IntroSlides intros={intros} />
+        <div className='mb-4'></div>
+        <ExplorePopularCategories />
+        <div className='mb-2'></div>
+        <GoodOffer />
+        <div className='mb-3'></div>
+        <div className='container'>
+          <ServicesBanner />
+        </div>
+        <div className='bg-light pt-3 pb-5'>
+          <GroupProductSlides />
+        </div>
+        <div className='mb-3'></div>
+        <div className='pt-3 pb-5'>
+          <GroupProductSlides />
+        </div>
+        <div className='pt-3 pb-5'>
+          <GroupProductSlides />
+        </div>
+        <div className='mb-3'></div>
+        <AdsBanner />
+        <div className='pt-3 pb-5'>
+          <GroupProductSlides />
+        </div>
+        <div className="container">
+          <SubBox />
+        </div>
+      </main>
+      {/* <main className={styles.main}>
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2>Test buy with ETH &rarr;</h2>
@@ -22,7 +94,7 @@ const Home: NextPage = ({ products }: any) => {
             <CoinBuyButton productPrice={15.5}></CoinBuyButton>
           </div>
         </div>
-      </main>
+      </main> */}
     </Layout>
   );
   // return (
@@ -93,7 +165,7 @@ const Home: NextPage = ({ products }: any) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
+  // const session = await getSession(context);
   const products = await fetch('https://fakestoreapi.com/products');
 
   return {

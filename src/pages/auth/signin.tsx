@@ -1,13 +1,16 @@
+import { useAuth } from '@contexts/auth';
 import { useHttpClient } from '@contexts/http-client';
 import { Provider } from 'next-auth/providers';
 import { getCsrfToken, getProviders, getSession, signIn, useSession } from 'next-auth/react';
 import { AppContext } from 'next/app';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useLayoutEffect, FormEvent, useRef, ChangeEvent, useState } from 'react';
+import { FormEvent, useRef, ChangeEvent, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'usehooks-ts';
 
 export default function SignIn({ providers }: { providers: Provider[] }) {
   const httpClient = useHttpClient();
+  const { user, login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { data: session, status } = useSession();
@@ -23,7 +26,7 @@ export default function SignIn({ providers }: { providers: Provider[] }) {
       if (typeof window !== 'undefined') {
         window.addEventListener('message', async (e) => {
           console.log(e);
-          
+
           // if (e.origin !== API_URL) {
           //   return;
           // }
@@ -97,15 +100,15 @@ export default function SignIn({ providers }: { providers: Provider[] }) {
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
     setPassword(password);
-    getSession;
   };
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let currentSession = await getSession();
-    console.log(currentSession);
-    await signIn('credentials', { email: 'test', password: '123123', redirect: false });
-    currentSession = await getSession();
-    console.log(currentSession);
+    // let currentSession = await getSession();
+    const response = await login('admin', '123123');
+    // await signIn('credentials', { email: 'test', password: '123123', redirect: false });
+    // currentSession = await getSession();
+
+    router.replace(router.query.returnUrl ? window.decodeURIComponent(String(router.query.returnUrl)) : '/');
   };
 
   return (
@@ -143,9 +146,9 @@ export default function SignIn({ providers }: { providers: Provider[] }) {
 
         <div className='formField'>
           <button className='formFieldButton'>Sign In</button>{' '}
-          {/* <Link to='/' className='formFieldLink'>
-            Create an account
-          </Link> */}
+          <Link href='/categories' className='formFieldLink'>
+            Categories
+          </Link>
         </div>
 
         <div className='socialMediaButtons'>

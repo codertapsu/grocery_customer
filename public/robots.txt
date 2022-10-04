@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://example.com
+Host: https://taphoa.toampk.xyz
 
 # Sitemaps
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://taphoa.toampk.xyz/sitemap.xml

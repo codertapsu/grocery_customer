@@ -1,0 +1,108 @@
+// .owl-stage {
+//   display: flex;
+
+//   .owl-item {
+//     flex: 1 0 auto;
+
+//     & > * {
+//       height: 100%;
+//     }
+//   }
+// }
+
+.owl-carousel .owl-item {
+  height: 100%;
+}
+
+.owl-dots {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+
+  &.inner-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+  }
+}
+
+.owl-dot {
+  display: inline-block;
+  zoom: 1;
+
+  span {
+    width: 8px;
+    height: 8px;
+    margin: 5px 6px;
+    border: 0.1rem solid #d7d7d7;
+    background: transparent;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+  }
+
+  &:hover span {
+    border-color: #ccc;
+    background: #ccc;
+  }
+  &.active span {
+    width: 18px;
+    border-color: #ccc;
+    background: #ccc;
+  }
+}
+
+.owl-nav {
+  margin-top: 0;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.owl-nav [class*="owl-"] {
+  position: absolute;
+  top: 50%;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  margin-top: -15px;
+  color: #c96;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  border: 0.1rem solid #ebebeb;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.owl-nav [class*="owl-"]:not(.disabled):hover {
+  color: #fff;
+  border-color: #c96;
+  background: #c96;
+  text-decoration: none;
+}
+
+.owl-nav .disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.owl-nav .owl-prev {
+  left: -50px;
+}
+
+.owl-nav .owl-next {
+  right: -50px;
+}
+
+.owl-prev.owl-custom-nav span,
+.owl-next.owl-custom-nav span {
+  display: none;
+}

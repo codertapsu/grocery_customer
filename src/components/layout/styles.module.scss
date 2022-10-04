@@ -1,0 +1,17 @@
+.page-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 0.4s ease;
+}
+
+:host-context(.mmenu-active) .page-wrapper {
+  transform: translateX(200px);
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .page-wrapper {
+    display: block;
+  }
+}

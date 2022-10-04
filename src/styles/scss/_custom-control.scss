@@ -1,0 +1,112 @@
+.custom-control {
+  position: relative;
+  padding-left: 2.6rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.custom-control-input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.custom-control-label {
+  position: static;
+  margin-bottom: 0;
+  margin-top: 0.1rem;
+  font-size: 1.4rem;
+  padding-left: 2.6rem;
+  margin-left: -2.6rem;
+  vertical-align: top;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    pointer-events: none;
+    background-color: #f9f9f9;
+    border: 1px solid #dadada;
+    box-shadow: none;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    content: " ";
+    background: no-repeat 50%/50% 50%;
+  }
+}
+
+.custom-control.custom-radio .custom-control-label {
+  &::before {
+    top: 0.4rem;
+    background-color: #f9f9f9;
+    border-color: #dadada;
+    border-radius: 50%;
+  }
+
+  &::after {
+    border-radius: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    top: 0.9rem;
+    left: 0.5rem;
+  }
+}
+
+.custom-control.custom-radio .custom-control-input:checked ~ .custom-control-label {
+  &::before {
+    border-color: #c96;
+    background-color: #fff;
+  }
+
+  &::after {
+    z-index: 2;
+    background-color: #c96;
+  }
+}
+
+.custom-checkbox .custom-control-label {
+  &::before {
+    border-radius: 0;
+  }
+
+  &::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-image: none;
+    font-size: 1rem;
+    font-family: "molla";
+    content: "\ec2d";
+    line-height: 1;
+    text-align: center;
+    opacity: 0;
+    margin-top: 0.1rem;
+    visibility: hidden;
+    transition: opacity 0.01s;
+  }
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label {
+  &::before {
+    color: #fff;
+    border-color: #333;
+    background-color: #333;
+  }
+
+  &::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}

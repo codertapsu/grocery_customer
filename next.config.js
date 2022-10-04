@@ -3,17 +3,32 @@ const runtimeCaching = require('next-pwa/cache');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: process.env.NODE_ENV !== 'production',
+  reactStrictMode: false,
   swcMinify: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
-  webpack: (
-    config,
-    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-  ) => {
+  /**
+   * @doc https://nextjs.org/docs/api-reference/next.config.js/environment-variables
+   */
+  env: {
+    API_URL: process.env.API_URL,
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
     // Important: return the modified config
-    return config
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+      }),
+    );
+    return config;
   },
   // headers: async() => {
   //   return [

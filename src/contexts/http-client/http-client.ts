@@ -15,11 +15,15 @@ export class HttpClient {
       //   return status == 200 || status == 201;
       // },
       withCredentials: true,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       baseURL: `${apiEndpoint}/api`,
     });
     this._axiosInstance.interceptors.request.use(async (config) => {
       // config.headers.Authorization = `Bearer ${Cookies.get('token-access')}`;
-      // config.headers.fingerprint = await fingerprint();
+      config.headers.fingerprint = await fingerprint();
 
       return config;
     });
@@ -81,3 +85,5 @@ export class HttpClient {
     return response;
   }
 }
+
+export const HttpClientInstance = new HttpClient(process.env.API_URL);

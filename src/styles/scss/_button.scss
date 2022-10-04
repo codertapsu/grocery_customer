@@ -1,0 +1,35 @@
+.btn.btn-social-login {
+  color: #333;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  border: 0.1rem solid #ebebeb;
+  min-width: 0;
+
+  i {
+    text-align: left;
+    display: inline-block;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: 3rem;
+    min-width: 2rem;
+  }
+  &.btn-g i {
+    color: #cc3333;
+    min-width: 2.6rem;
+  }
+  &.btn-f i {
+    color: #3366cc;
+    min-width: 2.6rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #f5f6f9;
+  }
+}

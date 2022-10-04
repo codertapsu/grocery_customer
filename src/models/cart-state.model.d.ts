@@ -1,7 +1,12 @@
 import { Product } from './product.model';
 
+export interface CartItem {
+   product: Product;
+   quantity: number;
+}
+
 export interface CartState {
-   products: Array<Product>;
+   items: CartItem[];
    totalPrice: number;
    isOpen: boolean;
 };

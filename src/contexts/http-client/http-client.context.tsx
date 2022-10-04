@@ -1,12 +1,12 @@
 import { createContext, useMemo } from 'react';
-import { HttpClient } from './http-client';
+import { HttpClient, HttpClientInstance } from './http-client';
 import { useContext } from 'react';
 
 export const HttpClientContext = createContext<HttpClient>(null);
 
 export const HttpClientProvider = ({ children }: { children: React.ReactNode }) => {
-  // isProduction ? process.env.API_URL : `http://localhost:5000`;
-  const httpClient = useMemo(() => new HttpClient(process.env.API_URL), []);
+  // const httpClient = useMemo(() => new HttpClient(process.env.API_URL), []);
+  const httpClient = useMemo(() => HttpClientInstance, []);
 
   return <HttpClientContext.Provider value={httpClient}>{children}</HttpClientContext.Provider>;
 };

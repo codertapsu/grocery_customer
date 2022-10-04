@@ -36,7 +36,7 @@ app
     return server.listen(PORT, (err) => {
       if (err) throw err;
 
-      console.log(`> Ready on https://192.168.1.8:${PORT}`)
+      console.log(`> Ready on https://127.0.0.1:${PORT}`);
     });
   })
   .catch((err) => {

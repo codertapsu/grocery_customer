@@ -1,96 +1,65 @@
-import { createContext, useCallback, useLayoutEffect, useReducer } from 'react';
-import { getCsrfToken, getProviders, getSession, signIn, useSession } from 'next-auth/react';
+import { createContext, useCallback, useEffect, useReducer, useState } from 'react';
 
-import { User } from '@models/user.model';
+import { useIsomorphicLayoutEffect } from 'usehooks-ts';
+import { BroadcastChannel, BroadcastChannelOptions } from 'broadcast-channel';
+
+import { Channel } from '@constants/channels.constant';
 import { useHttpClient } from '@contexts/http-client';
+import { useBroadcastChannel } from '@hooks/use-broadcast-channel';
+import { User } from '@models/user.model';
 
-export interface AuthState {
-  user: User;
-  accessToken: string;
-  refreshToken: string;
-}
+import { authInitialState, authReducer } from './auth.reducer';
+import { AuthActionType } from './models/auth-action-type.model';
+import { AuthState } from './models/auth-state.model';
+import { AuthAction } from './models/auth-action.model';
 
 interface Context extends AuthState {
-  login: (email: string, password: string) => Promise<void>;
+  isOpenAuthDialog: boolean;
+  login: (usernameOrEmail: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   register: () => Promise<void>;
   forgotPassword: () => Promise<void>;
   verify: () => Promise<void>;
   me: () => Promise<User>;
+  openAuthDialog: () => void;
+  closeAuthDialog: () => void;
 }
-
-export enum AuthActionType {
-  SetUser = 'SetUser',
-  SetAccessToken = 'SetAccessToken',
-  SetRefreshToken = 'SetRefreshToken',
-  Reset = 'Reset',
-}
-
-export type AuthAction =
-  | {
-      type: AuthActionType.SetUser;
-      data: {
-        user: User;
-        accessToken: string;
-        refreshToken: string;
-      };
-    }
-  | {
-      type: AuthActionType.SetAccessToken;
-      accessToken: string;
-    }
-  | {
-      type: AuthActionType.SetRefreshToken;
-      refreshToken: string;
-    }
-  | {
-      type: AuthActionType.Reset;
-    };
-
-export const authInitialState: AuthState = {
-  user: null,
-  accessToken: '',
-  refreshToken: '',
-};
-
-export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
-  switch (action.type) {
-    case AuthActionType.SetUser:
-      return {
-        ...state,
-        user: action.data.user,
-        accessToken: action.data.accessToken,
-        refreshToken: action.data.refreshToken,
-      };
-    case AuthActionType.SetAccessToken:
-      return {
-        ...state,
-        accessToken: action.accessToken,
-      };
-    case AuthActionType.SetRefreshToken:
-      return {
-        ...state,
-        refreshToken: action.refreshToken,
-      };
-    case AuthActionType.Reset:
-      return authInitialState;
-    default:
-      throw new Error();
-  }
-};
 
 export const AuthContext = createContext<Context>(null);
 
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
   const httpClient = useHttpClient();
+  const [authChannel, setAuthChannel] = useState<BroadcastChannel<AuthAction>>(null);
+  const [isOpenAuthDialog, setIsOpenAuthDialog] = useState<boolean>(false);
 
-  const login = useCallback(async (email: string, password: string) => {
+  const updateAuthInfo = useCallback((payload: AuthAction) => {
+    dispatch(payload);
+    if (authChannel) {
+      authChannel.postMessage(payload);
+    }
+  }, []);
+
+  const login = useCallback(async (username: string, password: string) => {
+    const response = await httpClient.post<User>('/auth/login', { username, password });
+    updateAuthInfo({
+      type: AuthActionType.SetUser,
+      data: {
+        user: response.data,
+        refreshToken: '',
+        accessToken: '',
+      },
+    });
     // const response = await signIn('credentials', { email, password, redirect: false });
   }, []);
 
   const logout = useCallback(async () => {
-    dispatch({ type: AuthActionType.Reset });
+    try {
+      const response = await httpClient.get('/auth/logout');
+    } catch (error) {
+      console.log(error);
+    }
+    updateAuthInfo({ type: AuthActionType.Reset });
   }, []);
 
   const register = useCallback(async () => {
@@ -111,20 +80,29 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     return response.data;
   };
 
-  useLayoutEffect(() => {
+  const openAuthDialog = () => {
+    setIsOpenAuthDialog(true);
+  };
+
+  const closeAuthDialog = () => {
+    setIsOpenAuthDialog(false);
+  };
+
+  useIsomorphicLayoutEffect(() => {
+    const controller = new AbortController();
     const initialize = async () => {
       try {
-        let response = await httpClient.get<User>('/auth/me');
+        let response = await httpClient.get<User>('/auth/me', { signal: controller.signal });
 
         if (!response.data && response.status !== 401) {
-          response = await httpClient.get<User>('/auth/refresh');
+          response = await httpClient.get<User>('/auth/refresh', { signal: controller.signal });
         }
 
         if (!response.data) {
           throw Error(response.statusText);
         }
 
-        dispatch({
+        updateAuthInfo({
           type: AuthActionType.SetUser,
           data: {
             user: response.data,
@@ -135,6 +113,26 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
       } catch (error) {}
     };
     initialize();
+
+    return () => {
+      controller.abort('View is destroyed!');
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const authChannel = new BroadcastChannel<AuthAction>(Channel.Auth);
+      setAuthChannel(authChannel);
+      authChannel.onmessage = (payload) => {
+        dispatch(payload);
+      };
+    }
+
+    return () => {
+      if (authChannel) {
+        authChannel.close();
+      }
+    };
   }, []);
 
   const value: Context = {
@@ -144,6 +142,9 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     forgotPassword,
     verify,
     me,
+    closeAuthDialog,
+    openAuthDialog,
+    isOpenAuthDialog,
     user: state.user,
     accessToken: state.accessToken,
     refreshToken: state.refreshToken,

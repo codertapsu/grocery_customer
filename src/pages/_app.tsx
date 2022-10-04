@@ -1,9 +1,14 @@
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+// import '../styles/globals.css';
+import '../styles/theme/styles.scss';
+import '../styles/theme/indexpage.scss';
+import '../styles/globals.scss';
 
 import { SessionProvider } from 'next-auth/react';
 
-import { CartProvider } from '@contexts/cart.context';
 import { NotificationProvider } from '@contexts/notification.context';
 import { SocketProvider } from '@contexts/socket.context';
 import { WalletProvider } from '@contexts/wallet.context';
@@ -11,6 +16,10 @@ import { WalletProvider } from '@contexts/wallet.context';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import { HttpClientProvider } from '@contexts/http-client';
+import { AuthContextProvider } from '@contexts/auth';
+import { useEffect } from 'react';
+import { CartContextProvider } from '@contexts/cart';
+import { SettingsContextProvider } from '@contexts/settings';
 
 // Router.events.on("routeChangeStart", () => NProgress.start());
 // Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -24,18 +33,32 @@ import { HttpClientProvider } from '@contexts/http-client';
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   console.log(session);
 
+  useEffect(() => {
+    import('bootstrap/dist/js/bootstrap')
+      .then(() => {
+        console.log('OK');
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   return (
     <NotificationProvider>
       <HttpClientProvider>
-        <SessionProvider session={session} refetchInterval={0}>
-          {/* <SocketProvider> */}
-          <WalletProvider>
-            <CartProvider>
-              <Component {...pageProps} />
-            </CartProvider>
-          </WalletProvider>
-          {/* </SocketProvider> */}
-        </SessionProvider>
+        <AuthContextProvider>
+          <SettingsContextProvider>
+            <SessionProvider session={session} refetchInterval={0}>
+              {/* <SocketProvider> */}
+              <WalletProvider>
+                <CartContextProvider>
+                  <Component {...pageProps} />
+                </CartContextProvider>
+              </WalletProvider>
+              {/* </SocketProvider> */}
+            </SessionProvider>
+          </SettingsContextProvider>
+        </AuthContextProvider>
       </HttpClientProvider>
     </NotificationProvider>
   );

@@ -1,0 +1,46 @@
+.mobile-menu-overlay.mmenu-active {
+  visibility: visible;
+  opacity: 1;
+
+  & + .mobile-menu-container {
+    visibility: visible;
+    transform: translateX(280px);
+  }
+}
+
+.header-dropdown-link {
+  display: flex;
+  align-items: flex-end;
+}
+
+.wishlist-count {
+  background-color: #c96;
+}
+
+.wishlist-link {
+  position: relative;
+  flex-direction: column;
+  font-size: 2.8rem;
+}
+.wishlist-link .wishlist-count {
+  right: 0;
+  top: -0.5rem;
+}
+.wishlist-link:hover .wishlist-txt,
+.wishlist-link:focus .wishlist-txt {
+  color: #39f;
+}
+
+.compare-dropdown [class*="count"],
+.cart-dropdown [class*="count"],
+.wishlist-link [class*="count"] {
+  min-width: 1.6rem;
+  height: 1.6rem;
+  position: absolute;
+}
+.compare-dropdown .dropdown-toggle,
+.cart-dropdown .dropdown-toggle,
+.wishlist-link .dropdown-toggle {
+  position: relative;
+  flex-direction: column;
+}

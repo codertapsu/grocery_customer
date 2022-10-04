@@ -1,0 +1,44 @@
+.dialog-container {
+  padding: max(20px, 5vw);
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  &.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  opacity: 0.6;
+  user-select: none;
+  font-family: "molla";
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.35s ease;
+  appearance: none;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  outline: none;
+  padding: 0;
+  box-shadow: none;
+  touch-action: manipulation;
+  font-size: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+
+  &::before {
+    content: "\f191";
+  }
+}

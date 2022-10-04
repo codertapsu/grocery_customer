@@ -1,21 +1,23 @@
-import { useCart } from '@hooks/use-cart';
+import { useCart } from '@contexts/cart';
 import { Product as ProductModel } from '@models/product.model';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function Product() {
-  const { dispatch } = useCart();
+  const { addProduct } = useCart();
   const router = useRouter();
   const [product, setProduct] = useState<ProductModel>();
   const { id } = router.query;
 
   const addToCart = useCallback(() => {
-    dispatch({ type: 'addProduct', payload: product });
-    dispatch({ type: 'openMenu' });
-  }, [dispatch, product]);
+    addProduct({
+      product,
+      quantity: 1,
+    });
+  }, [product]);
 
   const buyProduct = () => {
-    // 
+    //
   };
 
   useEffect(() => {

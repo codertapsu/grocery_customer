@@ -11,11 +11,13 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           {/* <meta name='referrer' content='strict-origin-when-cross-origin' /> */}
-          <link rel='preload' href='/fonts/inter-var-latin.woff2' as='font' type='font/woff2' crossOrigin='anonymous' />
+          {/* <link rel='preload' href='/fonts/inter-var-latin.woff2' as='font' type='font/woff2' crossOrigin='anonymous' /> */}
+          {/* Bootstrap Icons */}
+          <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' />
         </Head>
         <body>
           <Main />
-          {/* <div id='root_modal'></div> */}
+          <div id='overlay-backdrop'></div>
           {/* <div id='root_notification'></div> */}
           <NextScript />
         </body>

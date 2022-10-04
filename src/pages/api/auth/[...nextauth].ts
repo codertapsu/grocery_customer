@@ -91,7 +91,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
 
             // return response.data;
           } catch (error) {
-            console.log(error);
+            // console.log(error);
 
             throw error;
           }
@@ -144,7 +144,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
      */
     callbacks: {
       async signIn({ user, account, profile, email, credentials }) {
-        console.log({ user, account, profile, email, credentials });
+        // console.log({ user, account, profile, email, credentials });
 
         const isAllowedToSignIn = true;
         if (isAllowedToSignIn) {
@@ -157,7 +157,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         }
       },
       async redirect({ url, baseUrl }) {
-        console.log({ url, baseUrl });
+        // console.log({ url, baseUrl });
 
         // Allows relative callback URLs
         if (url.startsWith('/')) {
@@ -174,7 +174,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         //     : Promise.resolve(baseUrl)
       },
       async session({ session, user, token }) {
-        console.log({ session, user, token });
+        // console.log({ session, user, token });
 
         // Send properties to the client, like an access_token from a provider.
         session.accessToken = token.accessToken;

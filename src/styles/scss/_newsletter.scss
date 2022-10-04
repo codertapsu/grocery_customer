@@ -1,0 +1,44 @@
+.newsletter-popup-content {
+  box-shadow: 0 10px 20px rgb(34 34 34 / 30%);
+
+  .banner-content-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner-content {
+    position: static;
+    transform: translateY(0);
+    padding-top: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex: 0 0 calc((100% + 20px) / 6 * 4);
+    max-width: calc((100% + 20px) / 6 * 4);
+  }
+
+  .logo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 0;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .banner-title {
+    font-size: 4.6rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #222;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    line-height: 1.4em;
+
+    span {
+      font-weight: 700;
+      color: #a6c76c;
+    }
+  }
+}
