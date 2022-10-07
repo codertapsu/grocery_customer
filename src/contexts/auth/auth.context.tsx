@@ -12,6 +12,7 @@ import { authInitialState, authReducer } from './auth.reducer';
 import { AuthActionType } from './models/auth-action-type.model';
 import { AuthState } from './models/auth-state.model';
 import { AuthAction } from './models/auth-action.model';
+import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession } from 'next-auth/react';
 
 interface Context extends AuthState {
   isOpenAuthDialog: boolean;
@@ -32,9 +33,13 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const httpClient = useHttpClient();
   const [authChannel, setAuthChannel] = useState<BroadcastChannel<AuthAction>>(null);
   const [isOpenAuthDialog, setIsOpenAuthDialog] = useState<boolean>(false);
+  const {} = useSession();
 
   const updateAuthInfo = useCallback((payload: AuthAction) => {
     dispatch(payload);
+    if (payload.type === AuthActionType.SetUser) {
+      nextAuthSignIn('patchUser', { user: JSON.stringify(payload.data.user), redirect: false });
+    }
     if (authChannel) {
       authChannel.postMessage(payload);
     }
@@ -50,12 +55,14 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
         accessToken: '',
       },
     });
+    console.log(response.data);
     // const response = await signIn('credentials', { email, password, redirect: false });
   }, []);
 
   const logout = useCallback(async () => {
     try {
-      const response = await httpClient.get('/auth/logout');
+      await httpClient.get('/auth/logout');
+      await nextAuthSignOut({ redirect: false });
     } catch (error) {
       console.log(error);
     }

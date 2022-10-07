@@ -1,22 +1,43 @@
+import { BannerCategory } from '@components/banner';
+import { Breadcrumb } from '@components/breadcrumb';
 import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import Seo from '@components/seo';
 import { useAuth } from '@contexts/auth';
 import { useHttpClient } from '@contexts/http-client';
 import { HttpClientInstance } from '@contexts/http-client/http-client';
+import { mergeClassNames } from '@helpers/merge-class-names.helper';
 import { NextPage } from 'next';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'usehooks-ts';
+import styles from './styles.module.scss';
 
-const Categories: NextPage = (props) => {
-  const [categories, setCategories] = useState([]);
+const randomIntFromInterval = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomZeroToTwo = () => randomIntFromInterval(0, 2);
+
+interface Props {
+  categories: {
+    id: number;
+    name: string;
+    size: number;
+  }[];
+}
+
+const Categories = ({ categories }: Props) => {
+  // const [categories, setCategories] = useState([]);
   const { user } = useAuth();
   const httpClient = useHttpClient();
+
+  const toggleFilter = () => {
+    document.body.classList.toggle('sidebar-filter-active');
+  };
 
   const initialize = async (controller: AbortController) => {
     try {
       const response = await httpClient.get<any[]>('/categories', { signal: controller.signal });
-      setCategories(response.data || []);
+      // setCategories(response.data || []);
     } catch (error) {}
   };
 
@@ -35,19 +56,23 @@ const Categories: NextPage = (props) => {
     <Layout>
       <Seo templateTitle='Categories' description='Pre-built components with awesome default' />
       <div>
-        <div className='page-header text-center' style={{ backgroundImage: 'url("assets/images/page-header-bg.jpg")' }}>
+        <div
+          className='page-header text-center'
+          style={{ backgroundImage: 'url("/assets/images/page-header-bg.jpg")' }}
+        >
           <div className='container'>
             <h1 className='page-title'>
               Product Category Boxed<span>Shop</span>
             </h1>
           </div>
         </div>
+        {/* <Breadcrumb /> */}
         <nav aria-label='breadcrumb' className='breadcrumb-nav breadcrumb-with-filter'>
           <div className='container'>
-            <a href='#' className='sidebar-toggler'>
+            <span role='button' className='sidebar-toggler' onClick={toggleFilter}>
               <i className='icon-bars' />
               Filters
-            </a>
+            </span>
             <ol className='breadcrumb'>
               <li className='breadcrumb-item'>
                 <a href='index.html'>Home</a>
@@ -63,111 +88,113 @@ const Categories: NextPage = (props) => {
               </li>
             </ol>
           </div>
+          {/* End .container */}
         </nav>
+
         <div className='page-content'>
           <div className='categories-page'>
             <div className='container'>
+              {/* <div className={styles['grid']}>
+                {categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className={mergeClassNames(
+                      'banner banner-cat banner-badge',
+                      styles[['square', 'tall', 'wide'][cat.size]],
+                    )}
+                  >
+                    <Link href={{ pathname: `/categories/${cat.id}` }}>
+                      <a>
+                        <Image src={`/assets/images/category/boxed/banner-${cat.id}.jpg`} alt='Banner' />
+                      </a>
+                    </Link>
+                    <Link href={{ pathname: `/categories/${cat.id}` }}>
+                      <a className='banner-link'>
+                        <h3 className='banner-title'>Dresses</h3>
+                        <h4 className='banner-subtitle'>3 Products</h4>
+                        <span className='banner-link-text'>Shop Now</span>
+                      </a>
+                    </Link>
+                  </div>
+                ))}
+              </div> */}
               <div className='row'>
                 <div className='col-md-6'>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-1.jpg' alt='Banner' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Dresses</h3>
-                      <h4 className='banner-subtitle'>3 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-2.jpg' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Jackets</h3>
-                      <h4 className='banner-subtitle'>2 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-1.jpg'
+                    title='Dresses'
+                    subtitle='3 Products'
+                    linkText='Shop Now'
+                  />
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-2.jpg'
+                    title='Jackets'
+                    subtitle='2 Products'
+                    linkText='Shop Now'
+                  />
                 </div>
                 <div className='col-md-6'>
                   <div className='row'>
                     <div className='col-sm-6'>
-                      <div className='banner banner-cat banner-badge'>
-                        <a href='#'>
-                          <Image src='/assets/images/category/boxed/banner-3.jpg' alt='Banner' />
-                        </a>
-                        <a className='banner-link' href='#'>
-                          <h3 className='banner-title'>T-shirts</h3>
-                          <h4 className='banner-subtitle'>0 Products</h4>
-                          <span className='banner-link-text'>Shop Now</span>
-                        </a>
-                      </div>
+                      <BannerCategory
+                        id={1}
+                        image='/assets/images/category/boxed/banner-3.jpg'
+                        title='T-shirts'
+                        subtitle='4 Products'
+                        linkText='Shop Now'
+                      />
                     </div>
                     <div className='col-sm-6'>
-                      <div className='banner banner-cat banner-badge'>
-                        <a href='#'>
-                          <Image src='/assets/images/category/boxed/banner-4.jpg' alt='Banner' />
-                        </a>
-                        <a className='banner-link' href='#'>
-                          <h3 className='banner-title'>Jeans</h3>
-                          <h4 className='banner-subtitle'>1 Products</h4>
-                          <span className='banner-link-text'>Shop Now</span>
-                        </a>
-                      </div>
+                      <BannerCategory
+                        id={1}
+                        image='/assets/images/category/boxed/banner-4.jpg'
+                        title='Jeans'
+                        subtitle='3 Products'
+                        linkText='Shop Now'
+                      />
                     </div>
                   </div>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-5.jpg' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Bags</h3>
-                      <h4 className='banner-subtitle'>4 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-5.jpg'
+                    title='Bags'
+                    subtitle='3 Products'
+                    linkText='Shop Now'
+                  />
                 </div>
                 <div className='col-sm-6 col-md-3'>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-6.jpg' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Sportwear</h3>
-                      <h4 className='banner-subtitle'>0 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-6.jpg'
+                    title='Sport wear'
+                    subtitle='3 Products'
+                    linkText='Shop Now'
+                  />
                 </div>
                 <div className='col-sm-6 col-md-3 order-md-last'>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-8.jpg' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Jumpers</h3>
-                      <h4 className='banner-subtitle'>1 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-8.jpg'
+                    title='Jumpers'
+                    subtitle='3 Products'
+                    linkText='Shop Now'
+                  />
                 </div>
                 <div className='col-md-6'>
-                  <div className='banner banner-cat banner-badge'>
-                    <a href='#'>
-                      <Image src='/assets/images/category/boxed/banner-7.jpg' />
-                    </a>
-                    <a className='banner-link' href='#'>
-                      <h3 className='banner-title'>Shoes</h3>
-                      <h4 className='banner-subtitle'>2 Products</h4>
-                      <span className='banner-link-text'>Shop Now</span>
-                    </a>
-                  </div>
+                  <BannerCategory
+                    id={1}
+                    image='/assets/images/category/boxed/banner-7.jpg'
+                    title='Shoes'
+                    subtitle='3 Products'
+                    linkText='Shop Now'
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className='sidebar-filter-overlay' />
+          <div className='sidebar-filter-overlay' onClick={toggleFilter} />
           <aside className='sidebar-shop sidebar-filter sidebar-filter-banner'>
             <div className='sidebar-filter-wrapper'>
               <div className='widget widget-clean'>
@@ -230,7 +257,7 @@ const Categories: NextPage = (props) => {
                     </div>
                     <div className='filter-item'>
                       <div className='custom-control custom-checkbox'>
-                        <input type='checkbox' className='custom-control-input' id='cat-6' defaultChecked={true} />
+                        <input type='checkbox' className='custom-control-input' id='cat-6' />
                         <label className='custom-control-label' htmlFor='cat-6'>
                           Grid Categories Fullwidth
                         </label>
@@ -334,6 +361,48 @@ export async function getServerSideProps(context) {
   // will be passed to the PostDetailPage component
   return {
     props: {
+      categories: [
+        {
+          id: 1,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 2,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 3,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 4,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 5,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 6,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 7,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+        {
+          id: 8,
+          name: 'Dresses',
+          size: randomZeroToTwo(),
+        },
+      ],
       // post,
     },
   };

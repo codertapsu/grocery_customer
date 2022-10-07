@@ -9,6 +9,7 @@ import FacebookProvider from 'next-auth/providers/facebook';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import Providers from 'next-auth/providers';
+import { User } from '@models/user.model';
 
 /**
  * For more information on each option (and a full list of options) go to
@@ -27,76 +28,70 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
       //     return { user: JSON.parse(credentials.user) };
       //   },
       // }),
-      // CredentialsProvider({
-      //   id: 'direct_jwt_auth',
-      //   credentials: {},
-      //   async authorize(credentials) {
-      //     console.log({ credentials });
-
-      //     // const { id, email, token } = credentials;
-
-      //     return {
-      //       name: 'Khanh',
-      //     };
-      //     // return {
-      //     //   id: id,
-      //     //   email: email,
-      //     //   token: token,
-      //     // };
-      //   },
-      // }),
-      CredentialsProvider({
-        id: 'credentials',
-        name: 'Login',
+      CredentialsProvider<{ user: any }>({
+        id: 'patchUser',
         credentials: {
-          email: {
-            label: 'Email',
-            type: 'email',
-            placeholder: 'support@hygraph.com',
-          },
-          password: {
-            label: 'Password',
-            type: 'password',
-            placeholder: 'Password',
-          },
+          user: {},
         },
-        // credentials: {
-        //   username: { label: 'Email', type: 'email', placeholder: 'Your email' },
-        //   password: { label: 'Password', type: 'password', placeholder: '*********' },
-        // },
-        async authorize({ email, password }) {
-          try {
-            // const response = await fetch('', {
-            //   method: 'POST',
-            //   body: JSON.stringify({
-            //     username: credentials.username,
-            //     password: credentials.password,
-            //   }),
-            //   credentials: 'include',
-            // });
-            // console.log({ email, password });
-            
-            return {
-              name: 'Khanh',
-              image: 'https://toampk.xyz/images/groom.png'
-            };
-            // const response = await axios.post('/api/login', {
-            //   email,
-            //   password,
-            // });
-
-            // const cookies = response.headers['set-cookie'];
-
-            // res.setHeader('Set-Cookie', cookies);
-
-            // return response.data;
-          } catch (error) {
-            // console.log(error);
-
-            throw error;
-          }
+        async authorize({ user }) {
+          // Returning token to set in session
+          return {
+            token: JSON.parse(user),
+          };
         },
       }),
+      // CredentialsProvider({
+      //   id: 'credentials',
+      //   name: 'Login',
+      //   credentials: {
+      //     email: {
+      //       label: 'Email',
+      //       type: 'email',
+      //       placeholder: 'supporthygraph.com',
+      //     },
+      //     password: {
+      //       label: 'Password',
+      //       type: 'password',
+      //       placeholder: 'Password',
+      //     },
+      //   },
+      //   // credentials: {
+      //   //   username: { label: 'Email', type: 'email', placeholder: 'Your email' },
+      //   //   password: { label: 'Password', type: 'password', placeholder: '*********' },
+      //   // },
+      //   async authorize({ email, password }) {
+      //     try {
+      //       // const response = await fetch('', {
+      //       //   method: 'POST',
+      //       //   body: JSON.stringify({
+      //       //     username: credentials.username,
+      //       //     password: credentials.password,
+      //       //   }),
+      //       //   credentials: 'include',
+      //       // });
+      //       // console.log({ email, password });
+
+      //       return {
+      //         name: 'Khanh',
+      //         image: 'https://toampk.xyz/images/groom.png',
+      //       };
+      //       // const response = await axios.post('/api/login', {
+      //       //   email,
+      //       //   password,
+      //       // });
+
+      //       // const cookies = response.headers['set-cookie'];
+
+      //       // res.setHeader('Set-Cookie', cookies);
+
+      //       // return response.data;
+      //     } catch (error) {
+      //       // console.log(error);
+
+      //       throw error;
+      //     }
+      //   },
+      // }),
       // EmailProvider({
       //   server: process.env.EMAIL_SERVER,
       //   from: process.env.EMAIL_FROM,
@@ -173,19 +168,35 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         //     ? Promise.resolve(url)
         //     : Promise.resolve(baseUrl)
       },
-      async session({ session, user, token }) {
-        // console.log({ session, user, token });
+      // async session({ session, user, token }) {
+      //   console.log({ session, user, token });
 
-        // Send properties to the client, like an access_token from a provider.
-        session.accessToken = token.accessToken;
-        return session;
-      },
-      async jwt({ token, user, account, profile, isNewUser }) {
-        // Persist the OAuth access_token to the token right after signin
-        if (account) {
-          token.accessToken = account.access_token;
+      //   // Send properties to the client, like an access_token from a provider.
+      //   session.accessToken = token.accessToken;
+      //   return session;
+      // },
+      // async jwt({ token, user, account, profile, isNewUser }) {
+      //   // Persist the OAuth access_token to the token right after signin
+      //   if (account) {
+      //     token.accessToken = account.access_token;
+      //   }
+      //   return token;
+      // },
+      jwt: async ({ token, user, account, profile, isNewUser }) => {
+        console.log('///jwt');
+        console.log(user);
+        
+        
+        if (user) {
+          token.user = user.token;
         }
         return token;
+      },
+      session: async ({ session, token, user }) => {
+        console.log('/// session');
+        console.log(token);
+        session.user = token.user; // Setting token in session
+        return session;
       },
     },
 

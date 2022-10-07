@@ -1,0 +1,11 @@
+.stripe-field-container {
+  padding: 0 2rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+  transition: all 0.3s;
+
+  &.StripeElement--focus {
+    background-color: #fff;
+    border-color: #c96;
+  }
+}

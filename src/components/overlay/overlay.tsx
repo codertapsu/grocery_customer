@@ -37,11 +37,8 @@ const Overlay = ({ children, showModal, setShowModal, afterClose }: Props) => {
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      console.log(e.key);
-
       if (e.key === 'Escape') {
         setShowModal(false);
-        // write your logic here.
       }
     };
     if (showModal) {

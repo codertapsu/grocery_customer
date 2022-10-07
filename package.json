@@ -20,6 +20,8 @@
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.5.1",
     "@fingerprintjs/fingerprintjs": "^3.3.5",
+    "@stripe/react-stripe-js": "^1.12.0",
+    "@stripe/stripe-js": "^1.38.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
@@ -44,6 +46,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.36.1",
     "react-icons": "^4.4.0",
+    "react-imask": "^6.4.3",
     "react-owl-carousel": "^2.3.3",
     "react-toastify": "^9.0.8",
     "socket.io-client": "^4.5.1",

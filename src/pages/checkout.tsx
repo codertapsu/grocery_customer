@@ -3,6 +3,7 @@ import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import { useCart } from '@contexts/cart';
 import { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 const PaymentMethods = [
@@ -33,7 +34,11 @@ const PaymentMethods = [
 ];
 
 const Checkout: NextPage = () => {
+  const { data: session } = useSession();
   const { items, totalPrice } = useCart();
+
+  console.log('session', session);
+  
 
   return (
     <Layout>

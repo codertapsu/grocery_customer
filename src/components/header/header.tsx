@@ -11,6 +11,9 @@ import { mergeClassNames } from '@helpers/merge-class-names.helper';
 import styles from './styles.module.scss';
 import { PlatformService } from '@contexts/platform';
 import { useSettings } from '@contexts/settings';
+import { useSession } from 'next-auth/react';
+import { Button } from '@components/button';
+import { useWallet } from '@hooks/use-wallet';
 
 interface Item {
   name: string;
@@ -26,6 +29,8 @@ const Header = () => {
   const isLoginPage = router.pathname.endsWith('login');
   const { items, totalPrice, removeProduct } = useCart();
   const { logout, openAuthDialog, user } = useAuth();
+  const { signer, network, connect: connectWallet } = useWallet();
+  const { data: session, status } = useSession();
   const { currencies, languages, languageName, currencyName, changeCurrency, changeLanguage } = useSettings();
 
   const inputSearchRef = useRef<HTMLInputElement>();
@@ -582,9 +587,18 @@ const Header = () => {
                       </div>
                     </li>
                     <li>
-                      <a href='#signin-modal' data-toggle='modal'>
-                        Sign in / Sign up
-                      </a>
+                      <span
+                        role='button'
+                        onClick={() => {
+                          if (status === 'authenticated') {
+                            logout();
+                          } else {
+                            openAuthDialog();
+                          }
+                        }}
+                      >
+                        {status === 'authenticated' ? 'Log out' : 'Sign in / Sign up'}
+                      </span>
                     </li>
                   </ul>
                 </li>
@@ -600,9 +614,11 @@ const Header = () => {
                 <span className='visually-hidden'>Toggle mobile menu</span>
                 <i className='icon-bars' />
               </button>
-              <a href='index.html' className='logo'>
-                <NextImage src='/assets/images/demos/demo-2/logo.png' alt='Molla Logo' width={105} height={25} />
-              </a>
+              <Link href={{ pathname: '/' }}>
+                <a className='logo'>
+                  <NextImage src='/assets/images/demos/demo-2/logo.png' alt='Molla Logo' width={105} height={25} />
+                </a>
+              </Link>
             </div>
             <div className='header-center'>
               <div className='header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block'>
@@ -631,13 +647,47 @@ const Header = () => {
             </div>
             <div className='header-right'>
               <div className={mergeClassNames(styles['header-dropdown-link'])}>
-                <div className='account'>
-                  <a href='dashboard.html' title='My account'>
+                <div className='account dropdown cart-dropdown'>
+                  <span title='My account'>
                     <div className='icon'>
                       <i className='icon-user' />
                     </div>
                     <p>Account</p>
-                  </a>
+                  </span>
+                  <div className='dropdown-menu dropdown-menu-right'>
+                    <div>
+                      <ul>
+                        <li></li>
+                      </ul>
+                    </div>
+                    <div className='dropdown-cart-action'>
+                      <div className='row'>
+                        <div className='col-6'>
+                          <Button
+                            type='button'
+                            fillType='filled'
+                            cornerType='rounded'
+                            themeType='primary'
+                            onClick={connectWallet}
+                          >
+                            Connect wallet
+                          </Button>
+                        </div>
+                        <div className='col-6'>
+                          <Button
+                            type='button'
+                            fillType='filled'
+                            cornerType='rounded'
+                            themeType='primary'
+                            onClick={logout}
+                          >
+                            <span>Log out</span>
+                            <i className='icon-long-arrow-right ms-3' />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className={mergeClassNames('wishlist')}>
                   <a href='wishlist.html' title='Wishlist'>
@@ -711,10 +761,12 @@ const Header = () => {
                       <a href='cart.html' className='btn btn-primary'>
                         View Cart
                       </a>
-                      <a href='checkout.html' className='btn btn-outline-primary-2'>
-                        <span>Checkout</span>
-                        <i className='icon-long-arrow-right' />
-                      </a>
+                      <Link href={{ pathname: '/checkout' }}>
+                        <a className='btn btn-outline-primary-2'>
+                          <span>Checkout</span>
+                          <i className='icon-long-arrow-right' />
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

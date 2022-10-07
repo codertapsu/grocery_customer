@@ -781,7 +781,7 @@ blockquote.text-white cite span {
 .cart-dropdown .dropdown-menu,
 .compare-dropdown .dropdown-menu {
   display: block;
-  width: 300px;
+  width: max-content;
   z-index: 100;
   font-size: 1.3rem;
   z-index: 1001;
@@ -1398,23 +1398,29 @@ blockquote.text-white cite span {
   align-self: stretch;
   align-items: initial;
 }
-.header-intro-clearance .account > a,
-.header-intro-clearance .wishlist > a,
-.header-intro-clearance .compare-dropdown > a,
-.header-intro-clearance .cart-dropdown > a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.header-intro-clearance .account,
+.header-intro-clearance .wishlist,
+.header-intro-clearance .compare-dropdown,
+.header-intro-clearance .cart-dropdown {
+  & > a,
+  & > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .header-intro-clearance div.icon {
   position: relative;
   height: 3.2rem;
 }
-.header-intro-clearance .account a {
-  font-size: 3rem;
-  color: #333;
-  line-height: 1;
+.header-intro-clearance .account {
+  & > a,
+  & > span {
+    font-size: 3rem;
+    color: #333;
+    line-height: 1;
+  }
 }
 .header-intro-clearance .wishlist a {
   font-size: 2.8rem;
@@ -6355,7 +6361,6 @@ p {
 .product-media {
   position: relative;
   display: block;
-  background-color: #d7d7d7;
   margin-bottom: 0;
   overflow: hidden;
 }

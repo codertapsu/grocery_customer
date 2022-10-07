@@ -1,0 +1,33 @@
+.grid {
+  max-width: 100%;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row dense;
+  grid-gap: 10px;
+}
+
+.tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.wide {
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.square {
+  grid-row: span 1;
+  grid-column: span 1;
+}
+
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .wide {
+    grid-column: span 1;
+  }
+}

@@ -8,7 +8,6 @@
   font-size: 1.4rem;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  min-width: 170px;
   border-radius: 0;
   white-space: normal;
   transition: all 0.3s;
@@ -16,6 +15,7 @@
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
+  width: max-content;
 
   &.btn-rounded {
     border-radius: 0.2rem;
@@ -37,7 +37,6 @@
     border-bottom: 0.1rem solid transparent;
     letter-spacing: 0;
     font-size: 1.4rem;
-    min-width: 0;
 
     &.btn-link-dark {
       color: #333;

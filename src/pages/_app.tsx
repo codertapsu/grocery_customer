@@ -46,9 +46,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <NotificationProvider>
       <HttpClientProvider>
-        <AuthContextProvider>
-          <SettingsContextProvider>
-            <SessionProvider session={session} refetchInterval={0}>
+        <SessionProvider session={session} refetchInterval={0}>
+          <AuthContextProvider>
+            <SettingsContextProvider>
               {/* <SocketProvider> */}
               <WalletProvider>
                 <CartContextProvider>
@@ -56,9 +56,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
                 </CartContextProvider>
               </WalletProvider>
               {/* </SocketProvider> */}
-            </SessionProvider>
-          </SettingsContextProvider>
-        </AuthContextProvider>
+            </SettingsContextProvider>
+          </AuthContextProvider>
+        </SessionProvider>
       </HttpClientProvider>
     </NotificationProvider>
   );
