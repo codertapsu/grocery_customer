@@ -1,18 +1,17 @@
-import { Breadcrumb } from '@components/breadcrumb';
-import { Button } from '@components/button';
-import { CreditCard } from '@components/credit-card';
-import { Image } from '@components/image';
-import { Layout } from '@components/layout';
-import { useCart } from '@contexts/cart';
-import { NextPage } from 'next';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
-import { useFetch } from 'usehooks-ts';
-import { loadStripe, PaymentMethod, Stripe } from '@stripe/stripe-js';
-import { useHttpClient } from '@contexts/http-client';
+
+import { NextPage } from 'next';
+
+import { Breadcrumb } from '@components/breadcrumb';
+import { CreditCard } from '@components/credit-card';
+import { Layout } from '@components/layout';
 import { StripeForm } from '@components/stripe-form';
+import { useCart } from '@contexts/cart';
+import { useHttpClient } from '@contexts/http-client';
 import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe, PaymentMethod, Stripe } from '@stripe/stripe-js';
+import { PageHeader } from '@components/page-header';
 
 const PaymentMethods = [
   {
@@ -111,7 +110,6 @@ const CreditCards: NextPage = () => {
       .get<StripeConfig>('/credit-cards', { signal: abortController.signal })
       .then((response) => {
         console.log(response.data);
-        
       })
       .catch((e) => console.log(e));
 
@@ -123,14 +121,8 @@ const CreditCards: NextPage = () => {
 
   return (
     <Layout>
-      <div className='page-header text-center' style={{ backgroundImage: 'url("assets/images/page-header-bg.jpg")' }}>
-        <div className='container'>
-          <h1 className='page-title'>
-            Checkout<span>Shop</span>
-          </h1>
-        </div>
-      </div>
-      <Breadcrumb />
+      <PageHeader backgroundImage={'url("/assets/images/page-header-bg.jpg")'}>Credit cards</PageHeader>
+      <Breadcrumb items={[{ href: '', name: 'Credit cards' }]} />
       <div className='page-content'>
         <div className='checkout'>
           <div className='container'>

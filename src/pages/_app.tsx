@@ -2,9 +2,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+// import 'nouislider/distribute/nouislider.css';ks
 // import '../styles/globals.css';
 import '../styles/theme/styles.scss';
-import '../styles/theme/indexpage.scss';
 import '../styles/globals.scss';
 
 import { SessionProvider } from 'next-auth/react';
@@ -31,12 +31,10 @@ import { SettingsContextProvider } from '@contexts/settings';
  */
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  console.log(session);
-
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap')
       .then(() => {
-        console.log('OK');
+        //
       })
       .catch((e) => {
         console.log(e);

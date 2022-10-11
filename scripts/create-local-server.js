@@ -7,7 +7,7 @@ const path = require('path');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3006;
 
 if (!fs.existsSync(path.join(__dirname, '../certs/.capath'))) {
   // const macOsCommand = chalk.greenBright('sudo yarn ssl:setup');

@@ -183,18 +183,12 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
       //   return token;
       // },
       jwt: async ({ token, user, account, profile, isNewUser }) => {
-        console.log('///jwt');
-        console.log(user);
-        
-        
         if (user) {
           token.user = user.token;
         }
         return token;
       },
       session: async ({ session, token, user }) => {
-        console.log('/// session');
-        console.log(token);
         session.user = token.user; // Setting token in session
         return session;
       },

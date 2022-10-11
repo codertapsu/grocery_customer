@@ -1,51 +1,23 @@
-.cta-border-image {
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: none;
-  padding: 1rem;
-}
-
-.cta-border-wrapper {
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
-}
-
-.cta-text {
-  max-width: 380px;
-}
-
-.cta-title {
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  margin-bottom: 0;
-}
-
-.cta-desc {
-  margin-bottom: 2rem;
-  color: #999;
-  font-size: 1.6rem;
-  line-height: 1.5;
-}
-
-.social-icon {
-  width: 4.6rem;
-  height: 4.6rem;
-  font-size: 1.8rem;
-}
-
-.form-control {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+.cta-heading {
+  margin-bottom: 2.2rem;
 }
 
 .btn {
-  min-width: 70px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  min-width: 178px;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  height: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  .cta-title {
-    font-size: 3rem;
+@media screen and (max-width: 575px) {
+  .btn {
+    margin-top: 10px;
+    border-top-left-radius: 30rem !important;
+    border-bottom-left-radius: 30rem !important;
+  }
+
+  .input-group-append {
+    display: flex;
+    justify-content: center;
   }
 }

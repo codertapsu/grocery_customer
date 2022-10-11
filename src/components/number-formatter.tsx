@@ -2,7 +2,7 @@ import { useSettings } from '@contexts/settings';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  style: 'decimal' | 'currency' | 'percent';
+  style?: 'decimal' | 'currency' | 'percent';
   value: number;
 }
 export const NumberFormatter = ({ style = 'decimal', value }: Props) => {

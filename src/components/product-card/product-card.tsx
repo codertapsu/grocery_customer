@@ -1,11 +1,20 @@
 import { Image } from '@components/image';
+import { NumberFormatter } from '@components/number-formatter';
 import { Overlay } from '@components/overlay';
 import { ProductCountdown } from '@components/product-countdown';
 import { QuickView } from '@components/quick-view';
 import { useCart } from '@contexts/cart';
-import { useState } from 'react';
+import { mergeClassNames } from '@helpers/merge-class-names.helper';
+import { Product } from '@models/product.model';
+import Link from 'next/link';
+import { Fragment, useState } from 'react';
+import styles from './styles.module.scss';
 
-export const ProductCard = () => {
+interface Props {
+  product: Product;
+}
+
+export const ProductCard = ({ product }: Props) => {
   const [isOpenQuickView, setIsOpenQuickView] = useState(false);
   const {} = useCart();
   return (
@@ -13,37 +22,48 @@ export const ProductCard = () => {
       <Overlay showModal={isOpenQuickView} setShowModal={setIsOpenQuickView}>
         <QuickView />
       </Overlay>
-      <div className='product'>
+      <div className={mergeClassNames('product', styles['product'])}>
         <div className='product-media'>
-          <span className='product-label label-new'>New</span>
-          <span className='product-label label-top'>Top</span>
-          <span className='product-label label-sale'>Sale</span>
+          {product.isNew && <span className='product-label label-new'>New</span>}
+          {product.isTop && <span className='product-label label-top'>Top</span>}
+          {product.isSale && <span className='product-label label-sale'>Sale</span>}
           <Image
             src='/assets/images/demos/demo-13/products/product-2.jpg'
             alt='Product image'
             className='product-image'
           />
           <ProductCountdown countTo={new Date('Jan 5, 2024 15:37:25')} />
-          <div className='product-action-vertical'>
-            <span role='button' className='btn-product-icon btn-wishlist btn-expandable'>
-              <span>add to wishlist</span>
-            </span>
-            <span role='button' className='btn-product-icon btn-compare' title='Compare'>
-              <span>Compare</span>
-            </span>
+          <div className={mergeClassNames('product-action-vertical', styles['product-action-vertical'])}>
             <span
               role='button'
-              className='btn-product-icon btn-quickview btn-expandable'
+              className={mergeClassNames(
+                'btn-product-icon btn-expandable btn-wishlist',
+                styles['btn-product-icon'],
+                styles['btn-expandable'],
+              )}
+            >
+              <span>add to wishlist</span>
+            </span>
+            {/* <span role='button' className='btn-product-icon btn-compare' title='Compare'>
+              <span>Compare</span>
+            </span> */}
+            <span
+              role='button'
+              className={mergeClassNames(
+                'btn-product-icon btn-expandable btn-quickview',
+                styles['btn-product-icon'],
+                styles['btn-expandable'],
+              )}
               title='Quick view'
               onClick={() => setIsOpenQuickView(true)}
             >
               <span>Quick view</span>
             </span>
           </div>
-          <div className='product-action'>
+          <div className={mergeClassNames('product-action', styles['product-action'])}>
             <button
               type='button'
-              className='btn-product btn-cart'
+              className={mergeClassNames('btn-product btn-cart', styles['btn-product'])}
               title='Add to cart'
               onClick={() => {
                 //
@@ -55,20 +75,37 @@ export const ProductCard = () => {
         </div>
         <div className='product-body'>
           <div className='product-cat'>
-            <a href='#'>Electronics</a>
+            {product.categories.map((cat, index) => {
+              const isLast = index === product.categories.length - 1;
+
+              return (
+                <Fragment key={cat.slug}>
+                  <Link href={`/categories/${cat.slug}`}>
+                    <a>{cat.name}</a>
+                  </Link>
+                  {!isLast && <>{', '}</>}
+                </Fragment>
+              );
+            })}
           </div>
           <h3 className='product-title'>
-            <a href='product.html'>Bose - SoundSport wireless headphones</a>
+            <Link href={`/products/${product.slug}`}>
+              <a>{product.name}</a>
+            </Link>
           </h3>
           <div className='product-price'>
-            <span className='new-price'>$179.99</span>
-            <span className='old-price'>Was $199.99</span>
+            <span className='new-price'>
+              <NumberFormatter style='currency' value={product.currentPrice} />
+            </span>
+            <span className='old-price'>
+              Was <NumberFormatter style='currency' value={product.previousPrice} />
+            </span>
           </div>
           <div className='ratings-container'>
             <div className='ratings'>
               <div className='ratings-val' style={{ width: '100%' }} />
             </div>
-            <span className='ratings-text'>( 4 Reviews )</span>
+            <span className='ratings-text'>( {product.reviews.length} Reviews )</span>
           </div>
           <div className='product-nav product-nav-dots'>
             <a href='#' className='active' style={{ background: '#69b4ff' }}>

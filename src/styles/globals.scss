@@ -4,3 +4,34 @@
 @import "scss/button";
 @import "scss/owl-carousel";
 @import "scss/custom-stripe";
+@import "scss/custom-nouislider";
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition-property: height, visibility;
+    transition-duration: 0.35s;
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #828282 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #828282;
+  border-radius: 14px;
+  border: 3px solid #ffffff;
+}

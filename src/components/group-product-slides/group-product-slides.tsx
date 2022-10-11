@@ -1,9 +1,12 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 
 import dynamic from 'next/dynamic';
 
 import { ProductCard } from '@components/product-card';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
+
+import styles from './styles.module.scss';
+import { Product } from '@models/product.model';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
@@ -12,22 +15,41 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
 interface GroupProductSlide {
   id: string;
   title: string;
-  products: any[];
+  products: Product[];
 }
 
 const mock: GroupProductSlide[] = Array.from({ length: 4 }).map((_, index) => ({
   id: `tab-${index + 1}`,
-  title: `Lorem ipsum`,
-  products: Array.from({ length: 5 }).map((_, index) => index + 1),
+  title: `New`,
+  products: Array.from({ length: 8 }).map((_, index) => {
+    const product: Product = {
+      id: index + 1,
+      name: `Product ${index + 1}`,
+      slug: `product-${index + 1}`,
+      reviews: [],
+      categories: Array.from({ length: 3 }).map((_, indexCat) => ({
+        id: indexCat + 1,
+        name: `Category ${indexCat + 1}`,
+        slug: `cat-${indexCat + 1}`,
+      })),
+      images: ['/assets/images/demos/demo-13/products/product-2.jpg'],
+      variants: [],
+      isNew: Math.random() < 0.5,
+      isTop: Math.random() < 0.5,
+      isSale: Math.random() < 0.5,
+      currentPrice: 100,
+      previousPrice: 110,
+    };
+
+    return product;
+  }),
 }));
 
 export const GroupProductSlides = () => {
-  const uuid = useId();
-
   const [activeTab, setActiveTab] = useState('tab-1');
   return (
-    <div className='container'>
-      <div className='heading heading-flex heading-border mb-3'>
+    <>
+      <div className={mergeClassNames('heading heading-flex mb-2', styles['heading-border'])}>
         <div className='heading-left'>
           <h2 className='title'>Hot Deals Products</h2>
         </div>
@@ -71,7 +93,7 @@ export const GroupProductSlides = () => {
               dots={true}
               margin={20}
               loop={false}
-              items={4}
+              loadedClass='owl-loaded carousel-equal-height carousel-with-shadow'
               navClass={['owl-prev owl-custom-nav icon-angle-left', 'owl-next owl-custom-nav icon-angle-right']}
               navElement={'i'}
               responsive={{
@@ -94,13 +116,13 @@ export const GroupProductSlides = () => {
                 },
               }}
             >
-              {Array.from({ length: 8 }).map((_, index) => (
-                <ProductCard key={index} />
+              {item.products.map((product) => (
+                <ProductCard key={product.id} product={product} />
               ))}
             </OwlCarousel>
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };

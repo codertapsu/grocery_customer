@@ -1,8 +1,9 @@
+import { NextPage } from 'next';
+
 import { Breadcrumb } from '@components/breadcrumb';
 import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import { PageHeader } from '@components/page-header';
-import { NextPage } from 'next';
 
 const Wishlist: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const Wishlist: NextPage = () => {
       <PageHeader backgroundImage={'url("/assets/images/page-header-bg.jpg")'}>
         Wishlist<span>Shop</span>
       </PageHeader>
-      <Breadcrumb />
+      <Breadcrumb items={[{ href: '', name: 'Wishlist' }]} />
       <div className='page-content'>
         <div className='container'>
           <table className='table-wishlist table-mobile table'>
@@ -45,8 +46,8 @@ const Wishlist: NextPage = () => {
                   <div className='dropdown'>
                     <button
                       className='btn btn-block btn-outline-primary-2'
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                      data-bs-toggle='dropdown'
+                      aria-expanded='false'
                     >
                       <i className='icon-list-alt' />
                       Select Options

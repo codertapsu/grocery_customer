@@ -1,0 +1,130 @@
+.deal {
+  background-color: #f0f0f0;
+}
+
+.deal .container > .row {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.deal .container > .row > div {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.deal-content {
+  color: #777;
+  font-weight: 300;
+  font-size: 1.6rem;
+  line-height: 1.625;
+}
+
+.deal-content h2 {
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.deal-content h4 {
+  color: #c96;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.product-body {
+  background-color: transparent;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  letter-spacing: 0;
+}
+
+.product-price {
+  justify-content: center;
+}
+
+.new-price,
+.old-price {
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.action {
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #222;
+  padding: 1.1rem 2.5rem;
+  text-transform: uppercase;
+  border-bottom: 0.2rem solid #222;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #222;
+  }
+}
+
+.deal-countdown {
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+
+  .countdown-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .countdown-section {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3);
+  }
+
+  .countdown-amount {
+    font-size: 20px;
+    font-weight: 500;
+    color: red;
+    line-height: 1;
+  }
+
+  .countdown-period {
+    line-height: 1;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .deal-content h2 {
+    font-size: 4rem;
+  }
+
+  .deal-content h4 {
+    font-size: 1.3rem;
+  }
+
+  .deal .product-media {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .deal-content h2 {
+    font-size: 3.6rem;
+  }
+}

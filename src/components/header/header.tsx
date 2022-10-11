@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 import { PlatformService } from '@contexts/platform';
 import { useSettings } from '@contexts/settings';
 import { useSession } from 'next-auth/react';
-import { Button } from '@components/button';
+import { Button, ButtonLink } from '@components/button';
 import { useWallet } from '@hooks/use-wallet';
 
 interface Item {
@@ -755,18 +755,16 @@ const Header = () => {
                     </div>
                     <div className='dropdown-cart-total'>
                       <span>Total</span>
-                      <span className='cart-total-price'>$160.00</span>
+                      <span className='cart-total-price'>$160.00</span>-
                     </div>
                     <div className='dropdown-cart-action'>
-                      <a href='cart.html' className='btn btn-primary'>
+                      <ButtonLink href='/cart' fillType='filled'>
                         View Cart
-                      </a>
-                      <Link href={{ pathname: '/checkout' }}>
-                        <a className='btn btn-outline-primary-2'>
-                          <span>Checkout</span>
-                          <i className='icon-long-arrow-right' />
-                        </a>
-                      </Link>
+                      </ButtonLink>
+                      <ButtonLink href='/checkout' fillType='outline'>
+                        <span>Checkout</span>
+                        <i className='icon-long-arrow-right ms-3' />
+                      </ButtonLink>
                     </div>
                   </div>
                 </div>

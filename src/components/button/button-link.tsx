@@ -34,7 +34,7 @@ type ButtonProps = {
 } & React.ComponentPropsWithRef<'a'>;
 
 const ButtonLink = forwardRef<HTMLAnchorElement, ButtonProps>(
-  ({ children, className, href, cornerType = 'square', fillType, themeType, ...rest }, ref) => {
+  ({ children, className, href, cornerType = 'square', fillType = 'filled', themeType = 'primary', ...rest }, ref) => {
     return (
       <Link href={href}>
         <a

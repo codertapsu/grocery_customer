@@ -1,18 +1,16 @@
 import { AdsBanner } from '@components/ads-banner';
-import { CoinBuyButton, EthBuyButton } from '@components/button';
+import { DealDay } from '@components/deal-day';
 import { ExplorePopularCategories } from '@components/explore-popular-categories';
 import { GoodOffer } from '@components/good-offers';
 import { GroupProductSlides } from '@components/group-product-slides';
 import { IntroSlide, IntroSlides } from '@components/intro-slide';
 import { Layout } from '@components/layout';
-import Seo from '@components/seo';
+import { Seo } from '@components/seo';
 import { ServicesBanner } from '@components/services-banner';
 import { SubBox } from '@components/sub-box';
+
 import type { NextPage } from 'next';
 // import { getSession } from 'next-auth/react';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 
 const intros: IntroSlide[] = [
   {
@@ -57,7 +55,9 @@ const Home: NextPage = ({ products }: any) => {
       <main className='main'>
         <IntroSlides intros={intros} />
         <div className='mb-4'></div>
-        <ExplorePopularCategories />
+        <div className='container'>
+          <ExplorePopularCategories />
+        </div>
         <div className='mb-2'></div>
         <GoodOffer />
         <div className='mb-3'></div>
@@ -65,21 +65,32 @@ const Home: NextPage = ({ products }: any) => {
           <ServicesBanner />
         </div>
         <div className='bg-light pt-3 pb-5'>
-          <GroupProductSlides />
+          <div className='container'>
+            <GroupProductSlides />
+          </div>
         </div>
         <div className='mb-3'></div>
         <div className='pt-3 pb-5'>
-          <GroupProductSlides />
+          <div className='container'>
+            <GroupProductSlides />
+          </div>
+        </div>
+        <div>
+          <DealDay countTo={new Date('Oct 12, 2022 23:59:59')} products={[]} />
         </div>
         <div className='pt-3 pb-5'>
-          <GroupProductSlides />
+          <div className='container'>
+            <GroupProductSlides />
+          </div>
         </div>
         <div className='mb-3'></div>
         <AdsBanner />
         <div className='pt-3 pb-5'>
-          <GroupProductSlides />
+          <div className='container'>
+            <GroupProductSlides />
+          </div>
         </div>
-        <div className="container">
+        <div>
           <SubBox />
         </div>
       </main>

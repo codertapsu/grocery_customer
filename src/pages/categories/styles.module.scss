@@ -1,3 +1,7 @@
+.sidebar-shop::-webkit-scrollbar {
+  width: 0px;
+}
+
 .grid {
   max-width: 100%;
   display: grid;

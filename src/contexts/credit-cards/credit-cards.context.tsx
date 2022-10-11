@@ -7,18 +7,15 @@ interface Context {
 
 export const CreditCardsContext = createContext<Context>(null);
 
-export const CreateContextProvider = ({ children}: {children: React.ReactNode}) => {
+export const CreateContextProvider = ({ children }: { children: React.ReactNode }) => {
   const httpClient = useHttpClient();
   const loadConfig = () => {
-    return httpClient.get('/credit-cards/config')
-  }
+    return httpClient.get('/credit-cards/config');
+  };
 
   const value: Context = {
     loadConfig,
   };
 
-  return (
-    <CreditCardsContext.Provider value={value}>
-      {children}
-    </CreditCardsContext.Provider>
-  );
+  return <CreditCardsContext.Provider value={value}>{children}</CreditCardsContext.Provider>;
+};

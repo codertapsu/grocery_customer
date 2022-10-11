@@ -13,7 +13,7 @@ export const cartInitialState: CartState = {
       product: {
         id: 1,
         price: 100000,
-        title: 'Beige knitted elastic runner shoes',
+        name: 'Beige knitted elastic runner shoes',
         images: ['/assets/images/products/product-1.jpg'],
       },
       quantity: 10,
@@ -22,7 +22,7 @@ export const cartInitialState: CartState = {
       product: {
         id: 2,
         price: 200000,
-        title: 'Blue utility pinafore denim dress',
+        name: 'Blue utility pinafore denim dress',
         images: ['/assets/images/products/product-1.jpg'],
       },
       quantity: 10,

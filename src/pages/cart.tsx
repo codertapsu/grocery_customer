@@ -1,23 +1,22 @@
+import { NextPage } from 'next';
+import Link from 'next/link';
+
 import { Breadcrumb } from '@components/breadcrumb';
+import { ButtonLink } from '@components/button';
 import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import { useCart } from '@contexts/cart';
-import { NextPage } from 'next';
-import Link from 'next/link';
+import { PageHeader } from '@components/page-header';
 
 const Cart: NextPage = () => {
   const { items, totalPrice } = useCart();
 
   return (
     <Layout>
-      <div className='page-header text-center' style={{ backgroundImage: 'url("assets/images/page-header-bg.jpg")' }}>
-        <div className='container'>
-          <h1 className='page-title'>
-            Shopping Cart<span>Shop</span>
-          </h1>
-        </div>
-      </div>
-      <Breadcrumb />
+      <PageHeader backgroundImage={'url("/assets/images/page-header-bg.jpg")'}>
+        Shopping Cart<span>Shop</span>
+      </PageHeader>
+      <Breadcrumb items={[{ href: '', name: 'Cart' }]} />
       <div className='page-content'>
         <div className='cart'>
           <div className='container'>
@@ -47,7 +46,7 @@ const Cart: NextPage = () => {
                             </figure>
                             <h3 className='product-title'>
                               <Link href={`/products/${item.product.id}`}>
-                                <a>{item.product.title}</a>
+                                <a>{item.product.name}</a>
                               </Link>
                             </h3>
                           </div>
@@ -77,7 +76,7 @@ const Cart: NextPage = () => {
                     ))}
                   </tbody>
                 </table>
-                <div className='cart-bottom'>
+                <div className='cart-bottom justify-content-between'>
                   <div className='cart-discount'>
                     <form action='#'>
                       <div className='input-group'>
@@ -90,10 +89,10 @@ const Cart: NextPage = () => {
                       </div>
                     </form>
                   </div>
-                  <a href='#' className='btn btn-outline-dark-2'>
-                    <span>UPDATE CART</span>
-                    <i className='icon-refresh' />
-                  </a>
+                  <ButtonLink href='/checkout' fillType='outline' themeType='dark'>
+                    <span>CONTINUE SHOPPING</span>
+                    <i className='icon-cart-arrow-down ms-3' />
+                  </ButtonLink>
                 </div>
               </div>
               <aside className='col-lg-3'>
@@ -155,7 +154,10 @@ const Cart: NextPage = () => {
                       <tr className='summary-shipping-estimate'>
                         <td>
                           Estimate for Your Country
-                          <br /> <a href='dashboard.html'>Change address</a>
+                          <br />
+                          <Link href='/dashboard'>
+                            <a>Change address</a>
+                          </Link>
                         </td>
                         <td>&nbsp;</td>
                       </tr>
@@ -165,16 +167,10 @@ const Cart: NextPage = () => {
                       </tr>
                     </tbody>
                   </table>
-                  <Link href='/checkout'>
-                    <a className='btn btn-outline-primary-2 btn-order btn-block'>PROCEED TO CHECKOUT</a>
-                  </Link>
+                  <ButtonLink href='/checkout' fillType='outline' className='w-100'>
+                    <span>PROCEED TO CHECKOUT</span>
+                  </ButtonLink>
                 </div>
-                <Link href={{ pathname: '/categories', query: {} }}>
-                  <a href='category.html' className='btn btn-outline-dark-2 btn-block mb-3'>
-                    <span>CONTINUE SHOPPING</span>
-                    <i className='icon-refresh' />
-                  </a>
-                </Link>
               </aside>
             </div>
           </div>
