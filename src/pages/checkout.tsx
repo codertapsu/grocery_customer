@@ -1,10 +1,12 @@
+import { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+
 import { Breadcrumb } from '@components/breadcrumb';
 import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import { useCart } from '@contexts/cart';
-import { NextPage } from 'next';
-import { useSession } from 'next-auth/react';
-import Link from 'next/link';
+import { PageHeader } from '@components/page-header';
 
 const PaymentMethods = [
   {
@@ -38,18 +40,13 @@ const Checkout: NextPage = () => {
   const { items, totalPrice } = useCart();
 
   console.log('session', session);
-  
 
   return (
     <Layout>
-      <div className='page-header text-center' style={{ backgroundImage: 'url("assets/images/page-header-bg.jpg")' }}>
-        <div className='container'>
-          <h1 className='page-title'>
-            Checkout<span>Shop</span>
-          </h1>
-        </div>
-      </div>
-      <Breadcrumb />
+      <PageHeader backgroundImage={'url("/assets/images/page-header-bg.jpg")'}>
+        Checkout<span>Shop</span>
+      </PageHeader>
+      <Breadcrumb items={[{ href: '', name: 'Checkout' }]} />
       <div className='page-content'>
         <div className='checkout'>
           <div className='container'>

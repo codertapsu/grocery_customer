@@ -30,7 +30,7 @@ type ButtonProps = {
 } & React.ComponentPropsWithRef<'button'>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, disabled, cornerType = 'square', fillType, themeType, ...rest }, ref) => {
+  ({ children, className, disabled, cornerType = 'square', fillType, themeType = 'primary', ...rest }, ref) => {
     return (
       <button
         ref={ref}

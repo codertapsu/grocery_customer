@@ -1,18 +1,16 @@
+import { NextPage } from 'next';
+
 import { Breadcrumb } from '@components/breadcrumb';
 import { Layout } from '@components/layout';
-import { NextPage } from 'next';
+import { PageHeader } from '@components/page-header';
 
 const Faq: NextPage = () => {
   return (
     <Layout>
-      <div className='page-header text-center' style={{ backgroundImage: 'url("/assets/images/page-header-bg.jpg")' }}>
-        <div className='container'>
-          <h1 className='page-title'>
-            F.A.Q<span>Pages</span>
-          </h1>
-        </div>
-      </div>
-      <Breadcrumb />
+      <PageHeader backgroundImage={'url("/assets/images/page-header-bg.jpg")'}>
+        F.A.Q<span>Pages</span>
+      </PageHeader>
+      <Breadcrumb items={[{ href: '', name: 'Faq' }]} />
       <div>
         <div className='page-content'>
           <div className='container'>

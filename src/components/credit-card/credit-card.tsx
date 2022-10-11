@@ -1,7 +1,10 @@
+import { useRef } from 'react';
+
+import { useHover } from 'usehooks-ts';
+
 import { Image } from '@components/image';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
-import { useRef } from 'react';
-import { useHover } from 'usehooks-ts';
+
 import styles from './styles.module.scss';
 
 export const CreditCard = () => {

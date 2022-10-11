@@ -1,73 +1,50 @@
+import { Button } from '@components/button';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
+import { FormEvent } from 'react';
+
 import styles from './styles.module.scss';
 
 export const SubBox = () => {
+  const handleSubForm = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // (e.target as HTMLFormElement).valu
+    const { email } = Object.fromEntries(new FormData(e.target as HTMLFormElement));
+    console.log(email);
+    
+  }
+
   return (
     <div
-      className={mergeClassNames('cta cta-separator cta-half mb-0', styles['cta-border-image'])}
-      style={{ backgroundImage: 'url(/assets/images/demos/demo-3/bg-2.jpg)' }}
+      className='cta bg-image bg-dark mb-0 pt-4 pb-5'
+      style={{ backgroundImage: 'url(/assets/images/backgrounds/bg-1.jpg)' }}
     >
-      <div className={mergeClassNames('cta-border-wrapper bg-white', styles['cta-border-wrapper'])}>
-        <div className='row'>
-          <div className='col-lg-6'>
-            <div className={mergeClassNames('cta-wrapper cta-text text-center', styles['cta-text'])}>
-              <h3 className={mergeClassNames('cta-title', styles['cta-title'])}>Shop Social</h3>
-              <p className={mergeClassNames('cta-desc', styles['cta-desc'])}>
-                Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.{' '}
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div className='col-sm-10 col-md-8 col-lg-6'>
+            <div className='cta-heading text-center'>
+              <h3 className='cta-title text-white'>Get The Latest Deals</h3>
+              <p className='cta-desc text-white'>
+                and receive <span className='font-weight-normal'>$20 coupon</span> for first shopping
               </p>
-              <div className='social-icons social-icons-colored justify-content-center'>
-                <a href='#' className={mergeClassNames('social-icon social-facebook')} title='Facebook' target='_blank'>
-                  <i className='icon-facebook-f' />
-                </a>
-                <a href='#' className={mergeClassNames('social-icon social-twitter')} title='Twitter' target='_blank'>
-                  <i className='icon-twitter' />
-                </a>
-                <a
-                  href='#'
-                  className={mergeClassNames('social-icon social-instagram')}
-                  title='Instagram'
-                  target='_blank'
-                >
-                  <i className='icon-instagram' />
-                </a>
-                <a href='#' className={mergeClassNames('social-icon social-youtube')} title='Youtube' target='_blank'>
-                  <i className='icon-youtube' />
-                </a>
-                <a
-                  href='#'
-                  className={mergeClassNames('social-icon social-pinterest')}
-                  title='Pinterest'
-                  target='_blank'
-                >
-                  <i className='icon-pinterest' />
-                </a>
-              </div>
             </div>
-          </div>
-          <div className='col-lg-6'>
-            <div className='cta-wrapper text-center'>
-              <h3 className={mergeClassNames('cta-title', styles['cta-title'])}>Get the Latest Deals</h3>
-              <p className={mergeClassNames('cta-desc', styles['cta-desc'])}>
-                and <br />
-                receive <span className='text-primary'>$20 coupon</span> for first shopping
-              </p>
-              <form action='#'>
-                <div className='input-group'>
-                  <input
-                    type='email'
-                    className={mergeClassNames('form-control', styles['form-control'])}
-                    placeholder='Enter your Email Address'
-                    aria-label='Email Adress'
-                    required
-                  />
-                  <div className='input-group-append'>
-                    <button className={mergeClassNames('btn btn-block btn-primary btn-rounded', styles['btn'])} type='submit'>
-                      <i className='icon-long-arrow-right' />
-                    </button>
-                  </div>
+            <form onSubmit={handleSubForm}>
+              <div className='input-group input-group-round'>
+                <input
+                  type='email'
+                  name='email'
+                  className='form-control form-floating form-control-white mb-0'
+                  placeholder='Enter your Email Address'
+                  aria-label='Email Address'
+                  required
+                />
+                <div className={mergeClassNames('input-group-append', styles['input-group-append'])}>
+                  <Button type='submit' fillType='filled' cornerType='pill' className={styles['btn']}>
+                    <span>Subscribe</span>
+                    <i className='icon-long-arrow-right' />
+                  </Button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

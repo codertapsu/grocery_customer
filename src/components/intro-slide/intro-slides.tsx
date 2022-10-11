@@ -14,7 +14,7 @@ interface Props {
 export const IntroSlides = ({ intros }: Props) => {
   return (
     <div className='intro-slider-container'>
-      <OwlCarousel nav={false} loop={true} items={1} autoplay={false} dots={true} dotsClass={'owl-dots inner-dots'}>
+      <OwlCarousel nav={false} loop={true} items={1} autoplay={true} dots={true} autoplayTimeout={5000} dotsClass={'owl-dots inner-dots'}>
         {(intros || []).map((item, index) => (
           <div key={index} className='intro-slide' style={{ backgroundImage: `url(${item.bgImage})` }}>
             <div className='intro-content container'>

@@ -1,9 +1,11 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 
 import dynamic from 'next/dynamic';
 
 import { ProductCard } from '@components/product-card';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
+
+import styles from './styles.module.scss';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
@@ -17,17 +19,15 @@ interface GroupProductSlide {
 
 const mock: GroupProductSlide[] = Array.from({ length: 4 }).map((_, index) => ({
   id: `tab-${index + 1}`,
-  title: `Lorem ipsum`,
+  title: `New`,
   products: Array.from({ length: 5 }).map((_, index) => index + 1),
 }));
 
 export const GroupProductSlides = () => {
-  const uuid = useId();
-
   const [activeTab, setActiveTab] = useState('tab-1');
   return (
-    <div className='container'>
-      <div className='heading heading-flex heading-border mb-3'>
+    <>
+      <div className={mergeClassNames('heading heading-flex mb-2', styles['heading-border'])}>
         <div className='heading-left'>
           <h2 className='title'>Hot Deals Products</h2>
         </div>
@@ -71,7 +71,7 @@ export const GroupProductSlides = () => {
               dots={true}
               margin={20}
               loop={false}
-              items={4}
+              loadedClass='owl-loaded carousel-equal-height carousel-with-shadow'
               navClass={['owl-prev owl-custom-nav icon-angle-left', 'owl-next owl-custom-nav icon-angle-right']}
               navElement={'i'}
               responsive={{
@@ -101,6 +101,6 @@ export const GroupProductSlides = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };

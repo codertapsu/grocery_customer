@@ -5115,7 +5115,7 @@ p {
     min-height: 450px;
   }
 }
-.breadcrumb-nav {
+.breadcrumb-nav.with-border {
   border-bottom: 0.1rem solid rgba(235, 235, 235, 0.55);
 }
 .breadcrumb-nav .container,
@@ -5171,9 +5171,8 @@ p {
   content: "\f112";
   font-family: "molla";
   padding-right: 0.7rem;
-  font-size: 1.1rem;
-  vertical-align: middle;
-  margin-top: -0.1rem;
+  font-size: 0.8em;
+  margin-top: 0.2em;
 }
 .title {
   font-size: 2.2rem;
@@ -5586,7 +5585,6 @@ p {
   padding: 0.45rem 1rem;
   border-radius: 0;
   text-align: center;
-  text-transform: uppercase;
   border: none;
   border-bottom: 0.1rem solid transparent;
   background-color: transparent;
@@ -6827,6 +6825,7 @@ p {
   background: none;
 }
 .btn-quickview:before {
+  font-family: "molla";
   content: "\f145";
 }
 .btn-compare:before {
@@ -9276,6 +9275,67 @@ small.form-text {
 .intro-slider-1 .slide-image:before {
   padding-top: 56.5384615385%;
 }
+.intro-slider-container,
+.intro-slide {
+  height: 360px;
+  background-color: #fafafa;
+}
+.intro-slider-container .owl-simple .owl-nav [class*="owl-"],
+.intro-slide .owl-simple .owl-nav [class*="owl-"] {
+  top: 52%;
+}
+.intro-slide {
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: 60% center;
+}
+@media screen and (min-width: 992px) {
+  .intro-slider-container,
+  .intro-slide {
+    height: 440px;
+  }
+  .intro-content .btn {
+    min-width: 170px;
+  }
+  .owl-simple.intro-slider.owl-nav-inside .owl-dots {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    margin-left: -198px;
+    bottom: 3rem;
+  }
+  .owl-nav-align {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    width: calc(100% - 8rem);
+  }
+  .banner-title {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  .intro-slider-container,
+  .intro-slide {
+    height: 400px;
+  }
+  .intro-subtitle {
+    font-size: 1.3rem;
+  }
+  .intro-title {
+    margin-bottom: 2rem;
+  }
+  .intro-title span {
+    font-size: 4rem;
+  }
+  .intro-title sup {
+    font-size: 1.6rem;
+  }
+  .owl-simple.intro-slider.owl-nav-inside .owl-dots {
+    left: 0;
+    right: 0;
+  }
+}
 @media screen and (max-width: 479px) {
   .slider-container-1:before,
   .intro-slider-1 .slide-image:before {
@@ -10097,6 +10157,9 @@ button:focus {
   display: flex;
   align-items: stretch;
 }
+.owl-carousel.carousel-equal-height .owl-item {
+  height: auto;
+}
 .carousel-equal-height .product {
   width: 100%;
 }
@@ -10144,19 +10207,26 @@ button:focus {
   padding-top: 0.6rem;
   padding-bottom: 2.1rem;
 }
-.widget-clean label {
+.widget-clean .close-filter {
   color: inherit;
   font-weight: 400;
   font-size: 1.4rem;
   letter-spacing: -0.01em;
   margin: 0;
 }
-.widget-clean a {
+.widget-clean .clean-btn {
   display: inline-block;
   font-weight: 400;
   font-size: 1.2rem;
   margin-left: auto;
+  color: #c96;
+
+  &:hover,
+  &:focus {
+    color: #c08040;
+  }
 }
+
 .widget-collapsible .widget-title a {
   position: relative;
   display: block;
@@ -10239,7 +10309,7 @@ button:focus {
   padding-top: 0.7rem;
   padding-bottom: 0.5rem;
 }
-.filter-colors a {
+.filter-colors .filter-color-item {
   position: relative;
   display: block;
   width: 2.4rem;
@@ -10249,7 +10319,7 @@ button:focus {
   margin: 0 0.3rem 0.3rem;
   transition: box-shadow 0.35s ease;
 }
-.filter-colors a:after {
+.filter-colors .filter-color-item:after {
   color: #fff;
   font-family: "molla";
   content: "\ec2d";
@@ -10264,12 +10334,12 @@ button:focus {
   margin-top: -0.4rem;
   margin-left: -0.5rem;
 }
-.filter-colors a.selected,
-.filter-colors a:hover,
-.filter-colors a:focus {
+.filter-colors .filter-color-item.selected,
+.filter-colors .filter-color-item:hover,
+.filter-colors .filter-color-item:focus {
   box-shadow: 0 0 0 0.1rem #cccccc;
 }
-.filter-colors a.selected:after {
+.filter-colors .filter-color-item.selected:after {
   visibility: visible;
   opacity: 1;
 }
@@ -10353,11 +10423,8 @@ button:focus {
 .product-gallery-item {
   position: relative;
   display: block;
-  flex: 0 0 25%;
-  max-width: 25%;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  margin-bottom: 1rem;
 }
 .max-col-6 .product-gallery-item {
   flex: 0 0 16.66%;
@@ -10391,6 +10458,7 @@ button:focus {
 .product-gallery-item.active:before {
   visibility: visible;
   opacity: 1;
+  z-index: 1;
 }
 .product-gallery-item:hover:after,
 .product-gallery-item.active:after {
@@ -11088,7 +11156,6 @@ button:focus {
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
-    margin-bottom: 1rem;
   }
   .product-gallery-vertical .product-gallery-item:before,
   .product-gallery-vertical .product-gallery-item:after {

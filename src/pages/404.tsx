@@ -1,11 +1,10 @@
-import { Breadcrumb } from '@components/breadcrumb';
-import { Layout } from '@components/layout';
 import { NextPage } from 'next';
+
+import { Layout } from '@components/layout';
 
 const NotFound: NextPage = () => {
   return (
     <Layout>
-      <Breadcrumb />
       <div
         className='error-content text-center'
         style={{ backgroundImage: 'url(/assets/images/backgrounds/error-bg.jpg)' }}

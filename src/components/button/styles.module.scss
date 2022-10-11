@@ -10,7 +10,7 @@
   letter-spacing: -0.01em;
   border-radius: 0;
   white-space: normal;
-  transition: all 0.3s;
+  transition: all 0.3s linear;
   vertical-align: middle;
   user-select: none;
   background-color: transparent;
@@ -38,7 +38,7 @@
     letter-spacing: 0;
     font-size: 1.4rem;
 
-    &.btn-link-dark {
+    &.btn-dark {
       color: #333;
     }
 
@@ -64,7 +64,7 @@
       color: #fff;
       background-color: #a6c76c;
       border-color: #a6c76c;
-      box-shadow: none;
+      outline: 0;
     }
   }
 
@@ -87,10 +87,11 @@
     &.focus,
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active {
-      color: #c96;
-      background-color: transparent;
-      border-color: #ebebeb;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      color: #fff;
+      background-color: #a6c76c;
+      border-color: #a6c76c;
+      outline: 0;
+      // box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     }
   }
 

@@ -80,7 +80,7 @@ export const QuickView = () => {
                 </OwlCarousel>
                 {/* <div
                   className='owl-carousel owl-theme owl-nav-inside owl-light mb-0'
-                  data-toggle='owl'
+                  data-bs-toggle='owl'
                   data-owl-options='{
 	                        "dots": false,
 	                        "nav": false, 

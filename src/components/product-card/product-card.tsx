@@ -3,7 +3,9 @@ import { Overlay } from '@components/overlay';
 import { ProductCountdown } from '@components/product-countdown';
 import { QuickView } from '@components/quick-view';
 import { useCart } from '@contexts/cart';
+import { mergeClassNames } from '@helpers/merge-class-names.helper';
 import { useState } from 'react';
+import styles from './styles.module.scss';
 
 export const ProductCard = () => {
   const [isOpenQuickView, setIsOpenQuickView] = useState(false);
@@ -13,7 +15,7 @@ export const ProductCard = () => {
       <Overlay showModal={isOpenQuickView} setShowModal={setIsOpenQuickView}>
         <QuickView />
       </Overlay>
-      <div className='product'>
+      <div className={mergeClassNames('product', styles['product'])}>
         <div className='product-media'>
           <span className='product-label label-new'>New</span>
           <span className='product-label label-top'>Top</span>
@@ -24,26 +26,37 @@ export const ProductCard = () => {
             className='product-image'
           />
           <ProductCountdown countTo={new Date('Jan 5, 2024 15:37:25')} />
-          <div className='product-action-vertical'>
-            <span role='button' className='btn-product-icon btn-wishlist btn-expandable'>
-              <span>add to wishlist</span>
-            </span>
-            <span role='button' className='btn-product-icon btn-compare' title='Compare'>
-              <span>Compare</span>
-            </span>
+          <div className={mergeClassNames('product-action-vertical', styles['product-action-vertical'])}>
             <span
               role='button'
-              className='btn-product-icon btn-quickview btn-expandable'
+              className={mergeClassNames(
+                'btn-product-icon btn-expandable btn-wishlist',
+                styles['btn-product-icon'],
+                styles['btn-expandable'],
+              )}
+            >
+              <span>add to wishlist</span>
+            </span>
+            {/* <span role='button' className='btn-product-icon btn-compare' title='Compare'>
+              <span>Compare</span>
+            </span> */}
+            <span
+              role='button'
+              className={mergeClassNames(
+                'btn-product-icon btn-expandable btn-quickview',
+                styles['btn-product-icon'],
+                styles['btn-expandable'],
+              )}
               title='Quick view'
               onClick={() => setIsOpenQuickView(true)}
             >
               <span>Quick view</span>
             </span>
           </div>
-          <div className='product-action'>
+          <div className={mergeClassNames('product-action', styles['product-action'])}>
             <button
               type='button'
-              className='btn-product btn-cart'
+              className={mergeClassNames('btn-product btn-cart', styles['btn-product'])}
               title='Add to cart'
               onClick={() => {
                 //

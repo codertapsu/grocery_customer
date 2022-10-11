@@ -5,8 +5,7 @@ import { useRouter } from 'next/router';
 const defaultMeta = {
   title: 'Tạp hoá PK - PK grocery',
   siteName: 'Tạp hoá PK - PK grocery',
-  description:
-    'Tạp hoá PK, tạp hoá, mua bán, gia dụng, shop, cửa hàng',
+  description: 'Tạp hoá PK, tạp hoá, mua bán, gia dụng, shop, cửa hàng',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://toampk.xyz',
   type: 'website',
@@ -23,15 +22,13 @@ type SeoProps = {
   templateTitle?: string;
 } & Partial<typeof defaultMeta>;
 
-export default function Seo(props: SeoProps) {
+export const Seo = (props: SeoProps) => {
   const router = useRouter();
   const meta = {
     ...defaultMeta,
     ...props,
   };
-  meta['title'] = props.templateTitle
-    ? `${props.templateTitle} | ${meta.siteName}`
-    : meta.title;
+  meta['title'] = props.templateTitle ? `${props.templateTitle} | ${meta.siteName}` : meta.title;
 
   // Use siteName if there is templateTitle
   // but show full title if there is none
@@ -65,16 +62,8 @@ export default function Seo(props: SeoProps) {
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
-          <meta
-            name='publish_date'
-            property='og:publish_date'
-            content={meta.date}
-          />
-          <meta
-            name='author'
-            property='article:author'
-            content='Theodorus Clarence'
-          />
+          <meta name='publish_date' property='og:publish_date' content={meta.date} />
+          <meta name='author' property='article:author' content='Theodorus Clarence' />
         </>
       )}
 
@@ -83,14 +72,11 @@ export default function Seo(props: SeoProps) {
         <link key={linkProps.href} {...linkProps} />
       ))}
       <meta name='msapplication-TileColor' content='#ffffff' />
-      <meta
-        name='msapplication-TileImage'
-        content='/favicon/ms-icon-144x144.png'
-      />
+      <meta name='msapplication-TileImage' content='/favicon/ms-icon-144x144.png' />
       <meta name='theme-color' content='#ffffff' />
     </Head>
   );
-}
+};
 
 type Favicons = {
   rel: string;
