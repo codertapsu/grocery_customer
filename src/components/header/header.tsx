@@ -13,7 +13,7 @@ import { PlatformService } from '@contexts/platform';
 import { useSettings } from '@contexts/settings';
 import { useSession } from 'next-auth/react';
 import { Button, ButtonLink } from '@components/button';
-import { useWallet } from '@hooks/use-wallet';
+import { useWallet } from '@contexts/wallet';
 
 interface Item {
   name: string;

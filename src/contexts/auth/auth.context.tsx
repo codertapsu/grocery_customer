@@ -62,10 +62,10 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const logout = useCallback(async () => {
     try {
       await httpClient.get('/auth/logout');
-      await nextAuthSignOut({ redirect: false });
     } catch (error) {
       console.log(error);
     }
+    await nextAuthSignOut({ redirect: false });
     updateAuthInfo({ type: AuthActionType.Reset });
   }, []);
 

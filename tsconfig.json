@@ -21,7 +21,6 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@configs": ["src/configs/index"],
-      "@http": ["src/http/index"],
       "@constants/*": ["src/constants/*"],
       "@contexts/*": ["src/contexts/*"],
       "@abi/*": ["src/abi/*"],

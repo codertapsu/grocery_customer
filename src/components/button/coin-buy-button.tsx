@@ -1,7 +1,9 @@
-import { CHAIN_ID, NETWORK_NAME, SHOP_OWNER_WALLET_ADDRESS } from '@configs';
-import { useNotification } from '@hooks/use-notification';
-import { useWallet } from '@hooks/use-wallet';
 import { ethers } from 'ethers';
+
+import { CHAIN_ID, NETWORK_NAME, SHOP_OWNER_WALLET_ADDRESS } from '@configs';
+import { useToast } from '@contexts/toast';
+import { useWallet } from '@contexts/wallet';
+
 import { Button } from './button';
 
 interface ButtonBuyProps {
@@ -11,7 +13,7 @@ interface ButtonBuyProps {
 export const CoinBuyButton = ({ productPrice }: ButtonBuyProps) => {
   const { signer, network, groceryCoinContract, connect: connectWallet } = useWallet();
 
-  const notificationService = useNotification();
+  const notificationService = useToast();
 
   const handleConnectBuy = () => {
     if (signer) {
@@ -37,7 +39,7 @@ export const CoinBuyButton = ({ productPrice }: ButtonBuyProps) => {
       console.log(contractReceipt);
     } catch (err) {
       console.log(err);
-      
+
       // notificationService.error(JSON.stringify(err));
     }
   };

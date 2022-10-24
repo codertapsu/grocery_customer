@@ -1,0 +1,16 @@
+/*import vendors*/
+// @import url(vendors/normalize.css);   
+$enable-reduced-motion: false;
+ 
+@import "bootstrap/scss/bootstrap.scss";
+@import "uicons-regular-straight";
+
+@import "../plugins/select2.scss";
+@import "../plugins/animate.scss";
+
+// @import url(plugins/jquery-ui.css);
+// @import url(plugins/magnific-popup.css);
+// @import url(plugins/animate.css);
+// @import url(plugins/select2.min.css);
+// @import url(plugins/slick.css);
+// @import url(plugins/perfect-scrollbar.css);

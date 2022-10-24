@@ -1,3 +1,14 @@
+$enable-reduced-motion: false;
+
+@import "react-toastify/dist/ReactToastify.css";
+// @import "bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "owl.carousel/dist/assets/owl.carousel.css";
+@import "owl.carousel/dist/assets/owl.theme.default.css";
+// @import "nouislider/distribute/nouislider.css";
+// @import "../styles/globals.css";
+@import "../styles/theme/styles.scss";
+
 @import "scss/modal";
 @import "scss/newsletter";
 @import "scss/custom-control";
@@ -10,6 +21,10 @@
   .collapsing {
     transition-property: height, visibility;
     transition-duration: 0.35s;
+  }
+
+  .fade {
+    transition: opacity 0.15s linear;
   }
 }
 

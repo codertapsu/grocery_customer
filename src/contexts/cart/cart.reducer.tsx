@@ -4,29 +4,29 @@ import { CartItem } from './models/cart-item.model';
 import { CartState } from './models/cart-state.model';
 
 const calculateTotalPrice = (cartItems: CartItem[]) => {
-  return cartItems.reduce((acc, curr) => acc + curr.product.price, 0);
+  return cartItems.reduce((acc, curr) => acc + curr.product.promotionalPrice, 0);
 };
 
 export const cartInitialState: CartState = {
   items: [
-    {
-      product: {
-        id: 1,
-        price: 100000,
-        name: 'Beige knitted elastic runner shoes',
-        images: ['/assets/images/products/product-1.jpg'],
-      },
-      quantity: 10,
-    },
-    {
-      product: {
-        id: 2,
-        price: 200000,
-        name: 'Blue utility pinafore denim dress',
-        images: ['/assets/images/products/product-1.jpg'],
-      },
-      quantity: 10,
-    },
+    // {
+    //   product: {
+    //     id: 1,
+    //     price: 100000,
+    //     name: 'Beige knitted elastic runner shoes',
+    //     images: ['/assets/images/products/product-1.jpg'],
+    //   },
+    //   quantity: 10,
+    // },
+    // {
+    //   product: {
+    //     id: 2,
+    //     price: 200000,
+    //     name: 'Blue utility pinafore denim dress',
+    //     images: ['/assets/images/products/product-1.jpg'],
+    //   },
+    //   quantity: 10,
+    // },
   ],
   totalPrice: 0,
 };

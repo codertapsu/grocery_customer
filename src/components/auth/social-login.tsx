@@ -1,7 +1,7 @@
 import { APP_CONFIG } from '@configs';
 import { PlatformService } from '@contexts/platform';
+import { useToast } from '@contexts/toast';
 import { isClientSide } from '@helpers/detect-browser';
-import { useNotification } from '@hooks/use-notification';
 
 enum SocialId {
   Google = 'google',
@@ -12,7 +12,7 @@ enum SocialId {
   Twitter = 'twitter',
 }
 
-interface Props {
+interface Props {     
   onLoginSuccess: () => void;
   onLoginFailed: (error: unknown) => void;
 }
@@ -20,14 +20,14 @@ interface Props {
 export const SocialLogin = ({ onLoginSuccess, onLoginFailed }: Props) => {
   const platformService = new PlatformService();
   const apiEndpoint = APP_CONFIG.API_ENDPOINT;
-  const notificationService = useNotification();
+  const notificationService = useToast();
   const handleLogin = (event: MessageEvent) => {
     if (
       !['http://192.168.1.8:3004', 'http://127.0.0.1:3004', 'http://localhost:3004', apiEndpoint].includes(event.origin)
     ) {
       return;
     }
-    let userData: any;
+    let userData: any;      
     try {
       userData = JSON.parse(event.data);
     } catch (error) {

@@ -24,9 +24,9 @@ export const ProductCard = ({ product }: Props) => {
       </Overlay>
       <div className={mergeClassNames('product', styles['product'])}>
         <div className='product-media'>
-          {product.isNew && <span className='product-label label-new'>New</span>}
+          {/* {product.isNew && <span className='product-label label-new'>New</span>}
           {product.isTop && <span className='product-label label-top'>Top</span>}
-          {product.isSale && <span className='product-label label-sale'>Sale</span>}
+          {product.isSale && <span className='product-label label-sale'>Sale</span>} */}
           <Image
             src='/assets/images/demos/demo-13/products/product-2.jpg'
             alt='Product image'
@@ -95,10 +95,10 @@ export const ProductCard = ({ product }: Props) => {
           </h3>
           <div className='product-price'>
             <span className='new-price'>
-              <NumberFormatter style='currency' value={product.currentPrice} />
+              <NumberFormatter style='currency' value={product.promotionalPrice} />
             </span>
             <span className='old-price'>
-              Was <NumberFormatter style='currency' value={product.previousPrice} />
+              Was <NumberFormatter style='currency' value={product.regularPrice} />
             </span>
           </div>
           <div className='ratings-container'>

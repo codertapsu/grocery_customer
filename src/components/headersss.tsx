@@ -1,12 +1,12 @@
 import { useAuth } from '@contexts/auth';
+import { useWallet } from '@contexts/wallet';
 import { shortenAddress } from '@helpers/shorten-address';
-import { useWallet } from '@hooks/use-wallet';
 
 // import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { Button } from './button';
 
-export default function Header() {
+export const Header = () => {
   const router = useRouter();
   // const { data: session, status } = useSession();
   const { user, logout } = useAuth();
@@ -18,7 +18,7 @@ export default function Header() {
     router.push({
       pathname: '/auth/signin',
       query: {
-        returnUrl: window.encodeURIComponent(router.pathname)
+        returnUrl: window.encodeURIComponent(router.pathname),
       },
     });
     // signIn();
@@ -122,4 +122,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};

@@ -18,32 +18,33 @@ interface GroupProductSlide {
   products: Product[];
 }
 
-const mock: GroupProductSlide[] = Array.from({ length: 4 }).map((_, index) => ({
-  id: `tab-${index + 1}`,
-  title: `New`,
-  products: Array.from({ length: 8 }).map((_, index) => {
-    const product: Product = {
-      id: index + 1,
-      name: `Product ${index + 1}`,
-      slug: `product-${index + 1}`,
-      reviews: [],
-      categories: Array.from({ length: 3 }).map((_, indexCat) => ({
-        id: indexCat + 1,
-        name: `Category ${indexCat + 1}`,
-        slug: `cat-${indexCat + 1}`,
-      })),
-      images: ['/assets/images/demos/demo-13/products/product-2.jpg'],
-      variants: [],
-      isNew: Math.random() < 0.5,
-      isTop: Math.random() < 0.5,
-      isSale: Math.random() < 0.5,
-      currentPrice: 100,
-      previousPrice: 110,
-    };
+const mock = [];
+// const mock: GroupProductSlide[] = Array.from({ length: 4 }).map((_, index) => ({
+//   id: `tab-${index + 1}`,
+//   title: `New`,
+//   products: Array.from({ length: 8 }).map((_, index) => {
+//     const product: Product = {
+//       id: String(index + 1),
+//       name: `Product ${index + 1}`,
+//       slug: `product-${index + 1}`,
+//       reviews: [],
+//       categories: Array.from({ length: 3 }).map((_, indexCat) => ({
+//         id: indexCat + 1,
+//         name: `Category ${indexCat + 1}`,
+//         slug: `cat-${indexCat + 1}`,
+//       })),
+//       images: ['/assets/images/demos/demo-13/products/product-2.jpg'],
+//       variants: [],
+//       isNew: Math.random() < 0.5,
+//       isTop: Math.random() < 0.5,
+//       isSale: Math.random() < 0.5,
+//       currentPrice: 100,
+//       previousPrice: 110,
+//     };
 
-    return product;
-  }),
-}));
+//     return product;
+//   }),
+// }));
 
 export const GroupProductSlides = () => {
   const [activeTab, setActiveTab] = useState('tab-1');
