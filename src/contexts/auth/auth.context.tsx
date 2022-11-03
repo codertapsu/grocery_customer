@@ -1,22 +1,22 @@
 import { createContext, useCallback, useEffect, useReducer, useState } from 'react';
 
+import { BroadcastChannel } from 'broadcast-channel';
+import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession } from 'next-auth/react';
 import { useIsomorphicLayoutEffect } from 'usehooks-ts';
-import { BroadcastChannel, BroadcastChannelOptions } from 'broadcast-channel';
 
 import { Channel } from '@constants/channels.constant';
 import { useHttpClient } from '@contexts/http-client';
-import { useBroadcastChannel } from '@hooks/use-broadcast-channel';
 import { User } from '@models/user.model';
 
 import { authInitialState, authReducer } from './auth.reducer';
 import { AuthActionType } from './models/auth-action-type.model';
-import { AuthState } from './models/auth-state.model';
 import { AuthAction } from './models/auth-action.model';
-import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession } from 'next-auth/react';
+import { AuthState } from './models/auth-state.model';
 
 interface Context extends AuthState {
   isOpenAuthDialog: boolean;
-  login: (usernameOrEmail: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  loginWithSocial: (user: User) => void | PromiseLike<void>;
   logout: () => Promise<void>;
   register: () => Promise<void>;
   forgotPassword: () => Promise<void>;
@@ -45,8 +45,8 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     }
   }, []);
 
-  const login = useCallback(async (username: string, password: string) => {
-    const response = await httpClient.post<User>('/auth/login', { username, password });
+  const login = useCallback(async (email: string, password: string) => {
+    const response = await httpClient.post<User>('/auth/login', { email, password });
     updateAuthInfo({
       type: AuthActionType.SetUser,
       data: {
@@ -58,6 +58,17 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     console.log(response.data);
     // const response = await signIn('credentials', { email, password, redirect: false });
   }, []);
+
+  const loginWithSocial = (user: User) => {
+    updateAuthInfo({
+      type: AuthActionType.SetUser,
+      data: {
+        user,
+        refreshToken: '',
+        accessToken: '',
+      },
+    });
+  };
 
   const logout = useCallback(async () => {
     try {
@@ -144,6 +155,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
 
   const value: Context = {
     login,
+    loginWithSocial,
     logout,
     register,
     forgotPassword,

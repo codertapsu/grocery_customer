@@ -1,18 +1,28 @@
-import { useEffect, useState } from 'react';
 import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
 
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
-import {Layout} from '@components/layout/layout';
-import { randomIntFrom } from '@helpers/math.helper';
+import { Layout } from '@components/layout/layout';
+import { randomIntegerNumber } from '@helpers/math.helper';
 
 interface FormValue {
   email: string;
   code: number;
 }
 
-const ForgotPassword: NextPage = () => {
-  const [randomCode, setRandomCode] = useState<number>();
+interface Props {
+  randomCode: number;
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  return {
+    props: {
+      randomCode: randomIntegerNumber(4),
+    },
+  };
+};
+
+const ForgotPassword: NextPage<Props> = ({ randomCode }) => {
   const { register, handleSubmit, formState, control, reset } = useForm<FormValue>({
     mode: 'onBlur',
   });
@@ -41,13 +51,6 @@ const ForgotPassword: NextPage = () => {
   const handleError = (errors: FieldErrorsImpl<FormValue>) => {
     console.log(errors);
   };
-
-  useEffect(() => {
-    setRandomCode(randomIntFrom(1001, 9999));
-    return () => {
-      //
-    };
-  }, []);
 
   return (
     <>

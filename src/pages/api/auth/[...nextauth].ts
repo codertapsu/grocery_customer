@@ -33,103 +33,13 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         credentials: {
           user: {},
         },
-        async authorize({ user }) {
+        authorize: async ({ user }) => {
           // Returning token to set in session
           return {
             token: JSON.parse(user),
-          };
+          } as any;
         },
       }),
-      // CredentialsProvider({
-      //   id: 'credentials',
-      //   name: 'Login',
-      //   credentials: {
-      //     email: {
-      //       label: 'Email',
-      //       type: 'email',
-      //       placeholder: 'supporthygraph.com',
-      //     },
-      //     password: {
-      //       label: 'Password',
-      //       type: 'password',
-      //       placeholder: 'Password',
-      //     },
-      //   },
-      //   // credentials: {
-      //   //   username: { label: 'Email', type: 'email', placeholder: 'Your email' },
-      //   //   password: { label: 'Password', type: 'password', placeholder: '*********' },
-      //   // },
-      //   async authorize({ email, password }) {
-      //     try {
-      //       // const response = await fetch('', {
-      //       //   method: 'POST',
-      //       //   body: JSON.stringify({
-      //       //     username: credentials.username,
-      //       //     password: credentials.password,
-      //       //   }),
-      //       //   credentials: 'include',
-      //       // });
-      //       // console.log({ email, password });
-
-      //       return {
-      //         name: 'Khanh',
-      //         image: 'https://toampk.xyz/images/groom.png',
-      //       };
-      //       // const response = await axios.post('/api/login', {
-      //       //   email,
-      //       //   password,
-      //       // });
-
-      //       // const cookies = response.headers['set-cookie'];
-
-      //       // res.setHeader('Set-Cookie', cookies);
-
-      //       // return response.data;
-      //     } catch (error) {
-      //       // console.log(error);
-
-      //       throw error;
-      //     }
-      //   },
-      // }),
-      // EmailProvider({
-      //   server: process.env.EMAIL_SERVER,
-      //   from: process.env.EMAIL_FROM,
-      // }),
-      // AppleProvider({
-      //   clientId: process.env.APPLE_ID,
-      //   clientSecret: {
-      //     appleId: process.env.APPLE_ID,
-      //     teamId: process.env.APPLE_TEAM_ID,
-      //     privateKey: process.env.APPLE_PRIVATE_KEY,
-      //     keyId: process.env.APPLE_KEY_ID,
-      //   },
-      // }),
-      // FacebookProvider({
-      //   clientId: process.env.FACEBOOK_ID,
-      //   clientSecret: process.env.FACEBOOK_SECRET,
-      // }),
-      // GithubProvider({
-      //   clientId: process.env.GITHUB_ID,
-      //   clientSecret: process.env.GITHUB_SECRET,
-      /**
-       * @see https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
-       */
-      //  scope: "read:user"
-      // }),
-      // GoogleProvider({
-      //   clientId: process.env.GOOGLE_ID,
-      //   clientSecret: process.env.GOOGLE_SECRET,
-      // }),
-      // TwitterProvider({
-      //   clientId: process.env.TWITTER_ID,
-      //   clientSecret: process.env.TWITTER_SECRET,
-      // }),
-      // Auth0Provider({
-      //   clientId: process.env.AUTH0_ID,
-      //   clientSecret: process.env.AUTH0_SECRET,
-      //   issuer: process.env.AUTH0_ISSUER,
-      // }),
     ],
     theme: {
       colorScheme: 'auto',
@@ -139,8 +49,6 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
      */
     callbacks: {
       async signIn({ user, account, profile, email, credentials }) {
-        // console.log({ user, account, profile, email, credentials });
-
         const isAllowedToSignIn = true;
         if (isAllowedToSignIn) {
           return true;
@@ -152,8 +60,6 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         }
       },
       async redirect({ url, baseUrl }) {
-        console.log({ url, baseUrl });
-
         // Allows relative callback URLs
         if (url.startsWith('/')) {
           return `${baseUrl}${url}`;
@@ -163,28 +69,10 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
           return url;
         }
         return baseUrl;
-
-        // return url.startsWith(baseUrl)
-        //     ? Promise.resolve(url)
-        //     : Promise.resolve(baseUrl)
       },
-      // async session({ session, user, token }) {
-      //   console.log({ session, user, token });
-
-      //   // Send properties to the client, like an access_token from a provider.
-      //   session.accessToken = token.accessToken;
-      //   return session;
-      // },
-      // async jwt({ token, user, account, profile, isNewUser }) {
-      //   // Persist the OAuth access_token to the token right after signin
-      //   if (account) {
-      //     token.accessToken = account.access_token;
-      //   }
-      //   return token;
-      // },
       jwt: async ({ token, user, account, profile, isNewUser }) => {
         if (user) {
-          token.user = user.token;
+          token.user = (user as any).token;
         }
         return token;
       },

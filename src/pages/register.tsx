@@ -1,12 +1,11 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
 
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
-import {Layout} from '@components/layout/layout';
-import type { Collapse } from 'bootstrap';
-import { randomIntFrom } from '@helpers/math.helper';
+import { Layout } from '@components/layout/layout';
+import { randomIntegerNumber } from '@helpers/math.helper';
 
 enum Role {
   Customer = 'Customer',
@@ -26,9 +25,20 @@ interface FormValue {
 
 type FieldNames = keyof FormValue;
 
-const Register: NextPage = () => {
+interface Props {
+  randomCode: number;
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  return {
+    props: {
+      randomCode: randomIntegerNumber(4),
+    },
+  };
+};
+
+const Register: NextPage<Props> = ({ randomCode }) => {
   const extraInfoElementRef = useRef<HTMLDivElement>();
-  const [randomCode, setRandomCode] = useState<number>();
   const { register, handleSubmit, formState, control, watch, reset, getValues } = useForm<FormValue>({
     mode: 'onBlur',
     defaultValues: {
@@ -108,7 +118,6 @@ const Register: NextPage = () => {
   };
 
   useEffect(() => {
-    setRandomCode(randomIntFrom(1001, 9999));
     if (window?.bootstrap) {
       const collapse = new window.bootstrap.Collapse(extraInfoElementRef.current, {
         toggle: getValues('role') === Role.Vendor,
@@ -220,7 +229,7 @@ const Register: NextPage = () => {
                               </label>
                             </div>
                           </div>
-                          <div ref={extraInfoElementRef} className='collapse in'>
+                          <div ref={extraInfoElementRef} className='in collapse'>
                             <div className='form-group'>
                               <input
                                 type='text'

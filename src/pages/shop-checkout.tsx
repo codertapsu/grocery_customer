@@ -15,7 +15,7 @@ const Cart = () => {
   };
 
   const items: Item<string>[] = [
-    { id: '1', text: 'Alerts' },
+    { id: '1', text: 'Alpine' },
     { id: '2', text: 'Badges' },
     { id: '3', text: 'Buttons' },
     { id: '4', text: 'Cards' },

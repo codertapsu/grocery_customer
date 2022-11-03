@@ -10,8 +10,7 @@ import { useHttpClient } from '@contexts/http-client';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
 
 import styles from './styles.module.scss';
-
-const randomIntFromInterval = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+import { randomIntFromInterval } from '@helpers/math.helper';
 
 const randomZeroToTwo = () => randomIntFromInterval(0, 2);
 

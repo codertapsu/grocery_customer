@@ -9,7 +9,6 @@ export interface Role {
 export interface User {
   id: number;
   phone: string;
-  username: string;
   name: string;
   firstName: string;
   lastName: string;

@@ -465,10 +465,12 @@ const Cart = () => {
                           </tbody>
                         </table>
                       </div>
-                      <a href='#' className='btn '>
-                        <i className='fi-rs-box-alt mr-10'></i>
-                        Proceed To CheckOut
-                      </a>
+                      <Link href='/shop-checkout'>
+                        <a className='btn '>
+                          <i className='fi-rs-box-alt mr-10'></i>
+                          Proceed To CheckOut
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -1,14 +1,18 @@
-import { NextPage } from 'next';
-import Image from 'next/image';
-import NextImage from 'next/future/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
+
+import { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/react';
+import NextImage from 'next/future/image';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { Layout } from '@components/layout/layout';
+import { APP_CONFIG } from '@configs';
 import { useAuth } from '@contexts/auth';
-import { useToast } from '@contexts/toast';
 import { PlatformService } from '@contexts/platform';
-import { randomIntFrom } from '@helpers/math.helper';
+import { useToast } from '@contexts/toast';
+import { randomIntegerNumber } from '@helpers/math.helper';
+import { User } from '@models/user.model';
 
 enum SocialId {
   Google = 'google',
@@ -25,13 +29,36 @@ interface FormValue {
   code: number;
 }
 
-const Login: NextPage = () => {
+interface Props {
+  randomCode: number;
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const session = await getSession(context);
+
+  if (session?.user) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      randomCode: randomIntegerNumber(4),
+    },
+  };
+};
+
+const Login: NextPage<Props> = ({ randomCode }) => {
+  const apiEndpoint = APP_CONFIG.API_ENDPOINT;
   const toast = useToast();
-  const [randomCode, setRandomCode] = useState<number>();
   const { register, handleSubmit, formState, control, reset } = useForm<FormValue>({
     mode: 'onBlur',
   });
-  const { login } = useAuth();
+  const { login, loginWithSocial } = useAuth();
 
   const registerOptions: Record<keyof FormValue, RegisterOptions> = {
     email: { required: 'Email is required' },
@@ -39,7 +66,7 @@ const Login: NextPage = () => {
     code: {
       required: 'Security code is required',
       validate: (value) => {
-        if (value !== randomCode) {
+        if (Number(value) !== Number(randomCode)) {
           return 'Security code do no match';
         }
       },
@@ -47,7 +74,6 @@ const Login: NextPage = () => {
   };
 
   const handleRegistration = (data: FormValue) => {
-    console.log(data);
     login(data.email, data.password)
       .then(() => {
         reset();
@@ -62,42 +88,17 @@ const Login: NextPage = () => {
   };
 
   const handleSocialLogin = (event: MessageEvent) => {
-    if (!['http://192.168.1.8:3004', 'http://127.0.0.1:3004', 'http://localhost:3004'].includes(event.origin)) {
+    if (![apiEndpoint].includes(event.origin)) {
       return;
     }
-    let userData: any;
+    let userData: User;
     try {
       userData = JSON.parse(event.data);
     } catch (error) {
       userData = event.data;
-      console.log({ error });
     }
-    console.log(userData);
-    // const currentSession = await getSession();
-    // console.log('currentSession: %o', currentSession);
-    // currentSession.user = userData;
-    // const updatedSession = await getSession()
-    // console.log('updatedSession: %o', updatedSession);
-
-    // if (userData && userData.googleId) {
-    //   console.log({ userData });
-    //   const data = $api.post('/auth/find_token', {
-    //     userId: userData.id,
-    //     googleId: userData.googleId,
-    //   });
-
-    //   if (data) {
-    //     console.log({ data });
-    //     Cookies.remove('token-access');
-    //     data.then((res) => {
-    //       console.log({ res });
-    //       setCodeSent(res.data.user.user);
-    //       Cookies.set('token-access', res.data.user.accessToken);
-    //     });
-    //   }
-    // } else {
-    //   console.log('access token или googleId отсутствуют');
-    // }
+    loginWithSocial(userData);
+    toast.success(`Welcome ${userData.name}`);
   };
 
   const onSocialLogin = (socialId: SocialId) => {
@@ -111,10 +112,10 @@ const Login: NextPage = () => {
          * and set the location when the promise resolves.
          */
         oauthWindow = window.open();
-        oauthWindow.location = `/api/social-auth/${socialId}`;
+        oauthWindow.location = `${apiEndpoint}/api/social-auth/${socialId}`;
       } else {
         oauthWindow = window.open(
-          `/api/social-auth/${socialId}`,
+          `${apiEndpoint}/api/social-auth/${socialId}`,
           'Auth',
           'width=500,height=500,status=yes,toolbar=no,menubar=no,location=no',
         );
@@ -130,13 +131,6 @@ const Login: NextPage = () => {
       console.log('onClickAuth', error);
     }
   };
-
-  useEffect(() => {
-    setRandomCode(randomIntFrom(1001, 9999));
-    return () => {
-      //
-    };
-  }, []);
 
   return (
     <>
@@ -204,7 +198,7 @@ const Login: NextPage = () => {
                                   .split('')
                                   .map((digit, index) => (
                                     <b
-                                      key={digit}
+                                      key={index}
                                       className={['text-new', 'text-hot', 'text-sale', 'text-best'][index]}
                                     >
                                       {digit}
@@ -226,17 +220,17 @@ const Login: NextPage = () => {
                             </Link>
                           </div>
                           <div className='form-group'>
-                            <button
-                              type='submit'
-                              className='btn btn-heading btn-block hover-up'
-                              disabled={!formState.isValid}
-                            >
+                            <button type='submit' className='btn btn-heading btn-block hover-up'>
                               Log in
                             </button>
                           </div>
                         </form>
                         <div className='mt-4'>
-                          <button type='button' className='social-login facebook-login border-0'>
+                          <button
+                            type='button'
+                            className='social-login facebook-login border-0'
+                            onClick={() => onSocialLogin(SocialId.Facebook)}
+                          >
                             <NextImage
                               width='0'
                               height='0'
@@ -247,7 +241,11 @@ const Login: NextPage = () => {
                             />
                             <span className='ms-2'>Continue with Facebook</span>
                           </button>
-                          <button type='button' className='social-login google-login'>
+                          <button
+                            type='button'
+                            className='social-login google-login'
+                            onClick={() => onSocialLogin(SocialId.Google)}
+                          >
                             <Image
                               width={'28px'}
                               height={'28px'}
