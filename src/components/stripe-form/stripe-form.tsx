@@ -1,8 +1,17 @@
+import { FC, useRef } from 'react';
 import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
 
 import { Button } from '@components/button';
-import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { PaymentMethod, StripeCardNumberElementOptions, StripeElementStyle } from '@stripe/stripe-js';
+import { useHttpClient } from '@contexts/http-client';
+import {
+  CardCvcElement,
+  CardElement,
+  CardExpiryElement,
+  CardNumberElement,
+  useElements,
+  useStripe,
+} from '@stripe/react-stripe-js';
+import { StripeCardNumberElementOptions } from '@stripe/stripe-js';
 
 interface FormValue {
   name: string;
@@ -10,7 +19,7 @@ interface FormValue {
 }
 
 interface Props {
-  onCreatedPaymentMethod?: (paymentMethod: PaymentMethod) => void;
+  onCreatedPaymentMethod?: (paymentMethodId: string) => void;
 }
 
 const options: StripeCardNumberElementOptions = {
@@ -32,9 +41,11 @@ const options: StripeCardNumberElementOptions = {
   placeholder: '',
 };
 
-export const StripeForm = ({ onCreatedPaymentMethod }: Props) => {
+export const StripeForm: FC<Props> = ({ onCreatedPaymentMethod }) => {
+  const httpClient = useHttpClient();
   const stripe = useStripe();
   const elements = useElements();
+  const card = useRef<any>();
 
   const { register, handleSubmit } = useForm<FormValue>({
     mode: 'onBlur',
@@ -42,24 +53,84 @@ export const StripeForm = ({ onCreatedPaymentMethod }: Props) => {
   });
 
   const registerOptions: Record<keyof FormValue, RegisterOptions> = {
-    name: { required: 'Name is required' },
-    postalCode: { required: 'Password is required' },
+    name: {},
+    postalCode: {},
+  };
+
+  const onCreatedPaymentMethod2 = async (paymentMethodId: string) => {
+    // httpClient
+    //   .post('/credit-cards', { paymentMethodId: paymentMethod.id })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
+    const { data } = await httpClient.post<any>('/charge/intent', {
+      paymentMethodId,
+      amount: 100,
+    });
+    if (data.actionRequired) {
+      // We perform 3D Secure authentication
+      const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret);
+      if (error) {
+        console.log('Error in payment, please try again later');
+      }
+      if (paymentIntent.status === 'succeeded') {
+        console.log(`Payment successful, payment ID - ${paymentIntent.id}`);
+      }
+      const res2 = await httpClient.get(`/charge/check/${paymentIntent.id}`);
+      console.log(`Payment successful, payment ID - ${paymentIntent.id}`);
+    } else {
+      // Simple HTTP Payment was successful
+      console.log(`Payment successful, payment ID - ${data.id}`);
+    }
+    // const result = await httpClient.post<any>('/charge/confirm', {
+    //   paymentMethodId,
+    //   paymentIntentId: paymentIntent.id,
+    // });
+    // console.log(result);
   };
 
   const handleFormValid = async (data: FormValue) => {
     if (!stripe || !elements) {
       return;
     }
+    // try {
+    //   const payload = await stripe.createPaymentMethod({
+    //     type: 'card',
+    //     card: elements.getElement(CardNumberElement),
+    //   });
+    //   if (payload.paymentMethod) {
+    //     onCreatedPaymentMethod(payload.paymentMethod);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    // const address = cardInfo.address;
+    const billingDetails = {
+      name: 'HOANG DUY KHANH',
+      address: {
+        country: 'VN',
+        state: 'Danang',
+        city: 'Danang',
+        line1: 'Cam Le',
+      },
+    };
+
     try {
-      const payload = await stripe.createPaymentMethod({
-        type: 'card',
-        card: elements.getElement(CardNumberElement),
-      });
-      if (payload.paymentMethod) {
-        onCreatedPaymentMethod(payload.paymentMethod);
-      }
-    } catch (error) {
-      console.log(error);
+      stripe
+        .createPaymentMethod({
+          type: 'card',
+          billing_details: billingDetails,
+          card: elements.getElement(CardNumberElement),
+        })
+        .then(({ paymentMethod }) => {
+          onCreatedPaymentMethod2(paymentMethod.id);
+        });
+    } catch (err) {
+      /* Handle Error*/
     }
   };
   const handleError = (errors: FieldErrorsImpl<FormValue>) => {
@@ -70,7 +141,79 @@ export const StripeForm = ({ onCreatedPaymentMethod }: Props) => {
     <>
       <form onSubmit={handleSubmit(handleFormValid, handleError)}>
         <h2 className='checkout-title'>Billing Details</h2>
-        <div className='row'>
+        <div className='row form-group'>
+          <div className='col-12'>
+            <label className='w-100'>
+              <span>Card number *</span>
+              <CardNumberElement
+                className='stripe-field-container'
+                options={options}
+                onReady={() => {
+                  console.log('CardNumberElement [ready]');
+                }}
+                onChange={(event) => {
+                  console.log('CardNumberElement [change]', event);
+                }}
+                onBlur={() => {
+                  console.log('CardNumberElement [blur]');
+                }}
+                onFocus={() => {
+                  console.log('CardNumberElement [focus]');
+                }}
+              />
+            </label>
+          </div>
+          <div className='col-12'>
+            <label className='w-100'>
+              <span>Expiration Date *</span>
+              <CardExpiryElement
+                className='stripe-field-container'
+                options={options}
+                onReady={() => {
+                  console.log('CardNumberElement [ready]');
+                }}
+                onChange={(event) => {
+                  console.log('CardNumberElement [change]', event);
+                }}
+                onBlur={() => {
+                  console.log('CardNumberElement [blur]');
+                }}
+                onFocus={() => {
+                  console.log('CardNumberElement [focus]');
+                }}
+              />
+            </label>
+          </div>
+          <div className='col-12'>
+            <label className='w-100'>
+              <span>CVC *</span>
+              <CardCvcElement
+                className='stripe-field-container'
+                options={options}
+                onReady={() => {
+                  console.log('CardNumberElement [ready]');
+                }}
+                onChange={(event) => {
+                  console.log('CardNumberElement [change]', event);
+                }}
+                onBlur={() => {
+                  console.log('CardNumberElement [blur]');
+                }}
+                onFocus={() => {
+                  console.log('CardNumberElement [focus]');
+                }}
+              />
+            </label>
+          </div>
+          <div className='col-12'>
+            <label className='w-100'>
+              <span>Card holders *</span>
+              <input type='text' id='cardName' {...register('name', registerOptions.name)} />
+            </label>
+          </div>
+        </div>
+        {/* <CardElement /> */}
+        {/* <div className='row'>
           <div className='col-sm-6'>
             <label className='w-100'>
               <span>Card number *</span>
@@ -153,7 +296,7 @@ export const StripeForm = ({ onCreatedPaymentMethod }: Props) => {
               />
             </label>
           </div>
-        </div>
+        </div> */}
         <Button type='submit' fillType='filled' cornerType='rounded' themeType='primary'>
           <span>Submit</span>
           <i className='icon-long-arrow-right ms-3' />

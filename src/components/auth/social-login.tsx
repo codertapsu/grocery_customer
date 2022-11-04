@@ -81,15 +81,13 @@ export const SocialLogin = ({ onLoginSuccess, onLoginFailed }: Props) => {
           'width=500,height=500,status=yes,toolbar=no,menubar=no,location=no',
         );
       }
-      if (isClientSide()) {
-        window.addEventListener('message', handleLogin);
-        const oauthInterval = window.setInterval(() => {
-          if (oauthWindow.closed) {
-            window.removeEventListener('message', handleLogin);
-            window.clearInterval(oauthInterval);
-          }
-        }, 1000);
-      }
+      window.addEventListener('message', handleLogin);
+      const oauthInterval = window.setInterval(() => {
+        if (oauthWindow.closed) {
+          window.removeEventListener('message', handleLogin);
+          window.clearInterval(oauthInterval);
+        }
+      }, 1000);
     } catch (error) {
       console.log('onClickAuth', error);
     }

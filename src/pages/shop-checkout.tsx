@@ -1,10 +1,38 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
+import { NextPage } from 'next';
 
 import { Layout } from '@components/layout/layout';
 import { Item, Select } from '@components/select';
+import { StripeForm } from '@components/stripe-form';
+import { useHttpClient } from '@contexts/http-client';
 import { StoreState, useReduxStore } from '@contexts/redux-store';
+import { isClientSide } from '@helpers/detect-browser';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 
-const Cart = () => {
+interface StripeConfig {
+  publishKey: string;
+  currency: string;
+}
+// interface Props {
+//   publishKey: string;
+// }
+
+// export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+//   const response = await HttpClientInstance.get<StripeConfig>('/credit-cards/config');
+
+//   return {
+//     props: {
+//       publishKey: response.data.publishKey,
+//     },
+//   };
+// };
+
+const Checkout: NextPage = () => {
+  const httpClient = useHttpClient();
+  const [stripePromise, setStripePromise] = useState<Promise<Stripe>>(null);
   const cartItems = useSelector<StoreState, StoreState['cart']>((state) => state.cart);
   const { closeCart, increaseQuantity, decreaseQuantity, deleteFromCart, openCart, clearCart } = useReduxStore();
   const price = () => {
@@ -22,6 +50,30 @@ const Cart = () => {
     { id: '5', text: 'Forms' },
     { id: '6', text: 'Modals' },
   ];
+
+  const onCreatedPaymentMethod = async (paymentMethodId: string) => {
+    //
+  };
+
+  useEffect(() => {
+    if (isClientSide() && !stripePromise) {
+      httpClient.get<StripeConfig>('/credit-cards/config').then((response) => {
+        setStripePromise(loadStripe(response.data.publishKey));
+      });
+    }
+
+    const abortController = new AbortController();
+    httpClient
+      .get<StripeConfig>('/credit-cards', { signal: abortController.signal })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => console.log(e));
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
   return (
     <>
@@ -56,7 +108,7 @@ const Cart = () => {
                         </a>
                       </span>
                     </div>
-                    <div className='panel-collapse collapse login_form' id='loginform'>
+                    <div className='panel-collapse login_form collapse' id='loginform'>
                       <div className='panel-body'>
                         <p className='mb-30 font-sm'>
                           If you have shopped with us before, please enter your details below. If you are a new
@@ -168,7 +220,7 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                    <div id='collapsePassword' className='form-group create-account collapse in'>
+                    <div id='collapsePassword' className='form-group create-account in collapse'>
                       <div className='row'>
                         <div className='col-lg-6'>
                           <input required type='password' placeholder='Password' name='password' />
@@ -192,7 +244,7 @@ const Cart = () => {
                           </div>
                         </div>
                       </div>
-                      <div id='collapseAddress' className='different_address collapse in'>
+                      <div id='collapseAddress' className='different_address in collapse'>
                         <div className='row'>
                           <div className='form-group col-lg-6'>
                             <input type='text' required name='fname' placeholder='First name *' />
@@ -313,7 +365,7 @@ const Cart = () => {
                         >
                           Direct Bank Transfer
                         </label>
-                        <div className='form-group collapse in' id='bankTranfer'>
+                        <div className='form-group in collapse' id='bankTranfer'>
                           <p className='text-muted mt-5'>
                             There are many variations of passages of Lorem Ipsum available, but the majority have
                             suffered alteration.{' '}
@@ -337,7 +389,7 @@ const Cart = () => {
                         >
                           Check Payment
                         </label>
-                        <div className='form-group collapse in' id='checkPayment'>
+                        <div className='form-group in collapse' id='checkPayment'>
                           <p className='text-muted mt-5'>
                             Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store
                             Postcode.{' '}
@@ -361,7 +413,7 @@ const Cart = () => {
                         >
                           Paypal
                         </label>
-                        <div className='form-group collapse in' id='paypal'>
+                        <div className='form-group in collapse' id='paypal'>
                           <p className='text-muted mt-5'>
                             Pay via PayPal; you can pay with your credit card if you don&lsquo;t have a PayPal account.
                           </p>
@@ -373,6 +425,13 @@ const Cart = () => {
                     Place Order
                   </a>
                 </div>
+                <div className='cart-totals ml-30 mb-50 border p-40'>
+                  {stripePromise && (
+                    <Elements stripe={stripePromise}>
+                      <StripeForm onCreatedPaymentMethod={onCreatedPaymentMethod} />
+                    </Elements>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -382,4 +441,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Checkout;
