@@ -30,7 +30,7 @@ app
         key: fs.readFileSync(path.join(__dirname, '../certs/devcert.key')),
         cert: fs.readFileSync(path.join(__dirname, '../certs/devcert.cert')),
       },
-      (req, res) => handle(req, res)
+      (req, res) => handle(req, res),
     );
 
     return server.listen(PORT, (err) => {

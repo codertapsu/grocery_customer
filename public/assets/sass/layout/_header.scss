@@ -205,7 +205,7 @@
 			margin-right: 0;
 		}
 
-		& > a {
+		& > .action-icon {
 			span {
 				&.pro-count {
 					position: absolute;
@@ -233,13 +233,14 @@
 		span.lable {
 			font-size: $font-md;
 			margin: 5px 0 0 10px;
+			color: #7e7e7e;
 		}
 
 		&:last-child {
 			padding: 0 0px 0 8px;
 		}
 
-		& > a {
+		& > .action-icon {
 			font-size: 30px;
 			color: #333;
 			line-height: 1;
@@ -408,7 +409,7 @@
 			margin-right: 13px;
 		}
 
-		& > a {
+		& > .action-icon {
 			font-size: 24px;
 			color: #333;
 			line-height: 1;
@@ -425,14 +426,14 @@
 		}
 
 		&:hover {
-			& > a {
+			& > .action-icon {
 				color: $color-brand;
 			}
 
 			.cart-dropdown-wrap {
-				opacity: 1;
-				visibility: visible;
-				top: calc(100% + 10px);
+				// opacity: 1;
+				// visibility: visible;
+				// top: calc(100% + 10px);
 			}
 		}
 	}
@@ -455,8 +456,9 @@
 		position: relative;
 		display: flex;
 		padding: 0 10px;
+		cursor: pointer;
 
-		& > a {
+		& > .action-icon {
 			svg {
 				width: 1em;
 				height: 1em;
@@ -472,15 +474,15 @@
 		}
 
 		&:hover {
-			& > a {
+			& > .action-icon {
 				color: $color-brand;
 				fill: $color-brand;
 			}
 
 			.cart-dropdown-wrap {
-				opacity: 1;
-				visibility: visible;
-				top: calc(100% + 10px);
+				// opacity: 1;
+				// visibility: visible;
+				// top: calc(100% + 10px);
 			}
 		}
 	}
@@ -491,29 +493,35 @@
 }
 
 .cart-dropdown-wrap {
-	position: absolute;
-	right: 0;
-	top: calc(100% + 20px);
-	z-index: 99;
+	// position: absolute;
+	// right: 0;
+	// top: calc(100% + 20px);
+	// z-index: 99;
 	width: 320px;
 	background-color: #fff;
 	box-shadow: $box-shadown-2;
 	padding: 30px 20px 27px;
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+	// opacity: 0;
+	// visibility: hidden;
+	// transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 	border-radius: 10px;
 	border: 1px solid $border-color;
 
 	&.cart-dropdown-hm2 {
-		right: 0;
+		// right: 0;
 	}
 
 	&.account-dropdown {
 		width: 200px;
 
-		a {
+		a,
+		button {
+			background: transparent;
+			border: none;
+			outline: 0;
 			color: $color-heading;
+			padding: 0;
+			margin: 0;
 
 			&:hover {
 				color: $color-brand;

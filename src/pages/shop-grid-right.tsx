@@ -15,6 +15,8 @@ import { SingleProduct } from '@components/ecommerce/SingleProduct';
 import { Breadcrumb2 } from '@components/layout/Breadcrumb2';
 import { Layout } from '@components/layout/layout';
 import { StoreState, useReduxStore } from '@contexts/redux-store';
+import { FeatchDeals } from '@components/ecommerce/fetchDeals';
+import Link from 'next/link';
 
 const Products = () => {
   const products = useSelector<StoreState, StoreState['products']>((state) => state.products);
@@ -210,11 +212,19 @@ const Products = () => {
                     />
                   </nav>
                 </div>
+                <div className='container'>
+                  <div className='section-title wow animate__animated animate__fadeIn' data-wow-delay='0'>
+                    <h3 className=''>Deals Of The Day</h3>
+                    <Link href='/products' className='show-all'>
+                      All Deals<i className='fi-rs-angle-right'></i>
+                    </Link>
+                  </div>
+                  <FeatchDeals />
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <QuickView />
       </Layout>
     </>
   );

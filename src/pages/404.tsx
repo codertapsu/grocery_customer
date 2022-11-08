@@ -1,4 +1,4 @@
-import {Layout} from '@components/layout/layout';
+import { Layout } from '@components/layout/layout';
 import Link from 'next/link';
 function Custom404() {
   return (
@@ -18,16 +18,12 @@ function Custom404() {
                     <br />
                     visit the{' '}
                     <Link href='/'>
-                      <a>
-                        {' '}
-                        <span> Homepage</span>
-                      </a>
+                      {' '}
+                      <span> Homepage</span>
                     </Link>
                     or{' '}
                     <Link href='/page-contact'>
-                      <a>
-                        <span>Contact us</span>
-                      </a>
+                      <span>Contact us</span>
                     </Link>
                     about the problem
                   </p>
@@ -39,10 +35,8 @@ function Custom404() {
                       </button>
                     </form>
                   </div>
-                  <Link href='/'>
-                    <a className='btn btn-default submit-auto-width font-xs hover-up mt-30'>
-                      <i className='fi-rs-home mr-5'></i> Back To Home Page
-                    </a>
+                  <Link href='/' className='btn btn-default submit-auto-width font-xs hover-up mt-30'>
+                    <i className='fi-rs-home mr-5'></i>Back To Home Page
                   </Link>
                 </div>
               </div>

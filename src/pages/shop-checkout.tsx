@@ -1,38 +1,57 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { NextPage } from 'next';
+import NextImage from 'next/image';
+import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
+import useSWR from 'swr/immutable';
 
 import { Layout } from '@components/layout/layout';
-import { Item, Select } from '@components/select';
 import { StripeForm } from '@components/stripe-form';
+import { useCreditCards } from '@contexts/credit-cards';
 import { useHttpClient } from '@contexts/http-client';
 import { StoreState, useReduxStore } from '@contexts/redux-store';
-import { isClientSide } from '@helpers/detect-browser';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { APP_CONFIG } from '@configs';
 
-interface StripeConfig {
-  publishKey: string;
-  currency: string;
+interface AddressOption {
+  value: string;
+  label: string;
 }
-// interface Props {
-//   publishKey: string;
-// }
 
-// export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
-//   const response = await HttpClientInstance.get<StripeConfig>('/credit-cards/config');
-
-//   return {
-//     props: {
-//       publishKey: response.data.publishKey,
-//     },
-//   };
-// };
+const placeholderImg = '/assets/imgs/thumbnail.jpg';
 
 const Checkout: NextPage = () => {
+  const { getSavedCards } = useCreditCards();
   const httpClient = useHttpClient();
-  const [stripePromise, setStripePromise] = useState<Promise<Stripe>>(null);
+  const [selectedProvince, setSelectedProvince] = useState<AddressOption>();
+  const [selectedDistrict, setSelectedDistrict] = useState<AddressOption>();
+  const [selectedWard, setSelectedWard] = useState<AddressOption>();
+  const [districts, setDistricts] = useState<AddressOption[]>([]);
+  const [wards, setWards] = useState<AddressOption[]>([]);
+
+  const provincesFetcher = async (url: string) => {
+    const { data } = await httpClient.get<AddressOption[]>(`${APP_CONFIG.API_ENDPOINT}/api/${url}`);
+
+    return data;
+  };
+
+  const { data: provinces, error } = useSWR(`provinces`, provincesFetcher);
+
+  const districtsFetcher = async () => {
+    const { data } = await httpClient.get<AddressOption[]>(
+      `${APP_CONFIG.API_ENDPOINT}/api/provinces/district/${selectedProvince.value}`,
+    );
+    return data;
+  };
+
+  const wardsFetcher = async () => {
+    const { data } = await httpClient.get<AddressOption[]>(
+      `${APP_CONFIG.API_ENDPOINT}/api/provinces/ward/${selectedDistrict.value}`,
+    );
+    return data;
+  };
+
   const cartItems = useSelector<StoreState, StoreState['cart']>((state) => state.cart);
   const { closeCart, increaseQuantity, decreaseQuantity, deleteFromCart, openCart, clearCart } = useReduxStore();
   const price = () => {
@@ -42,31 +61,16 @@ const Checkout: NextPage = () => {
     return price;
   };
 
-  const items: Item<string>[] = [
-    { id: '1', text: 'Alpine' },
-    { id: '2', text: 'Badges' },
-    { id: '3', text: 'Buttons' },
-    { id: '4', text: 'Cards' },
-    { id: '5', text: 'Forms' },
-    { id: '6', text: 'Modals' },
-  ];
-
   const onCreatedPaymentMethod = async (paymentMethodId: string) => {
     //
   };
 
   useEffect(() => {
-    if (isClientSide() && !stripePromise) {
-      httpClient.get<StripeConfig>('/credit-cards/config').then((response) => {
-        setStripePromise(loadStripe(response.data.publishKey));
-      });
-    }
-
     const abortController = new AbortController();
-    httpClient
-      .get<StripeConfig>('/credit-cards', { signal: abortController.signal })
+
+    getSavedCards(abortController)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       })
       .catch((e) => console.log(e));
 
@@ -74,6 +78,30 @@ const Checkout: NextPage = () => {
       abortController.abort();
     };
   }, []);
+
+  useEffect(() => {
+    if (selectedProvince?.value) {
+      districtsFetcher().then((data) => {
+        setDistricts(data);
+      });
+    } else {
+      setDistricts([]);
+    }
+
+    setSelectedDistrict(null);
+  }, [selectedProvince]);
+
+  useEffect(() => {
+    if (selectedDistrict?.value) {
+      wardsFetcher().then((data) => {
+        setWards(data);
+      });
+    } else {
+      setWards([]);
+    }
+
+    setSelectedWard(null);
+  }, [selectedDistrict]);
 
   return (
     <>
@@ -169,20 +197,50 @@ const Checkout: NextPage = () => {
                         <input type='text' name='billing_address2' required placeholder='Address line2' />
                       </div>
                     </div>
-                    <div className='row shipping_calculator'>
+                    <div className='row'>
                       <div className='form-group col-lg-6'>
-                        <div className='custom_select'>
-                          <Select
-                            items={items}
-                            value={'2'}
-                            onChange={(e) => {
-                              console.log(e);
-                            }}
-                          />
-                        </div>
+                        <Select
+                          className='form-r-select'
+                          classNamePrefix='form-select'
+                          isClearable={true}
+                          isSearchable={true}
+                          options={provinces || []}
+                          onChange={(e) => {
+                            setSelectedProvince(e);
+                          }}
+                        />
                       </div>
                       <div className='form-group col-lg-6'>
-                        <input required type='text' name='city' placeholder='City / Town *' />
+                        <Select
+                          className='form-r-select'
+                          classNamePrefix='form-select'
+                          isClearable={true}
+                          isSearchable={true}
+                          isDisabled={!selectedProvince?.value}
+                          defaultValue={selectedDistrict}
+                          options={districts || []}
+                          onChange={(e) => {
+                            setSelectedDistrict(e);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='form-group col-lg-6'>
+                        <Select
+                          className='form-r-select'
+                          classNamePrefix='form-select'
+                          isClearable={true}
+                          isSearchable={true}
+                          isDisabled={!selectedDistrict?.value}
+                          options={wards || []}
+                          onChange={(e) => {
+                            setSelectedWard(e);
+                          }}
+                        />
+                      </div>
+                      <div className='form-group col-lg-6'>
+                        <input type='text' name='billing_address' placeholder='Address *' />
                       </div>
                     </div>
                     <div className='row'>
@@ -259,13 +317,13 @@ const Checkout: NextPage = () => {
                           </div>
                           <div className='form-group col-lg-6'>
                             <div className='custom_select w-100'>
-                              <Select
+                              {/* <Select
                                 items={items}
                                 value={'2'}
                                 onChange={(e) => {
                                   console.log(e);
                                 }}
-                              />
+                              /> */}
                             </div>
                           </div>
                         </div>
@@ -309,7 +367,14 @@ const Checkout: NextPage = () => {
                         {cartItems.map((item, i) => (
                           <tr key={i}>
                             <td className='image product-thumbnail'>
-                              <img src={item.images[0].img} alt='#' />
+                              <NextImage
+                                width='0'
+                                height='0'
+                                sizes='100vw'
+                                style={{ width: 'auto', height: '100%' }}
+                                src={(item.medias?.length && item.medias[1]?.path) || placeholderImg}
+                                alt=''
+                              />
                             </td>
                             <td>
                               <h6 className='w-160 mb-5'>
@@ -426,11 +491,7 @@ const Checkout: NextPage = () => {
                   </a>
                 </div>
                 <div className='cart-totals ml-30 mb-50 border p-40'>
-                  {stripePromise && (
-                    <Elements stripe={stripePromise}>
-                      <StripeForm onCreatedPaymentMethod={onCreatedPaymentMethod} />
-                    </Elements>
-                  )}
+                  <StripeForm onCreatedPaymentMethod={onCreatedPaymentMethod} />
                 </div>
               </div>
             </div>

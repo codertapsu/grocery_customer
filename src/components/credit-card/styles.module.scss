@@ -6,14 +6,17 @@
   position: relative;
   z-index: 2;
   width: 100%;
-}
 
-.card-item.-active .card-item__side.-front {
-  transform: perspective(1000px) rotateY(180deg) rotateX(0deg) rotateZ(0deg);
-}
+  &.-active,
+  &:hover {
+    .card-item__side.-front {
+      transform: perspective(1000px) rotateY(180deg) rotateX(0deg) rotateZ(0deg);
+    }
 
-.card-item.-active .card-item__side.-back {
-  transform: perspective(1000px) rotateY(0) rotateX(0deg) rotateZ(0deg);
+    .card-item__side.-back {
+      transform: perspective(1000px) rotateY(0) rotateX(0deg) rotateZ(0deg);
+    }
+  }
 }
 
 .card-item__side {
@@ -26,8 +29,6 @@
   backface-visibility: hidden;
   height: 100%;
 }
-
-
 
 .card-item__side.-back {
   position: absolute;
@@ -161,9 +162,9 @@
   line-height: 1;
   color: #fff;
   font-size: 27px;
-  margin-bottom: 35px;
   display: inline-block;
   padding: 10px 15px;
+  margin-bottom: 35px;
   cursor: pointer;
 }
 
@@ -196,7 +197,6 @@
 
 .card-item__name {
   font-size: 18px;
-  line-height: 1;
   white-space: nowrap;
   max-width: 100%;
   overflow: hidden;
@@ -254,8 +254,8 @@
   text-align: right;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 10px;
+  justify-content: space-between;
+  padding: 0 10px;
   color: #1a3b5d;
   font-size: 18px;
   border-radius: 4px;
@@ -264,4 +264,8 @@
 
 .card-item__cvv .card-item__type {
   opacity: 0.7;
+}
+
+.signature {
+  font-family: "Rock Salt", cursive;
 }

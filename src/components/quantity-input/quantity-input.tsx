@@ -21,7 +21,7 @@ export const QuantityInput = ({ value, setValue, min = 0, max = Number.MAX_SAFE_
 
   // useLongPress(incrementRef, () => {
   //   console.log('incrementRef');
-    
+
   //   if (setValue) {
   //     setValue(Math.min(value + step, max));
   //   }
@@ -29,7 +29,7 @@ export const QuantityInput = ({ value, setValue, min = 0, max = Number.MAX_SAFE_
 
   // useEffect(() => {
   //   console.log(value);
-    
+
   // }, [value]);
 
   return (
@@ -59,7 +59,7 @@ export const QuantityInput = ({ value, setValue, min = 0, max = Number.MAX_SAFE_
         max={max}
         onChange={(e) => {
           // console.log(Number(e.target.value || 0));
-          
+
           setValue(Number(e.target.value || 0));
         }}
       />

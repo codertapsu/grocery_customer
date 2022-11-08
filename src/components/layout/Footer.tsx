@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/future/image';
+import NextImage from 'next/image';
 
 export const Footer = () => {
   return (
@@ -13,7 +13,7 @@ export const Footer = () => {
                 <div className='position-relative newsletter-inner'>
                   <div className='newsletter-content'>
                     <h2 className='mb-20'>
-                      Stay home & get your daily <br />
+                      Stay home &amp; get your daily <br />
                       needs from our shop
                     </h2>
                     <p className='mb-45'>
@@ -26,7 +26,7 @@ export const Footer = () => {
                       </button>
                     </form>
                   </div>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -39,16 +39,16 @@ export const Footer = () => {
             </div>
           </div>
         </section>
-        <section className='featured  section-padding'>
+        <section className='featured section-padding'>
           <div className='container'>
             <div className='row'>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='0'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -58,18 +58,18 @@ export const Footer = () => {
                     />
                   </div>
                   <div className='banner-text'>
-                    <h3 className='icon-box-title'>Best prices & offers</h3>
+                    <h3 className='icon-box-title'>Best prices &amp; offers</h3>
                     <p>Orders $50 or more</p>
                   </div>
                 </div>
               </div>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='.1s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -86,11 +86,11 @@ export const Footer = () => {
               </div>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='.2s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -107,11 +107,11 @@ export const Footer = () => {
               </div>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='.3s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -128,11 +128,11 @@ export const Footer = () => {
               </div>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='.4s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -149,11 +149,11 @@ export const Footer = () => {
               </div>
               <div className='col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none'>
                 <div
-                  className='banner-left-icon d-flex align-items-center  wow animate__animated animate__fadeInUp'
+                  className='banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp'
                   data-wow-delay='.5s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -172,31 +172,29 @@ export const Footer = () => {
           </div>
         </section>
         <section className='section-padding footer-mid'>
-          <div className='container pt-15 pb-20'>
+          <div className='pt-15 container pb-20'>
             <div className='row'>
               <div className='col'>
                 <div
-                  className='widget-about font-md mb-md-3 mb-lg-3 mb-xl-0  wow animate__animated animate__fadeInUp'
+                  className='widget-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp'
                   data-wow-delay='0'
                 >
-                  <div className='logo  mb-30'>
-                    <Link href='/'>
-                      <a className='mb-15'>
-                        <Image
-                          width='0'
-                          height='0'
-                          sizes='100vw'
-                          style={{ width: 'auto', height: 'auto' }}
-                          src='/assets/imgs/theme/logo.svg'
-                          alt='logo'
-                        />
-                      </a>
+                  <div className='logo mb-30'>
+                    <Link href={'/'} className='mb-15'>
+                      <NextImage
+                        width='0'
+                        height='0'
+                        sizes='100vw'
+                        style={{ width: 'auto', height: 'auto' }}
+                        src='/assets/imgs/theme/logo.svg'
+                        alt='logo'
+                      />
                     </Link>
                     <p className='font-lg text-heading'>Awesome grocery store website template</p>
                   </div>
                   <ul className='contact-infor'>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -208,7 +206,7 @@ export const Footer = () => {
                       <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -220,7 +218,7 @@ export const Footer = () => {
                       <span>(+91) - 540-025-124553</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -232,7 +230,7 @@ export const Footer = () => {
                       <span>sale@Nest.com</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -246,9 +244,9 @@ export const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className='footer-link-widget col  wow animate__animated animate__fadeInUp' data-wow-delay='.1s'>
+              <div className='footer-link-widget col wow animate__animated animate__fadeInUp' data-wow-delay='.1s'>
                 <h4 className='widget-title'>Company</h4>
-                <ul className='footer-list  mb-sm-5 mb-md-0'>
+                <ul className='footer-list mb-sm-5 mb-md-0'>
                   <li>
                     <a href='#'>About Us</a>
                   </li>
@@ -272,9 +270,9 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className='footer-link-widget col  wow animate__animated animate__fadeInUp' data-wow-delay='.2s'>
-                <h4 className='widget-title '>Account</h4>
-                <ul className='footer-list  mb-sm-5 mb-md-0'>
+              <div className='footer-link-widget col wow animate__animated animate__fadeInUp' data-wow-delay='.2s'>
+                <h4 className='widget-title'>Account</h4>
+                <ul className='footer-list mb-sm-5 mb-md-0'>
                   <li>
                     <a href='#'>Sign In</a>
                   </li>
@@ -298,9 +296,9 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className='footer-link-widget col  wow animate__animated animate__fadeInUp' data-wow-delay='.3s'>
-                <h4 className='widget-title '>Corporate</h4>
-                <ul className='footer-list  mb-sm-5 mb-md-0'>
+              <div className='footer-link-widget col wow animate__animated animate__fadeInUp' data-wow-delay='.3s'>
+                <h4 className='widget-title'>Corporate</h4>
+                <ul className='footer-list mb-sm-5 mb-md-0'>
                   <li>
                     <a href='#'>Become a Vendor</a>
                   </li>
@@ -324,11 +322,11 @@ export const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className='footer-link-widget col  wow animate__animated animate__fadeInUp' data-wow-delay='.4s'>
-                <h4 className='widget-title '>Popular</h4>
-                <ul className='footer-list  mb-sm-5 mb-md-0'>
+              <div className='footer-link-widget col wow animate__animated animate__fadeInUp' data-wow-delay='.4s'>
+                <h4 className='widget-title'>Popular</h4>
+                <ul className='footer-list mb-sm-5 mb-md-0'>
                   <li>
-                    <a href='#'>Milk & Flavoured Milk</a>
+                    <a href='#'>Milk &amp; Flavoured Milk</a>
                   </li>
                   <li>
                     <a href='#'>Butter and Margarine</a>
@@ -343,7 +341,7 @@ export const Footer = () => {
                     <a href='#'>Sour Cream and Dips</a>
                   </li>
                   <li>
-                    <a href='#'>Tea & Kombucha</a>
+                    <a href='#'>Tea &amp; Kombucha</a>
                   </li>
                   <li>
                     <a href='#'>Cheese</a>
@@ -351,14 +349,14 @@ export const Footer = () => {
                 </ul>
               </div>
               <div
-                className='footer-link-widget widget-install-app col  wow animate__animated animate__fadeInUp'
+                className='footer-link-widget widget-install-app col wow animate__animated animate__fadeInUp'
                 data-wow-delay='.5s'
               >
-                <h4 className='widget-title '>Install App</h4>
+                <h4 className='widget-title'>Install App</h4>
                 <p className=''>From App Store or Google Play</p>
-                <div className='download-app '>
+                <div className='download-app'>
                   <a href='#' className='hover-up mb-sm-2 mb-lg-0'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -369,7 +367,7 @@ export const Footer = () => {
                     />
                   </a>
                   <a href='#' className='hover-up mb-sm-2'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -379,8 +377,8 @@ export const Footer = () => {
                     />
                   </a>
                 </div>
-                <p className='mb-20 '>Secured Payment Gateways</p>
-                <Image
+                <p className='mb-20'>Secured Payment Gateways</p>
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -393,10 +391,10 @@ export const Footer = () => {
             </div>
           </div>
         </section>
-        <div className='container pb-30  wow animate__animated animate__fadeInUp' data-wow-delay='0'>
+        <div className='pb-30 wow animate__animated animate__fadeInUp container' data-wow-delay='0'>
           <div className='row align-items-center'>
             <div className='col-12 mb-30'>
-              <div className='footer-bottom'></div>
+              <div className='footer-bottom' />
             </div>
             <div className='col-xl-4 col-lg-6 col-md-6'>
               <p className='font-sm mb-0'>
@@ -404,9 +402,9 @@ export const Footer = () => {
                 All rights reserved
               </p>
             </div>
-            <div className='col-xl-4 col-lg-6 text-center d-none d-xl-block'>
+            <div className='col-xl-4 col-lg-6 d-none d-xl-block text-center'>
               <div className='hotline d-lg-inline-flex mr-30'>
-                <Image
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -419,7 +417,7 @@ export const Footer = () => {
                 </p>
               </div>
               <div className='hotline d-lg-inline-flex'>
-                <Image
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -432,11 +430,11 @@ export const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className='col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block'>
+            <div className='col-xl-4 col-lg-6 col-md-6 d-none d-md-block text-end'>
               <div className='mobile-social-icon'>
                 <h6>Follow Us</h6>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -446,7 +444,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -456,7 +454,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -466,7 +464,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -476,7 +474,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'

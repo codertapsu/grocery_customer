@@ -11,6 +11,9 @@ interface Props {
 }
 
 export const NewArrivalTabSlider = ({ products }: Props) => {
+  if (!products || !products.length) {
+    return <></>;
+  }
   return (
     <>
       <Swiper

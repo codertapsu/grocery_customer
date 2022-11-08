@@ -1,12 +1,27 @@
 .stripe-field-container {
-  margin-bottom: 1.3rem;
-  height: 40px;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  font-weight: 300;
-  color: #777;
-  border: 1px solid #f9f9f9;
-  border-radius: 0;
-  transition: all 0.3s;
-  box-shadow: none;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding-left: 20px;
+
+  &.focus {
+    border-color: #bce3c9;
+  }
+}
+
+.form {
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgb(0 0 0 / 5%);
+  position: relative;
+  padding: 40px;
+  padding-top: calc(373px / 2);
+}
+
+.card-preview {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max-content;
+  min-width: 430px;
+  transform: translate(-50%, -50%);
 }

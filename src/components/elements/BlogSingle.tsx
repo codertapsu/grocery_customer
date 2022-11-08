@@ -9,23 +9,16 @@ export const BlogSingle = () => {
           <div className='row'>
             <div className='col-xl-10 col-lg-12 m-auto'>
               <h6 className='mb-10'>
-                <Link href='#'>
-                  <a>Recipes</a>
-                </Link>
+                <Link href='#'>Recipes</Link>
               </h6>
               <h2 className='mb-10'>Best smartwatch 2021: the top wearables you can buy today</h2>
               <div className='single-header-meta'>
                 <div className='entry-meta meta-1 font-xs mt-15 mb-15'>
-                  <Link href='#'>
-                    <a className='author-avatar'>
-                      <img className='img-circle' src='/assets/imgs/blog/author-1.png' alt='' />
-                    </a>
+                  <Link href='#' className='author-avatar'>
+                    <img className='img-circle' src='/assets/imgs/blog/author-1.png' alt='' />
                   </Link>
                   <span className='post-by'>
-                    By{' '}
-                    <Link href='#'>
-                      <a>Sugar Rosie</a>
-                    </Link>
+                    By <Link href='#'>Sugar Rosie</Link>
                   </span>
                   <span className='post-on has-dot'>2 hours ago</span>
                   <span className='time-reading has-dot'>8 mins read</span>
@@ -34,16 +27,12 @@ export const BlogSingle = () => {
                   <ul className='text-grey-5 d-inline-block'>
                     <li className='mr-5'>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-bookmark.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-bookmark.svg' alt='' />
                       </Link>
                     </li>
                     <li>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-heart-2.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-heart-2.svg' alt='' />
                       </Link>
                     </li>
                   </ul>
@@ -63,9 +52,9 @@ export const BlogSingle = () => {
                 magazine on the Web celebrating life in the kitchen through home cooking and kitchen intelligence.
               </p>
               <p>
-                We&lsquo;ve reviewed and ranked all of the best smartwatches on the market right now, and we&lsquo;ve made a
-                definitive list of the top 10 devices you can buy today. One of the 10 picks below may just be your
-                perfect next smartwatch.
+                We&lsquo;ve reviewed and ranked all of the best smartwatches on the market right now, and we&lsquo;ve
+                made a definitive list of the top 10 devices you can buy today. One of the 10 picks below may just be
+                your perfect next smartwatch.
               </p>
               <p>
                 Those top-end wearables span from the Apple Watch to Fitbits, Garmin watches to Tizen-sporting Samsung
@@ -87,14 +76,9 @@ export const BlogSingle = () => {
               </p>
               <blockquote>
                 <p>
-                  Integer eu faucibus{' '}
-                  <Link href='#'>
-                    <a>dolor</a>
-                  </Link>
+                  Integer eu faucibus <Link href='#'>dolor</Link>
                   <sup>
-                    <Link href='#'>
-                      <a>[5]</a>
-                    </Link>
+                    <Link href='#'>[5]</Link>
                   </sup>
                   . Ut venenatis tincidunt diam elementum imperdiet. Etiam accumsan semper nisl eu congue. Sed aliquam
                   magna erat, ac eleifend lacus rhoncus in.
@@ -110,20 +94,14 @@ export const BlogSingle = () => {
 
               <div className='entry-bottom mt-50 mb-30'>
                 <div className='tags w-50 w-sm-100'>
-                  <Link href='/blog-category-big'>
-                    <a rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
-                      deer
-                    </a>
+                  <Link href='/blog-category-big' rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
+                    deer
                   </Link>
-                  <Link href='/blog-category-big'>
-                    <a rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
-                      nature
-                    </a>
+                  <Link href='/blog-category-big' rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
+                    nature
                   </Link>
-                  <Link href='/blog-category-big'>
-                    <a rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
-                      conserve
-                    </a>
+                  <Link href='/blog-category-big' rel='tag' className='hover-up btn btn-sm btn-rounded mr-10'>
+                    conserve
                   </Link>
                 </div>
                 <div className='social-icons single-share'>
@@ -133,30 +111,22 @@ export const BlogSingle = () => {
                     </li>
                     <li className='social-facebook'>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-facebook.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-facebook.svg' alt='' />
                       </Link>
                     </li>
                     <li className='social-twitter'>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-twitter.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-twitter.svg' alt='' />
                       </Link>
                     </li>
                     <li className='social-instagram'>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-instagram.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-instagram.svg' alt='' />
                       </Link>
                     </li>
                     <li className='social-linkedin'>
                       <Link href='#'>
-                        <a>
-                          <img src='/assets/imgs/theme/icons/icon-pinterest.svg' alt='' />
-                        </a>
+                        <img src='/assets/imgs/theme/icons/icon-pinterest.svg' alt='' />
                       </Link>
                     </li>
                   </ul>
@@ -166,13 +136,11 @@ export const BlogSingle = () => {
               <div className='author-bio p-30 mt-50 border-radius-15 bg-white'>
                 <div className='author-image mb-30'>
                   <Link href='/author'>
-                    <a>
-                      <img src='/assets/imgs/blog/author-1.png' alt='' className='avatar' />
-                    </a>
+                    <img src='/assets/imgs/blog/author-1.png' alt='' className='avatar' />
                   </Link>
                   <div className='author-infor'>
                     <h5 className='mb-5'>Barbara Cartland</h5>
-                    <p className='mb-0 text-muted font-xs'>
+                    <p className='text-muted font-xs mb-0'>
                       <span className='mr-10'>306 posts</span>
                       <span className='has-dot'>Since 2012</span>
                     </p>
@@ -242,8 +210,8 @@ export const BlogSingle = () => {
                           <div className='user justify-content-between d-flex'>
                             <div className='thumb text-center'>
                               <img src='/assets/imgs/blog/author-2.png' alt='' />
-                              <Link href='#'>
-                                <a className='font-heading text-brand'>Sienna</a>
+                              <Link href='#' className='font-heading text-brand'>
+                                Sienna
                               </Link>
                             </div>
                             <div className='desc'>
@@ -259,8 +227,8 @@ export const BlogSingle = () => {
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit
                                 exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi
                                 dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?{' '}
-                                <Link href='#'>
-                                  <a className='reply'>Reply</a>
+                                <Link href='#' className='reply'>
+                                  Reply
                                 </Link>
                               </p>
                             </div>
@@ -270,8 +238,8 @@ export const BlogSingle = () => {
                           <div className='user justify-content-between d-flex'>
                             <div className='thumb text-center'>
                               <img src='/assets/imgs/blog/author-3.png' alt='' />
-                              <Link href='#'>
-                                <a className='font-heading text-brand'>Brenna</a>
+                              <Link href='#' className='font-heading text-brand'>
+                                Brenna
                               </Link>
                             </div>
                             <div className='desc'>
@@ -287,8 +255,8 @@ export const BlogSingle = () => {
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit
                                 exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi
                                 dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?{' '}
-                                <Link href='#'>
-                                  <a className='reply'>Reply</a>
+                                <Link href='#' className='reply'>
+                                  Reply
                                 </Link>
                               </p>
                             </div>
@@ -298,8 +266,8 @@ export const BlogSingle = () => {
                           <div className='user justify-content-between d-flex'>
                             <div className='thumb text-center'>
                               <img src='/assets/imgs/blog/author-4.png' alt='' />
-                              <Link href='#'>
-                                <a className='font-heading text-brand'>Gemma</a>
+                              <Link href='#' className='font-heading text-brand'>
+                                Gemma
                               </Link>
                             </div>
                             <div className='desc'>
@@ -315,8 +283,8 @@ export const BlogSingle = () => {
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit
                                 exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi
                                 dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?{' '}
-                                <Link href='#'>
-                                  <a className='reply'>Reply</a>
+                                <Link href='#' className='reply'>
+                                  Reply
                                 </Link>
                               </p>
                             </div>
@@ -334,4 +302,3 @@ export const BlogSingle = () => {
     </>
   );
 };
-

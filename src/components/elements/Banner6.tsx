@@ -12,13 +12,10 @@ export const Banner6 = () => {
             Office Dress
           </h4>
           <Link href='/products'>
-            <a>
-              Shop Now <i className='fi-rs-arrow-right'></i>
-            </a>
+            Shop Now<i className='fi-rs-arrow-right'></i>
           </Link>
         </div>
       </div>
     </>
   );
 };
-

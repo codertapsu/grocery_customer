@@ -1,16 +1,10 @@
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-
-import {Layout} from '@components/layout/layout';
-import { StoreState, useReduxStore } from '@contexts/redux-store';
+import { Layout } from '@components/layout/layout';
+import { WishlistTable } from '@components/wishlist-table';
+import { useWishlist } from '@contexts/wishlist';
 
 const Wishlist = () => {
-  const wishlist = useSelector<StoreState, StoreState['wishlist']>((state) => state.wishlist);
-  const { closeWishlistModal, deleteFromWishlist, clearWishlist, addToCart } = useReduxStore();
-  const handleCart = (product) => {
-    addToCart(product);
-    toast('Product added to Cart !');
-  };
+  const { products } = useWishlist();
+
   return (
     <>
       <Layout parent='Home' sub='Shop' subChild='Wishlist'>
@@ -18,83 +12,7 @@ const Wishlist = () => {
           <div className='container'>
             <div className='row'>
               <div className='col-xl-10 col-lg-12 m-auto'>
-                {wishlist.items.length > 0 ? (
-                  <div className='table-responsive shopping-summery'>
-                    <table className='table table-wishlist'>
-                      <thead>
-                        <tr className='main-heading'>
-                          <th className='custome-checkbox start pl-30' colSpan={2}>
-                            Product
-                          </th>
-                          <th scope='col'>Price</th>
-                          <th scope='col'>Stock Status</th>
-                          <th scope='col'>Action</th>
-                          <th scope='col' className='end'>
-                            Remove
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {wishlist.items.map((product, i) => (
-                          <tr className='pt-30' key={i}>
-                            <td className='image product-thumbnail pt-40'>
-                              Holder
-                              {/* <img src={product.medias[0].path} alt='' className='img-fluid' /> */}
-                            </td>
-
-                            <td className='product-des product-name'>
-                              <h6 className='product-name  mb-10'>
-                                <a>{product.title}</a>
-                              </h6>
-                              <div className='product-rate-cover'>
-                                <div className='product-rate d-inline-block'>
-                                  <div
-                                    className='product-rating'
-                                    style={{
-                                      width: '90%',
-                                    }}
-                                  ></div>
-                                </div>
-                                <span className='font-small ml-5 text-muted'> (4.0)</span>
-                              </div>
-                            </td>
-                            <td className='price' data-title='Price'>
-                              <h3 className='text-brand'>${product.price}</h3>
-                            </td>
-                            <td className='text-center detail-info' data-title='Stock'>
-                              {product.stock === 0 ? (
-                                <span className='stock-status out-stock mb-0'>Out of stock</span>
-                              ) : (
-                                <span className='stock-status in-stock mb-0'>In Stock</span>
-                              )}
-                            </td>
-                            <td className='text-right' data-title='Cart'>
-                              {product.stock === 0 ? (
-                                <button className='btn btn-sm btn-secondary'>Contact Us</button>
-                              ) : (
-                                <button className='btn btn-sm' onClick={(e) => handleCart(product)}>
-                                  Add to cart
-                                </button>
-                              )}
-                            </td>
-                            <td className='action' data-title='Remove'>
-                              <a onClick={(e) => deleteFromWishlist(product.id)}>
-                                <i className='fi-rs-trash'></i>
-                              </a>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <div className='text-right'>
-                      <span className='clear-btn' onClick={clearWishlist}>
-                        Clear All
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <h4 className='mb-0'>No Products</h4>
-                )}
+                {products.length > 0 ? <WishlistTable /> : <h4 className='mb-0'>No Products</h4>}
               </div>
             </div>
           </div>

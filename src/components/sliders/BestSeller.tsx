@@ -1,49 +1,38 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
 import { useReduxStore } from '@contexts/redux-store';
 
 import { Product } from '../../models/product.model';
+import NextImage from 'next/image';
 
 interface Props {
   products?: Product[];
 }
 
-export const BestSellerSlider = ({ products }: Props) => {
-  const [bestSeller, setBestSeller] = useState([]);
-  const { fetchByCategory } = useReduxStore();
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    // With Category
-    const allProducts = await fetchByCategory('/static/product.json', {});
-
-    // Best Seller
-    const bestSellerProducts = allProducts;
-
-    setBestSeller(bestSellerProducts);
-  };
-
+export const BestSellerSlider: FC<Props> = ({ products }: Props) => {
+  const placeholderImg = '/assets/imgs/thumbnail.jpg';
   return (
     <>
-      {bestSeller.slice(0, 3).map((product, i) => (
-        <article className='row align-items-center hover-up' key={i}>
+      {products.slice(0, 3).map((product, i) => (
+        <article key={product.id} className='row align-items-center hover-up'>
           <figure className='col-md-4 mb-0'>
             <Link href='/products/[slug]' as={`/products/${product.slug}`}>
-              <a>
-                Holder
-                {/* <img src={product.medias[0].path} alt='' /> */}
-              </a>
+              <NextImage
+                width='0'
+                height='0'
+                sizes='100vw'
+                style={{ width: '100%', height: 'auto' }}
+                src={product.thumbnail || placeholderImg}
+                alt=''
+              />
             </Link>
           </figure>
           <div className='col-md-8 mb-0'>
             <h6>
               <Link href='/products/[slug]' as={`/products/${product.slug}`}>
-                <a>{product.title}</a>
+                {product.name}
               </Link>
             </h6>
             <div className='product-rate-cover'>
@@ -53,8 +42,8 @@ export const BestSellerSlider = ({ products }: Props) => {
               <span className='font-small text-muted ml-5'> (4.0)</span>
             </div>
             <div className='product-price'>
-              <span>${product.price} </span>
-              <span className='old-price'>{product.oldPrice && `$ ${product.oldPrice}`}</span>
+              <span>${product.promotionalPrice} </span>
+              <span className='old-price'>{product.regularPrice && `$ ${product.regularPrice}`}</span>
             </div>
           </div>
         </article>

@@ -1,4 +1,4 @@
-import { Button, ButtonLink } from '@components/button';
+import { Button, ButtonLink } from '../button';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { IntroSlide } from './intro-slide.model';

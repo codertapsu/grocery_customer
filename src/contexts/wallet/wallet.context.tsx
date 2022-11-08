@@ -5,7 +5,7 @@ import Web3Modal, { connectors, IProviderOptions } from 'web3modal';
 
 import groceryCoin from '@abi/GroceryCoinBep20.json';
 import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
-import { Web3Auth } from "@web3auth/web3auth";
+import { Web3Auth } from '@web3auth/web3auth';
 import {
   BLOCK_EXPLORER_URL,
   BSC_MAINNET,
@@ -360,7 +360,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   // Auto connect to the cached provider
   useEffect(() => {
     if (web3Modal?.cachedProvider) {
-      connectWallet();
+      // connectWallet();
     }
     // if (autoConnectWallet && web3Modal) {
     //   connectWallet();

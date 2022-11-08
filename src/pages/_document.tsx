@@ -11,9 +11,13 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
+          <link href='https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap' rel='stylesheet' />
           {/* <meta name='referrer' content='strict-origin-when-cross-origin' /> */}
           {/* <link rel='preload' href='/fonts/inter-var-latin.woff2' as='font' type='font/woff2' crossOrigin='anonymous' /> */}
           {/* Bootstrap Icons */}
+          <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' />
           <Script id='google-tag-manager' strategy='afterInteractive'>
             {`(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
@@ -27,7 +31,6 @@ export default class MyDocument extends Document {
               })(window, document, 'script', 'dataLayer', 'GTM-M58KDQW');
             `}
           </Script>
-          <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' />
         </Head>
         <body>
           <Main />

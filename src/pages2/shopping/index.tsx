@@ -420,24 +420,30 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                               <div className='product-nav product-nav-thumbs'>
                                 <a href='#' className='active'>
                                   <NextImage
-                                    width={'40px'}
-                                    height={'40px'}
+                                    width='0'
+                                    height='0'
+                                    sizes='100vw'
+                                    style={{ width: '40px', height: '40px' }}
                                     src='/assets/images/products/product-4-thumb.jpg'
                                     alt='product desc'
                                   />
                                 </a>
                                 <a href='#'>
                                   <NextImage
-                                    width={'40px'}
-                                    height={'40px'}
+                                    width='0'
+                                    height='0'
+                                    sizes='100vw'
+                                    style={{ width: '40px', height: '40px' }}
                                     src='/assets/images/products/product-4-2-thumb.jpg'
                                     alt='product desc'
                                   />
                                 </a>
                                 <a href='#'>
                                   <NextImage
-                                    width={'40px'}
-                                    height={'40px'}
+                                    width='0'
+                                    height='0'
+                                    sizes='100vw'
+                                    style={{ width: '40px', height: '40px' }}
                                     src='/assets/images/products/product-4-3-thumb.jpg'
                                     alt='product desc'
                                   />
@@ -508,16 +514,20 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                             <div className='product-nav product-nav-thumbs'>
                               <a href='#' className='active'>
                                 <NextImage
-                                  width={'40px'}
-                                  height={'40px'}
+                                  width='0'
+                                  height='0'
+                                  sizes='100vw'
+                                  style={{ width: '40px', height: '40px' }}
                                   src='/assets/images/products/product-5-thumb.jpg'
                                   alt='product desc'
                                 />
                               </a>
                               <a href='#'>
                                 <NextImage
-                                  width={'40px'}
-                                  height={'40px'}
+                                  width='0'
+                                  height='0'
+                                  sizes='100vw'
+                                  style={{ width: '40px', height: '40px' }}
                                   src='/assets/images/products/product-5-2-thumb.jpg'
                                   alt='product desc'
                                 />
@@ -612,7 +622,7 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                       Category
                     </a>
                   </h3>
-                  <div className='collapse show' id='widget-1'>
+                  <div className='show collapse' id='widget-1'>
                     <div className='widget-body'>
                       <div className='filter-items filter-items-count'>
                         {(filterCategories || []).map((item) => {
@@ -652,7 +662,7 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                       Size
                     </a>
                   </h3>
-                  <div className='collapse show' id='widget-2'>
+                  <div className='show collapse' id='widget-2'>
                     <div className='widget-body'>
                       <div className='filter-items'>
                         {(filterSizes || []).map((item) => {
@@ -691,7 +701,7 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                       Color
                     </a>
                   </h3>
-                  <div className='collapse show' id='widget-3'>
+                  <div className='show collapse' id='widget-3'>
                     <div className='widget-body'>
                       <div className='filter-colors'>
                         {(filterColors || []).map((item) => {
@@ -729,7 +739,7 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                       Brand
                     </a>
                   </h3>
-                  <div className='collapse show' id='widget-4'>
+                  <div className='show collapse' id='widget-4'>
                     <div className='widget-body'>
                       <div className='filter-items'>
                         {(filterBrands || []).map((item) => {
@@ -816,7 +826,7 @@ const Shopping: NextPage<Props> = ({ filterBrands, filterCategories, filterColor
                       Price
                     </a>
                   </h3>
-                  <div className='collapse show' id='widget-5'>
+                  <div className='show collapse' id='widget-5'>
                     <div className='widget-body'>
                       <div className='filter-price'>
                         <div className='filter-price-text'>

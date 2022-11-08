@@ -13,21 +13,20 @@ export const ExplorePopularCategories = () => {
         <div className='row'>
           {categories.map((item) => (
             <div key={item} className='col-6 col-sm-4 col-lg-2'>
-              <Link href={`/categories/${item}`}>
-                <a className={mergeClassNames(styles['cat-block'])}>
-                  <figure className='w-100'>
-                    <span className='w-100'>
-                      <NextImage
-                        src={`/assets/images/demos/demo-13/cats/${item}.jpg`}
-                        alt='Category image'
-                        layout='intrinsic'
-                        width={'100%'}
-                        height={'100%'}
-                      />
-                    </span>
-                  </figure>
-                  <h3 className={mergeClassNames(styles['cat-block-title'])}>Computer &amp; Laptop</h3>
-                </a>
+              <Link href={`/categories/${item}`} className={mergeClassNames(styles['cat-block'])}>
+                <figure className='w-100'>
+                  <span className='w-100'>
+                    <NextImage
+                      src={`/assets/images/demos/demo-13/cats/${item}.jpg`}
+                      alt='Category image'
+                      sizes='100vw'
+                      width={0}
+                      height={0}
+                      style={{ width: '100%', height: '100%' }}
+                    />
+                  </span>
+                </figure>
+                <h3 className={mergeClassNames(styles['cat-block-title'])}>Computer &amp; Laptop</h3>
               </Link>
             </div>
           ))}

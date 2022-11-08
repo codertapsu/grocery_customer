@@ -10,8 +10,7 @@ export const SubBox = () => {
     // (e.target as HTMLFormElement).valu
     const { email } = Object.fromEntries(new FormData(e.target as HTMLFormElement));
     console.log(email);
-    
-  }
+  };
 
   return (
     <div

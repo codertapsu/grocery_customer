@@ -136,9 +136,7 @@ const Checkout: NextPage = () => {
                         {items.map((item) => (
                           <tr key={item.product.id}>
                             <td>
-                              <Link href={`/products/${item.product.id}`}>
-                                <a>{item.product.name}</a>
-                              </Link>
+                              <Link href={`/products/${item.product.id}`}>{item.product.name}</Link>
                             </td>
                             <td>${item.product.promotionalPrice}</td>
                           </tr>

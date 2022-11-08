@@ -44,14 +44,14 @@ export const FetchSlider = () => {
     // const bestSellerProducts = allProducts.sort(function (a, b) {
     //   return a.totalSell > b.totalSell ? -1 : 1;
     // });
-    
+
     const bestSellerProducts = allProducts;
 
     // New Arrival
     const newArrivalProducts = allProducts;
 
     // Discount
-    const discountProduct = allProducts;;
+    const discountProduct = allProducts;
 
     setFeatured(featuredProducts);
     setTrending(trendingProducts);
@@ -64,7 +64,7 @@ export const FetchSlider = () => {
   return (
     <>
       <TrendingSlider products={trending} />
-      <FeaturedSlider products={featured} />
+      <FeaturedSlider products={[]} />
       <BestSellerSlider products={bestSeller} />
       <NewArrivalTabSlider products={newArrival} />
       <DiscountSlider products={discount} />

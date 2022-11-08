@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { useReduxStore } from '@contexts/redux-store';
 import { Timer } from './Timer';
+import NextImage from 'next/image';
 
 export const Deals1 = ({ product }) => {
   const { addToCart } = useReduxStore();
@@ -11,15 +12,23 @@ export const Deals1 = ({ product }) => {
     addToCart(product);
     toast('Product added to Cart !');
   };
+
+  const placeholderImg = '/assets/imgs/product-holder.jpg';
+
   return (
     <>
-      <div className='product-cart-wrap style-2 wow animate__animated animate__fadeInUp' data-wow-delay='0'>
+      <div className='product-cart-wrap style-2'>
         <div className='product-img-action-wrap'>
           <div className='product-img'>
             <Link href='/products'>
-              <a>
-                <img src={product.discount.banner} alt='' />
-              </a>
+              <NextImage
+                width='0'
+                height='0'
+                sizes='100vw'
+                style={{ width: '100%', height: 'auto' }}
+                src={product.discount.banner || placeholderImg}
+                alt=''
+              />
             </Link>
           </div>
         </div>
@@ -30,7 +39,7 @@ export const Deals1 = ({ product }) => {
           <div className='deals-content'>
             <h2>
               <Link href='/products/[slug]' as={`/products/${product.slug}`}>
-                <a>{product.title}</a>
+                {product.title}
               </Link>
             </h2>
             <div className='product-rate-cover'>
@@ -41,10 +50,7 @@ export const Deals1 = ({ product }) => {
             </div>
             <div>
               <span className='font-small text-muted'>
-                By{' '}
-                <Link href='/vendor/1'>
-                  <a>NestFood</a>
-                </Link>
+                By <Link href='/vendor/1'>NestFood</Link>
               </span>
             </div>
             <div className='product-card-bottom'>

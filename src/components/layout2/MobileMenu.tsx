@@ -45,9 +45,7 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
           <div className='mobile-header-top'>
             <div className='mobile-header-logo'>
               <Link href='/'>
-                <a>
-                  <img src='/assets/imgs/theme/logo.svg' alt='logo' />
-                </a>
+                <img src='/assets/imgs/theme/logo.svg' alt='logo' />
               </Link>
             </div>
             <div className='mobile-menu-close close-style-wrap close-style-position-inherit'>
@@ -68,83 +66,55 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
             </div>
             <div className='mobile-menu-wrap mobile-header-border'>
               <div className='main-categori-wrap mobile-header-border'>
-                <Link href='#'>
-                  <a className='categori-button-active-2'>
-                    <span className='fi-rs-apps'></span> Browse Categories
-                  </a>
+                <Link href='#' className='categori-button-active-2'>
+                  <span className='fi-rs-apps'></span>Browse Categories
                 </Link>
                 <div className='categori-dropdown-wrap categori-dropdown-active-small'>
                   <ul>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-dress'></i>
-                          Women&lsquo;s Clothing
-                        </a>
+                        <i className='evara-font-dress'></i>Women‘s Clothing
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-tshirt'></i>
-                          Men&lsquo;s Clothing
-                        </a>
+                        <i className='evara-font-tshirt'></i>Men‘s Clothing
                       </Link>
                     </li>
                     <li>
                       {' '}
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-smartphone'></i> Cellphones
-                        </a>
+                        <i className='evara-font-smartphone'></i>Cellphones
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-desktop'></i>
-                          Computer & Office
-                        </a>
+                        <i className='evara-font-desktop'></i>Computer & Office
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-cpu'></i>
-                          Consumer Electronics
-                        </a>
+                        <i className='evara-font-cpu'></i>Consumer Electronics
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-home'></i>
-                          Home & Garden
-                        </a>
+                        <i className='evara-font-home'></i>Home & Garden
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-high-heels'></i>
-                          Shoes
-                        </a>
+                        <i className='evara-font-high-heels'></i>Shoes
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-teddy-bear'></i>
-                          Mother & Kids
-                        </a>
+                        <i className='evara-font-teddy-bear'></i>Mother & Kids
                       </Link>
                     </li>
                     <li>
                       <Link href='/shop-grid-right'>
-                        <a>
-                          <i className='evara-font-kite'></i>
-                          Outdoor fun
-                        </a>
+                        <i className='evara-font-kite'></i>Outdoor fun
                       </Link>
                     </li>
                   </ul>
@@ -157,29 +127,19 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(1)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='/index'>
-                      <a>Home</a>
-                    </Link>
+                    <Link href='/index'>Home</Link>
                     <ul className={isActive.key == 1 ? 'dropdown' : 'd-none'}>
                       <li>
-                        <Link href='/index'>
-                          <a>Home 1</a>
-                        </Link>
+                        <Link href='/index'>Home 1</Link>
                       </li>
                       <li>
-                        <Link href='/index-2'>
-                          <a>Home 2</a>
-                        </Link>
+                        <Link href='/index-2'>Home 2</Link>
                       </li>
                       <li>
-                        <Link href='/index-3'>
-                          <a>Home 3</a>
-                        </Link>
+                        <Link href='/index-3'>Home 3</Link>
                       </li>
                       <li>
-                        <Link href='/index-4'>
-                          <a>Home 4</a>
-                        </Link>
+                        <Link href='/index-4'>Home 4</Link>
                       </li>
                     </ul>
                   </li>
@@ -187,59 +147,37 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(2)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='/shop-grid-right'>
-                      <a>shop</a>
-                    </Link>
+                    <Link href='/shop-grid-right'>shop</Link>
                     <ul className={isActive.key == 2 ? 'dropdown' : 'd-none'}>
                       <li>
-                        <Link href='/shop-grid-right'>
-                          <a>Shop Grid – Right Sidebar</a>
-                        </Link>
+                        <Link href='/shop-grid-right'>Shop Grid – Right Sidebar</Link>
                       </li>
                       <li>
-                        <Link href='/shop-grid-left'>
-                          <a>Shop Grid – Left Sidebar</a>
-                        </Link>
+                        <Link href='/shop-grid-left'>Shop Grid – Left Sidebar</Link>
                       </li>
                       <li>
-                        <Link href='/shop-list-right'>
-                          <a>Shop List – Right Sidebar</a>
-                        </Link>
+                        <Link href='/shop-list-right'>Shop List – Right Sidebar</Link>
                       </li>
                       <li>
-                        <Link href='/shop-list-left'>
-                          <a>Shop List – Left Sidebar</a>
-                        </Link>
+                        <Link href='/shop-list-left'>Shop List – Left Sidebar</Link>
                       </li>
                       <li>
-                        <Link href='/shop-fullwidth'>
-                          <a>Shop - Wide</a>
-                        </Link>
+                        <Link href='/shop-fullwidth'>Shop - Wide</Link>
                       </li>
                       <li>
-                        <Link href='/shop-filter'>
-                          <a>Shop – Filter</a>
-                        </Link>
+                        <Link href='/shop-filter'>Shop – Filter</Link>
                       </li>
                       <li>
-                        <Link href='/shop-wishlist'>
-                          <a>Shop – Wishlist</a>
-                        </Link>
+                        <Link href='/shop-wishlist'>Shop – Wishlist</Link>
                       </li>
                       <li>
-                        <Link href='/shop-cart'>
-                          <a>Shop – Cart</a>
-                        </Link>
+                        <Link href='/shop-cart'>Shop – Cart</Link>
                       </li>
                       <li>
-                        <Link href='/shop-checkout'>
-                          <a>Shop – Checkout</a>
-                        </Link>
+                        <Link href='/shop-checkout'>Shop – Checkout</Link>
                       </li>
                       <li>
-                        <Link href='/shop-compare'>
-                          <a>Shop – Compare</a>
-                        </Link>
+                        <Link href='/shop-compare'>Shop – Compare</Link>
                       </li>
                     </ul>
                   </li>
@@ -247,91 +185,59 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(3)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='#'>
-                      <a>Mega menu</a>
-                    </Link>
+                    <Link href='#'>Mega menu</Link>
                     <ul className={isActive.key == 3 ? 'dropdown' : 'd-none'}>
                       <li className='menu-item-has-children'>
                         <span className='menu-expand'></span>
-                        <Link href='#'>
-                          <a>Women&lsquo;s Fashion</a>
-                        </Link>
+                        <Link href='#'>Women&lsquo;s Fashion</Link>
                         <ul className='dropdown'>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Dresses</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Dresses</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Blouses & Shirts</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Blouses & Shirts</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Hoodies & Sweatshirts</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Hoodies & Sweatshirts</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Women&lsquo;s Sets</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Women&lsquo;s Sets</Link>
                           </li>
                         </ul>
                       </li>
                       <li className='menu-item-has-children'>
                         <span className='menu-expand'></span>
-                        <Link href='#'>
-                          <a>Men&lsquo;s Fashion</a>
-                        </Link>
+                        <Link href='#'>Men&lsquo;s Fashion</Link>
                         <ul className='dropdown'>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Jackets</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Jackets</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Casual Faux Leather</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Casual Faux Leather</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Genuine Leather</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Genuine Leather</Link>
                           </li>
                         </ul>
                       </li>
                       <li className='menu-item-has-children'>
                         <span className='menu-expand'></span>
-                        <Link href='#'>
-                          <a>Technology</a>
-                        </Link>
+                        <Link href='#'>Technology</Link>
                         <ul className='dropdown'>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Gaming Laptops</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Gaming Laptops</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Ultraslim Laptops</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Ultraslim Laptops</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Tablets</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Tablets</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Laptop Accessories</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Laptop Accessories</Link>
                           </li>
                           <li>
-                            <Link href='/shop-product-right'>
-                              <a>Tablet Accessories</a>
-                            </Link>
+                            <Link href='/shop-product-right'>Tablet Accessories</Link>
                           </li>
                         </ul>
                       </li>
@@ -341,50 +247,32 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(4)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='/blog-category-fullwidth'>
-                      <a>Blog</a>
-                    </Link>
+                    <Link href='/blog-category-fullwidth'>Blog</Link>
                     <ul className={isActive.key == 4 ? 'dropdown' : 'd-none'}>
                       <li>
-                        <Link href='/blog-category-grid'>
-                          <a>Blog Category Grid</a>
-                        </Link>
+                        <Link href='/blog-category-grid'>Blog Category Grid</Link>
                       </li>
                       <li>
-                        <Link href='/blog-category-list'>
-                          <a>Blog Category List</a>
-                        </Link>
+                        <Link href='/blog-category-list'>Blog Category List</Link>
                       </li>
                       <li>
-                        <Link href='/blog-category-big'>
-                          <a>Blog Category Big</a>
-                        </Link>
+                        <Link href='/blog-category-big'>Blog Category Big</Link>
                       </li>
                       <li>
-                        <Link href='/blog-category-fullwidth'>
-                          <a>Blog Category Wide</a>
-                        </Link>
+                        <Link href='/blog-category-fullwidth'>Blog Category Wide</Link>
                       </li>
                       <li className='menu-item-has-children'>
                         <span className='menu-expand'></span>
-                        <Link href='#'>
-                          <a>Single Product Layout</a>
-                        </Link>
+                        <Link href='#'>Single Product Layout</Link>
                         <ul className='dropdown'>
                           <li>
-                            <Link href='/blog-post-left'>
-                              <a>Left Sidebar</a>
-                            </Link>
+                            <Link href='/blog-post-left'>Left Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/blog-post-right'>
-                              <a>Right Sidebar</a>
-                            </Link>
+                            <Link href='/blog-post-right'>Right Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/blog-post-fullwidth'>
-                              <a>No Sidebar</a>
-                            </Link>
+                            <Link href='/blog-post-fullwidth'>No Sidebar</Link>
                           </li>
                         </ul>
                       </li>
@@ -394,49 +282,31 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(5)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='#'>
-                      <a>Pages</a>
-                    </Link>
+                    <Link href='#'>Pages</Link>
                     <ul className={isActive.key == 5 ? 'dropdown' : 'd-none'}>
                       <li>
-                        <Link href='/page-about'>
-                          <a>About Us</a>
-                        </Link>
+                        <Link href='/page-about'>About Us</Link>
                       </li>
                       <li>
-                        <Link href='/page-contact'>
-                          <a>Contact</a>
-                        </Link>
+                        <Link href='/page-contact'>Contact</Link>
                       </li>
                       <li>
-                        <Link href='/page-account'>
-                          <a>My Account</a>
-                        </Link>
+                        <Link href='/page-account'>My Account</Link>
                       </li>
                       <li>
-                        <Link href='/page-login-register'>
-                          <a>login/register</a>
-                        </Link>
+                        <Link href='/page-login-register'>login/register</Link>
                       </li>
                       <li>
-                        <Link href='/page-purchase-guide'>
-                          <a>Purchase Guide</a>
-                        </Link>
+                        <Link href='/page-purchase-guide'>Purchase Guide</Link>
                       </li>
                       <li>
-                        <Link href='/page-privacy-policy'>
-                          <a>Privacy Policy</a>
-                        </Link>
+                        <Link href='/page-privacy-policy'>Privacy Policy</Link>
                       </li>
                       <li>
-                        <Link href='/page-terms'>
-                          <a>Terms of Service</a>
-                        </Link>
+                        <Link href='/page-terms'>Terms of Service</Link>
                       </li>
                       <li>
-                        <Link href='/page-404'>
-                          <a>404 Page</a>
-                        </Link>
+                        <Link href='/page-404'>404 Page</Link>
                       </li>
                     </ul>
                   </li>
@@ -444,29 +314,19 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
                     <span className='menu-expand' onClick={() => handleToggle(6)}>
                       <i className='fi-rs-angle-small-down'></i>
                     </span>
-                    <Link href='#'>
-                      <a>Language</a>
-                    </Link>
+                    <Link href='#'>Language</Link>
                     <ul className={isActive.key == 6 ? 'dropdown' : 'd-none'}>
                       <li>
-                        <Link href='#'>
-                          <a>English</a>
-                        </Link>
+                        <Link href='#'>English</Link>
                       </li>
                       <li>
-                        <Link href='#'>
-                          <a>French</a>
-                        </Link>
+                        <Link href='#'>French</Link>
                       </li>
                       <li>
-                        <Link href='#'>
-                          <a>German</a>
-                        </Link>
+                        <Link href='#'>German</Link>
                       </li>
                       <li>
-                        <Link href='#'>
-                          <a>Spanish</a>
-                        </Link>
+                        <Link href='#'>Spanish</Link>
                       </li>
                     </ul>
                   </li>
@@ -475,47 +335,31 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
             </div>
             <div className='mobile-header-info-wrap mobile-header-border'>
               <div className='single-mobile-header-info mt-30'>
-                <Link href='/page-contact'>
-                  <a> Our location </a>
-                </Link>
+                <Link href='/page-contact'>Our location</Link>
               </div>
               <div className='single-mobile-header-info'>
-                <Link href='/page-login-register'>
-                  <a>Log In / Sign Up </a>
-                </Link>
+                <Link href='/page-login-register'>Log In / Sign Up</Link>
               </div>
               <div className='single-mobile-header-info'>
-                <Link href='#'>
-                  <a>(+01) - 2345 - 6789 </a>
-                </Link>
+                <Link href='#'>(+01) - 2345 - 6789</Link>
               </div>
             </div>
             <div className='mobile-social-icon'>
               <h5 className='mb-15 text-grey-4'>Follow Us</h5>
               <Link href='#'>
-                <a>
-                  <img src='/assets/imgs/theme/icons/icon-facebook.svg' alt='' />
-                </a>
+                <img src='/assets/imgs/theme/icons/icon-facebook.svg' alt='' />
               </Link>
               <Link href='#'>
-                <a>
-                  <img src='/assets/imgs/theme/icons/icon-twitter.svg' alt='' />
-                </a>
+                <img src='/assets/imgs/theme/icons/icon-twitter.svg' alt='' />
               </Link>
               <Link href='#'>
-                <a>
-                  <img src='/assets/imgs/theme/icons/icon-instagram.svg' alt='' />
-                </a>
+                <img src='/assets/imgs/theme/icons/icon-instagram.svg' alt='' />
               </Link>
               <Link href='#'>
-                <a>
-                  <img src='/assets/imgs/theme/icons/icon-pinterest.svg' alt='' />
-                </a>
+                <img src='/assets/imgs/theme/icons/icon-pinterest.svg' alt='' />
               </Link>
               <Link href='#'>
-                <a>
-                  <img src='/assets/imgs/theme/icons/icon-youtube.svg' alt='' />
-                </a>
+                <img src='/assets/imgs/theme/icons/icon-youtube.svg' alt='' />
               </Link>
             </div>
           </div>
@@ -524,4 +368,3 @@ export const MobileMenu = ({ isToggled, toggleClick }) => {
     </>
   );
 };
-

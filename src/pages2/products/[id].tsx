@@ -206,51 +206,47 @@ export default function Product() {
               <div className='product-details-tab'>
                 <ul className='nav nav-pills justify-content-center' role='tablist'>
                   <li className='nav-item'>
-                    <Link href={`#${Tab.ProductDesc}`}>
-                      <a
-                        className={mergeClassNames('nav-link', activeTab === Tab.ProductDesc ? 'active' : '')}
-                        role='tab'
-                        aria-controls={Tab.ProductDesc}
-                        aria-selected={activeTab === Tab.ProductDesc}
-                      >
-                        Description
-                      </a>
+                    <Link
+                      href={`#${Tab.ProductDesc}`}
+                      className={mergeClassNames('nav-link', activeTab === Tab.ProductDesc ? 'active' : '')}
+                      role='tab'
+                      aria-controls={Tab.ProductDesc}
+                      aria-selected={activeTab === Tab.ProductDesc}
+                    >
+                      Description
                     </Link>
                   </li>
                   <li className='nav-item'>
-                    <Link href={`#${Tab.ProductInfo}`}>
-                      <a
-                        className={mergeClassNames('nav-link', activeTab === Tab.ProductInfo ? 'active' : '')}
-                        role='tab'
-                        aria-controls={Tab.ProductInfo}
-                        aria-selected={activeTab === Tab.ProductInfo}
-                      >
-                        Additional information
-                      </a>
+                    <Link
+                      href={`#${Tab.ProductInfo}`}
+                      className={mergeClassNames('nav-link', activeTab === Tab.ProductInfo ? 'active' : '')}
+                      role='tab'
+                      aria-controls={Tab.ProductInfo}
+                      aria-selected={activeTab === Tab.ProductInfo}
+                    >
+                      Additional information
                     </Link>
                   </li>
                   <li className='nav-item'>
-                    <Link href={`#${Tab.ProductShipping}`}>
-                      <a
-                        className={mergeClassNames('nav-link', activeTab === Tab.ProductShipping ? 'active' : '')}
-                        role='tab'
-                        aria-controls={Tab.ProductShipping}
-                        aria-selected={activeTab === Tab.ProductShipping}
-                      >
-                        Shipping &amp; Returns
-                      </a>
+                    <Link
+                      href={`#${Tab.ProductShipping}`}
+                      className={mergeClassNames('nav-link', activeTab === Tab.ProductShipping ? 'active' : '')}
+                      role='tab'
+                      aria-controls={Tab.ProductShipping}
+                      aria-selected={activeTab === Tab.ProductShipping}
+                    >
+                      Shipping &amp; Returns
                     </Link>
                   </li>
                   <li className='nav-item'>
-                    <Link href={`#${Tab.ProductReview}`}>
-                      <a
-                        className={mergeClassNames('nav-link', activeTab === Tab.ProductReview ? 'active' : '')}
-                        role='tab'
-                        aria-controls={Tab.ProductReview}
-                        aria-selected={activeTab === Tab.ProductReview}
-                      >
-                        Reviews (2)
-                      </a>
+                    <Link
+                      href={`#${Tab.ProductReview}`}
+                      className={mergeClassNames('nav-link', activeTab === Tab.ProductReview ? 'active' : '')}
+                      role='tab'
+                      aria-controls={Tab.ProductReview}
+                      aria-selected={activeTab === Tab.ProductReview}
+                    >
+                      Reviews (2)
                     </Link>
                   </li>
                 </ul>

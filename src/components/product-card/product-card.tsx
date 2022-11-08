@@ -25,8 +25,8 @@ export const ProductCard = ({ product }: Props) => {
       <div className={mergeClassNames('product', styles['product'])}>
         <div className='product-media'>
           {/* {product.isNew && <span className='product-label label-new'>New</span>}
-          {product.isTop && <span className='product-label label-top'>Top</span>}
-          {product.isSale && <span className='product-label label-sale'>Sale</span>} */}
+        {product.isTop && <span className='product-label label-top'>Top</span>}
+        {product.isSale && <span className='product-label label-sale'>Sale</span>} */}
           <Image
             src='/assets/images/demos/demo-13/products/product-2.jpg'
             alt='Product image'
@@ -45,8 +45,8 @@ export const ProductCard = ({ product }: Props) => {
               <span>add to wishlist</span>
             </span>
             {/* <span role='button' className='btn-product-icon btn-compare' title='Compare'>
-              <span>Compare</span>
-            </span> */}
+            <span>Compare</span>
+          </span> */}
             <span
               role='button'
               className={mergeClassNames(
@@ -80,18 +80,14 @@ export const ProductCard = ({ product }: Props) => {
 
               return (
                 <Fragment key={cat.slug}>
-                  <Link href={`/categories/${cat.slug}`}>
-                    <a>{cat.name}</a>
-                  </Link>
+                  <Link href={`/categories/${cat.slug}`}>{cat.name}</Link>
                   {!isLast && <>{', '}</>}
                 </Fragment>
               );
             })}
           </div>
           <h3 className='product-title'>
-            <Link href={`/products/${product.slug}`}>
-              <a>{product.name}</a>
-            </Link>
+            <Link href={`/products/${product.slug}`}>{product.name}</Link>
           </h3>
           <div className='product-price'>
             <span className='new-price'>

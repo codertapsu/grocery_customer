@@ -151,15 +151,15 @@ export const BlogList = ({ show }) => {
             }}
           >
             <div className='entry-meta'>
-              <Link href='/blog-category-grid'>
-                <a className='entry-meta meta-2'>Technology</a>
+              <Link href='/blog-category-grid' className='entry-meta meta-2'>
+                Technology
               </Link>
             </div>
           </div>
           <div className='entry-content-2'>
             <h3 className='post-title mb-15'>
               <Link href='/blog-post-right'>
-                <a>Ettitude — Beautifully Designed Bamboo Sheets & Sleep Wear-Home Décor Holiday Gift Guide</a>
+                Ettitude — Beautifully Designed Bamboo Sheets & Sleep Wear-Home Décor Holiday Gift Guide
               </Link>
             </h3>
             <p className='post-exerpt mb-30'>
@@ -174,10 +174,8 @@ export const BlogList = ({ show }) => {
                 </span>
                 <span className='hit-count has-dot'>126k Views</span>
               </div>
-              <Link href='/blog-post-right'>
-                <a className='text-brand'>
-                  Read more <i className='fi-rs-arrow-right'></i>
-                </a>
+              <Link href='/blog-post-right' className='text-brand'>
+                Read more<i className='fi-rs-arrow-right'></i>
               </Link>
             </div>
           </div>

@@ -28,8 +28,8 @@ export const IntroPopup = () => {
                 </div>
                 <div className='deal-content  detail-info'>
                   <h6 className='product-title'>
-                    <Link href='/shop-product-right'>
-                      <a className='text-heading'>Organic fruit for your family&lsquo;s health</a>
+                    <Link href='/shop-product-right' className='text-heading'>
+                      Organic fruit for your family&lsquo;s health
                     </Link>
                   </h6>
                   <div className='clearfix product-price-cover'>
@@ -55,10 +55,8 @@ export const IntroPopup = () => {
                     </div>
                   </div>
 
-                  <Link href='/shop-grid-right'>
-                    <a className='btn hover-up'>
-                      Shop Now <i className='fi-rs-arrow-right'></i>
-                    </a>
+                  <Link href='/shop-grid-right' className='btn hover-up'>
+                    Shop Now<i className='fi-rs-arrow-right'></i>
                   </Link>
                 </div>
               </div>

@@ -1,63 +1,84 @@
 import 'swiper/css/thumbs';
 
-import { useState } from 'react';
+import { FC, useState } from 'react';
+import NextImage from 'next/image';
 
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Product } from '@models/product.model';
 
-// style={{
-//   '--swiper-navigation-color': '#fff',
-//   '--swiper-pagination-color': '#fff',
-// }}
+interface Props {
+  product: Product;
+}
 
 SwiperCore.use([Navigation, Thumbs]);
 
-export const ThumbSlider = ({ product }) => {
+export const ThumbSlider: FC<Props> = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>(null);
 
   return (
     <>
-      <div>
+      <div className='product-image-slider'>
         <Swiper
+          style={
+            {
+              '--swiper-navigation-color': '#3bb77e',
+              '--swiper-pagination-color': '#fff',
+            } as any
+          }
           spaceBetween={10}
           navigation={true}
-          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+          thumbs={{ swiper: thumbsSwiper }}
           className='mySwiper2'
         >
-          {product.gallery.map((item, index) => (
+          {product.medias.map((item, index) => (
             <SwiperSlide key={index}>
-              <img src={item.thumb} />
+              <NextImage
+                width='0'
+                height='0'
+                sizes='100vw'
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
+                src={item.path}
+                alt=''
+              />
               {/* <Zoom
-                            img={item.thumb}
-                            zoomScale={5}
-                            width={500}
-                            height={500}
-                            ransitionTime={0.5}
-                        /> */}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          spaceBetween={10}
-          slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          className='mySwiper'
-        >
-          {product.gallery.map((item, index) => (
-            <SwiperSlide key={index}>
-              <img src={item.thumb} />
+                    img={item.thumb}
+                    zoomScale={5}
+                    width={500}
+                    height={500}
+                    ransitionTime={0.5}
+                /> */}
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <style jsx>{`
-        .mySwiper2 {
-          --swiper-navigation-color: #fff;
-          --swiper-pagination-color: #fff;
-        }
-      `}</style>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        className='mySwiper'
+      >
+        {product.medias.map((item, index) => (
+          <SwiperSlide key={index}>
+            <NextImage
+              width='0'
+              height='0'
+              sizes='100vw'
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
+              src={item.path}
+              alt=''
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };

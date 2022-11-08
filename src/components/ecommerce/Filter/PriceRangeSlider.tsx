@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 import { useReduxStore } from '@contexts/redux-store';
 
-export  const PriceRangeSlider = () => {
+export const PriceRangeSlider = () => {
   const { updateProductFilters } = useReduxStore();
   const router = useRouter();
   const [price, setPrice] = useState({ value: { min: 0, max: 500 } });
@@ -47,9 +48,24 @@ export  const PriceRangeSlider = () => {
       />
 
       <div className='d-flex justify-content-between'>
+        <div className='caption'>
+          From:{' '}
+          <strong id='slider-range-value1' className='text-brand'>
+            $0
+          </strong>
+        </div>
+        <div className='caption'>
+          To:{' '}
+          <strong id='slider-range-value2' className='text-brand'>
+            $695
+          </strong>
+        </div>
+      </div>
+
+      {/* <div className='d-flex justify-content-between'>
         <span>{price.value.min}</span>
         <span>{price.value.max}</span>
-      </div>
+      </div> */}
 
       {/* <ul className="price-list">
                 <li

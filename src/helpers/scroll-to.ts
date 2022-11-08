@@ -1,5 +1,11 @@
+// https://codepen.io/dankreiger5/pen/XaWddK?editors=1010
 // thanks to https://pawelgrzybek.com/page-scroll-in-vanilla-javascript/
-export const scrollTo = (destination: HTMLElement, duration = 200, easing = 'linear', callback: () => void) => {
+export const scrollToSmooth = (
+  destination: number | HTMLElement,
+  duration = 200,
+  easing = 'linear',
+  callback?: () => void,
+) => {
   const easings = {
     linear(t) {
       return t;

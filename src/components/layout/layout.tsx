@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
+
+import { QuickView } from '@components/ecommerce/QuickView';
+import { WishlistModal } from '@components/ecommerce/WishlistModal';
+import { scrollToSmooth } from '@helpers/scroll-to';
 
 import { Breadcrumb } from './Breadcrumb';
 import { Footer } from './Footer';
@@ -25,11 +29,16 @@ const variants = {
 
 export const Layout = ({ children, parent, sub, subChild, noBreadcrumb, headerStyle }: Props) => {
   const [isToggled, setToggled] = useState(false);
+  const [scroll, setScroll] = useState(false);
   const toggleClick = () => {
     setToggled(!isToggled);
     isToggled
       ? document.querySelector('body').classList.remove('mobile-menu-active')
       : document.querySelector('body').classList.add('mobile-menu-active');
+  };
+
+  const scrollToTop = () => {
+    scrollToSmooth(0, 1500, 'easeOutQuad');
   };
 
   useEffect(() => {
@@ -51,6 +60,15 @@ export const Layout = ({ children, parent, sub, subChild, noBreadcrumb, headerSt
     }
   }, []);
 
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      const scrollCheck = window.scrollY >= 100;
+      if (scrollCheck !== scroll) {
+        setScroll(scrollCheck);
+      }
+    });
+  });
+
   return (
     <>
       <Head>
@@ -60,26 +78,26 @@ export const Layout = ({ children, parent, sub, subChild, noBreadcrumb, headerSt
       </Head>
 
       {isToggled && <div className='body-overlay-1' onClick={toggleClick}></div>}
+      <Header headerStyle={headerStyle} isToggled={isToggled} toggleClick={toggleClick} />
+      <MobileMenu isToggled={isToggled} toggleClick={toggleClick} />
       <motion.main
         initial='hidden'
         animate='enter'
         exit='exit'
         variants={variants}
         transition={{ type: 'linear' }}
-        className='
-                    flex h-full w-full flex-col items-start
-                    px-8 pt-10 pt-24 sm:px-16 md:px-36 lg:px-52
-                    xl:px-80 2xl:px-96
-                '
+        className='main'
       >
-        <Header headerStyle={headerStyle} isToggled={isToggled} toggleClick={toggleClick} />
-        <MobileMenu isToggled={isToggled} toggleClick={toggleClick} />
-        <main className='main'>
-          <Breadcrumb parent={parent} sub={sub} subChild={subChild} noBreadcrumb={noBreadcrumb} />
-          {children}
-        </main>
-        <Footer />
+        <Breadcrumb parent={parent} sub={sub} subChild={subChild} noBreadcrumb={noBreadcrumb} />
+        {children}
       </motion.main>
+      <Footer />
+      <button className='scroll-up' style={{ display: scroll ? 'block' : 'none' }} onClick={scrollToTop}>
+        <i className='fi-rs-arrow-small-up'></i>
+      </button>
+
+      <QuickView />
+      <WishlistModal />
     </>
   );
 };

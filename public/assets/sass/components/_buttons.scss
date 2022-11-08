@@ -140,6 +140,10 @@ button.submit, button[type='submit'] {
 		background-color: $color-secondary;
 		border-color: $color-secondary;
 	}
+	&.btn-danger {
+		background-color: $color-danger;
+		border-color: $color-danger;
+	}
 	&.btn-facebook {
 		background: #3b5998;
 		border-color: #3b5998;

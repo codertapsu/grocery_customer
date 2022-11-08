@@ -77,7 +77,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
         return token;
       },
       session: async ({ session, token, user }) => {
-        session.user = token.user; // Setting token in session
+        session.user = token.user as any; // Setting token in session
         return session;
       },
     },

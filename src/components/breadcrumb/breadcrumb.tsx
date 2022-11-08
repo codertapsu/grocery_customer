@@ -20,9 +20,7 @@ const Breadcrumb = ({ items, className, children }: Props) => {
         {children}
         <ol className='breadcrumb'>
           <li className='breadcrumb-item'>
-            <Link href='/'>
-              <a>Home</a>
-            </Link>
+            <Link href='/'>Home</Link>
           </li>
           {(items || []).map((item, index) => {
             if (index === length - 1) {
@@ -34,9 +32,7 @@ const Breadcrumb = ({ items, className, children }: Props) => {
             }
             return (
               <li key={item.href} className='breadcrumb-item'>
-                <Link href={item.href}>
-                  <a>{item.name}</a>
-                </Link>
+                <Link href={item.href}>{item.name}</Link>
               </li>
             );
           })}

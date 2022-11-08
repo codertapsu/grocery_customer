@@ -13061,30 +13061,14 @@
   "ast": {
     "absolutePath": "project:/contracts/GroceryCoinBep20.sol",
     "exportedSymbols": {
-      "Context": [
-        996
-      ],
-      "ERC20": [
-        806
-      ],
-      "ERC20Capped": [
-        949
-      ],
-      "GroceryCoinBep20": [
-        1307
-      ],
-      "IERC20": [
-        884
-      ],
-      "IERC20Metadata": [
-        974
-      ],
-      "Ownable": [
-        112
-      ],
-      "Pausable": [
-        220
-      ]
+      "Context": [996],
+      "ERC20": [806],
+      "ERC20Capped": [949],
+      "GroceryCoinBep20": [1307],
+      "IERC20": [884],
+      "IERC20Metadata": [974],
+      "Ownable": [112],
+      "Pausable": [220]
     },
     "id": 1308,
     "license": "MIT",
@@ -13092,15 +13076,7 @@
     "nodes": [
       {
         "id": 1203,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.4",
-          ".22",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.4", ".22", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "67:32:9"
       },
@@ -13147,9 +13123,7 @@
             "baseName": {
               "id": 1207,
               "name": "ERC20Capped",
-              "nameLocations": [
-                "313:11:9"
-              ],
+              "nameLocations": ["313:11:9"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 949,
               "src": "313:11:9"
@@ -13162,9 +13136,7 @@
             "baseName": {
               "id": 1209,
               "name": "Pausable",
-              "nameLocations": [
-                "326:8:9"
-              ],
+              "nameLocations": ["326:8:9"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 220,
               "src": "326:8:9"
@@ -13177,9 +13149,7 @@
             "baseName": {
               "id": 1211,
               "name": "Ownable",
-              "nameLocations": [
-                "336:7:9"
-              ],
+              "nameLocations": ["336:7:9"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 112,
               "src": "336:7:9"
@@ -13194,16 +13164,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1307,
-        "linearizedBaseContracts": [
-          1307,
-          112,
-          220,
-          949,
-          806,
-          974,
-          884,
-          996
-        ],
+        "linearizedBaseContracts": [1307, 112, 220, 949, 806, 974, 884, 996],
         "name": "GroceryCoinBep20",
         "nameLocation": "293:16:9",
         "nodeType": "ContractDefinition",
@@ -13386,9 +13347,7 @@
                 "modifierName": {
                   "id": 1222,
                   "name": "ERC20",
-                  "nameLocations": [
-                    "428:5:9"
-                  ],
+                  "nameLocations": ["428:5:9"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 806,
                   "src": "428:5:9"
@@ -13416,9 +13375,7 @@
                 "modifierName": {
                   "id": 1226,
                   "name": "ERC20Capped",
-                  "nameLocations": [
-                    "469:11:9"
-                  ],
+                  "nameLocations": ["469:11:9"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 949,
                   "src": "469:11:9"
@@ -13511,9 +13468,7 @@
                       "id": 1238,
                       "name": "_mint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        948
-                      ],
+                      "overloadedDeclarations": [948],
                       "referencedDeclaration": 948,
                       "src": "569:5:9",
                       "typeDescriptions": {
@@ -13554,9 +13509,7 @@
                 "modifierName": {
                   "id": 1235,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "549:9:9"
-                  ],
+                  "nameLocations": ["549:9:9"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "549:9:9"
@@ -14043,9 +13996,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              794
-            ],
+            "baseFunctions": [794],
             "body": {
               "id": 1305,
               "nodeType": "Block",
@@ -14233,10 +14184,7 @@
                       "id": 1298,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1604:7:9",
                       "typeDescriptions": {

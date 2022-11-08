@@ -43,10 +43,9 @@ export const Search = () => {
           onKeyDown={handleInput}
           onChange={(e) => setSearchTerm(e.target.value)}
           type='text'
-          placeholder='Search'
+          placeholder='Search for items...'
         />
       </form>
     </>
   );
 };
-

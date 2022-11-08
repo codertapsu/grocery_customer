@@ -209,7 +209,7 @@ export const ProductTab = () => {
                   <div className='product-rate d-inline-block'>
                     <div className='product-rating' style={{ width: '90%' }}></div>
                   </div>
-                  <span className='font-small ml-5 text-muted'> (32 reviews)</span>
+                  <span className='font-small text-muted ml-5'> (32 reviews)</span>
                 </div>
               </div>
             </div>

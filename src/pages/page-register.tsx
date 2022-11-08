@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {Layout} from '@components/layout/layout';
+import { Layout } from '@components/layout/layout';
 
 function Login() {
   return (
@@ -19,10 +19,7 @@ function Login() {
                         <div className='heading_s1'>
                           <h1 className='mb-5'>Login</h1>
                           <p className='mb-30'>
-                            Don&lsquo;t have an account?{' '}
-                            <Link href='/page-register'>
-                              <a>Create here</a>
-                            </Link>
+                            Don&lsquo;t have an account? <Link href='/page-register'>Create here</Link>
                           </p>
                         </div>
                         <form method='post'>

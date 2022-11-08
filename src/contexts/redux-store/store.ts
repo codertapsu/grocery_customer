@@ -9,4 +9,3 @@ export const store = configureStore({
   middleware: [thunk],
   devTools: process.env.NODE_ENV !== 'production',
 });
-

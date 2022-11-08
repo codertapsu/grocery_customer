@@ -20,51 +20,41 @@ export const BlogSidebar = () => {
           <ul>
             <li>
               <Link href='/products'>
-                <a>
-                  {' '}
-                  <img src='/assets/imgs/theme/icons/category-1.svg' alt='' />
-                  Milks & Dairies
-                </a>
+                {' '}
+                <img src='/assets/imgs/theme/icons/category-1.svg' alt='' />
+                Milks & Dairies
               </Link>
               <span className='count'>30</span>
             </li>
             <li>
               <Link href='/products'>
-                <a>
-                  {' '}
-                  <img src='/assets/imgs/theme/icons/category-2.svg' alt='' />
-                  Clothing
-                </a>
+                {' '}
+                <img src='/assets/imgs/theme/icons/category-2.svg' alt='' />
+                Clothing
               </Link>
               <span className='count'>35</span>
             </li>
             <li>
               <Link href='/products'>
-                <a>
-                  {' '}
-                  <img src='/assets/imgs/theme/icons/category-3.svg' alt='' />
-                  Pet Foods{' '}
-                </a>
+                {' '}
+                <img src='/assets/imgs/theme/icons/category-3.svg' alt='' />
+                Pet Foods{' '}
               </Link>
               <span className='count'>42</span>
             </li>
             <li>
               <Link href='/products'>
-                <a>
-                  {' '}
-                  <img src='/assets/imgs/theme/icons/category-4.svg' alt='' />
-                  Baking material
-                </a>
+                {' '}
+                <img src='/assets/imgs/theme/icons/category-4.svg' alt='' />
+                Baking material
               </Link>
               <span className='count'>68</span>
             </li>
             <li>
               <Link href='/products'>
-                <a>
-                  {' '}
-                  <img src='/assets/imgs/theme/icons/category-5.svg' alt='' />
-                  Fresh Fruit
-                </a>
+                {' '}
+                <img src='/assets/imgs/theme/icons/category-5.svg' alt='' />
+                Fresh Fruit
               </Link>
               <span className='count'>87</span>
             </li>
@@ -79,9 +69,7 @@ export const BlogSidebar = () => {
             </div>
             <div className='content pt-10'>
               <h5>
-                <Link href='/shop-product-detail'>
-                  <a>Chen Cardigan</a>
-                </Link>
+                <Link href='/shop-product-detail'>Chen Cardigan</Link>
               </h5>
               <p className='price mb-0 mt-5'>$99.50</p>
               <div className='product-rate'>
@@ -95,9 +83,7 @@ export const BlogSidebar = () => {
             </div>
             <div className='content pt-10'>
               <h6>
-                <Link href='/products'>
-                  <a>Chen Sweater</a>
-                </Link>
+                <Link href='/products'>Chen Sweater</Link>
               </h6>
               <p className='price mb-0 mt-5'>$89.50</p>
               <div className='product-rate'>
@@ -111,9 +97,7 @@ export const BlogSidebar = () => {
             </div>
             <div className='content pt-10'>
               <h6>
-                <Link href='/products'>
-                  <a>Colorful Jacket</a>
-                </Link>
+                <Link href='/products'>Colorful Jacket</Link>
               </h6>
               <p className='price mb-0 mt-5'>$25</p>
               <div className='product-rate'>
@@ -127,9 +111,7 @@ export const BlogSidebar = () => {
             </div>
             <div className='content pt-10'>
               <h6>
-                <Link href='/products'>
-                  <a>Lorem, ipsum</a>
-                </Link>
+                <Link href='/products'>Lorem, ipsum</Link>
               </h6>
               <p className='price mb-0 mt-5'>$25</p>
               <div className='product-rate'>
@@ -144,44 +126,32 @@ export const BlogSidebar = () => {
             <ul className='insta-feed'>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-1.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-1.jpg' alt='' />
                 </Link>
               </li>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-2.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-2.jpg' alt='' />
                 </Link>
               </li>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-3.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-3.jpg' alt='' />
                 </Link>
               </li>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-4.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-4.jpg' alt='' />
                 </Link>
               </li>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-5.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-5.jpg' alt='' />
                 </Link>
               </li>
               <li>
                 <Link href='#'>
-                  <a>
-                    <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-6.jpg' alt='' />
-                  </a>
+                  <img className='border-radius-5' src='/assets/imgs/shop/thumbnail-6.jpg' alt='' />
                 </Link>
               </li>
             </ul>
@@ -193,44 +163,32 @@ export const BlogSidebar = () => {
           <ul className='tags-list'>
             <li className='hover-up'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Cabbage
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Cabbage
               </Link>
             </li>
             <li className='hover-up'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Broccoli
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Broccoli
               </Link>
             </li>
             <li className='hover-up'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Smoothie
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Smoothie
               </Link>
             </li>
             <li className='hover-up'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Fruit
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Fruit
               </Link>
             </li>
             <li className='hover-up mr-0'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Salad
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Salad
               </Link>
             </li>
             <li className='hover-up mr-0'>
               <Link href='/blog-category-grid'>
-                <a>
-                  <i className='fi-rs-cross mr-10'></i>Appetizer
-                </a>
+                <i className='fi-rs-cross mr-10'></i>Appetizer
               </Link>
             </li>
           </ul>
@@ -251,4 +209,3 @@ export const BlogSidebar = () => {
     </>
   );
 };
-

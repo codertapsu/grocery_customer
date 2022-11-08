@@ -69,9 +69,9 @@ const CreditCards: NextPage = () => {
     cvv: { required: false },
   };
 
-  const onCreatedPaymentMethod = (paymentMethod: PaymentMethod) => {
+  const onCreatedPaymentMethod = (paymentMethodId: string) => {
     httpClient
-      .post('/credit-cards', { paymentMethodId: paymentMethod.id })
+      .post('/credit-cards', { paymentMethodId })
       .then((res) => {
         console.log(res);
       })
@@ -201,9 +201,7 @@ const CreditCards: NextPage = () => {
                   </form> */}
                 </Elements>
               </div>
-              <div className='col-lg-5'>
-                <CreditCard />
-              </div>
+              <div className='col-lg-5'>{/* <CreditCard /> */}</div>
             </div>
           </div>
         </div>

@@ -60,32 +60,32 @@ const Home: NextPage<Props> = (props) => {
         </section>
 
         <section className='popular-categories section-padding'>
-          <div data-wow-delay='0' className='wow animate__animated animate__fadeIn container'>
-            <div className='section-title'>
+          <div className='container'>
+            <div className='section-title wow animate__animated animate__fadeIn'>
               <div className='title'>
                 <h3>Featured Categories</h3>
-                <ul className='list-inline nav nav-tabs links'>
-                  <li className='list-inline-item nav-item'>
-                    <Link href='/products'>
-                      <a className='nav-link'>Cake & Milk</a>
-                    </Link>
-                  </li>
-                  <li className='list-inline-item nav-item'>
-                    <Link href='/products'>
-                      <a className='nav-link'>Coffes & Teas</a>
-                    </Link>
-                  </li>
-                  <li className='list-inline-item nav-item'>
-                    <Link href='/products'>
-                      <a className='nav-link active'>Pet Foods</a>
-                    </Link>
-                  </li>
-                  <li className='list-inline-item nav-item'>
-                    <Link href='/products'>
-                      <a className='nav-link'>Vegetables</a>
-                    </Link>
-                  </li>
-                </ul>
+                {/* <ul className='list-inline nav nav-tabs links'>
+              <li className='list-inline-item nav-item'>
+                <Link href='/products'>
+                  <a className='nav-link'>Cake & Milk</a>
+                </Link>
+              </li>
+              <li className='list-inline-item nav-item'>
+                <Link href='/products'>
+                  <a className='nav-link'>Coffes & Teas</a>
+                </Link>
+              </li>
+              <li className='list-inline-item nav-item'>
+                <Link href='/products'>
+                  <a className='nav-link active'>Pet Foods</a>
+                </Link>
+              </li>
+              <li className='list-inline-item nav-item'>
+                <Link href='/products'>
+                  <a className='nav-link'>Vegetables</a>
+                </Link>
+              </li>
+            </ul> */}
               </div>
             </div>
             <div className='carausel-10-columns-cover position-relative'>
@@ -114,33 +114,16 @@ const Home: NextPage<Props> = (props) => {
 
         <section className='section-padding pb-5'>
           <div className='container'>
-            <FetchTabSlider
-              featured={props.featuredProducts}
-              trending={props.trendingProducts}
-              newArrival={props.newArrivalProducts}
-            />
+            <FetchTabSlider />
           </div>
         </section>
-        {/* <section className='section-padding pb-5'>
-          <div className='container'>
-            <FetchSlider />
-          </div>
-        </section> */}
-        {/* <section className='section-padding pb-5'>
-          <div className='container'>
-            <FeatchTab />
-          </div>
-        </section> */}
 
         <section className='section-padding pb-5'>
           <div className='container'>
             <div className='section-title wow animate__animated animate__fadeIn' data-wow-delay='0'>
               <h3 className=''>Deals Of The Day</h3>
-              <Link href='/products'>
-                <a className='show-all'>
-                  All Deals
-                  <i className='fi-rs-angle-right'></i>
-                </a>
+              <Link href='/products' className='show-all'>
+                All Deals<i className='fi-rs-angle-right'></i>
               </Link>
             </div>
             <FeatchDeals />
@@ -148,8 +131,6 @@ const Home: NextPage<Props> = (props) => {
         </section>
 
         <Bottom />
-
-        <QuickView />
       </Layout>
     </>
   );

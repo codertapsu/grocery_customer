@@ -1,7 +1,7 @@
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useSelector } from 'react-redux';
 
-import Image from 'next/future/image';
+import NextImage from 'next/image';
 import Link from 'next/link';
 
 import { StoreState, useReduxStore } from '@contexts/redux-store';
@@ -37,7 +37,7 @@ export const CartSidebar = () => {
               <li key={i}>
                 <div className='d-flex'>
                   <div className='flex-grow-1'>
-                    <Image
+                    <NextImage
                       src={item.image}
                       width='0'
                       height='0'
@@ -82,7 +82,7 @@ export const CartSidebar = () => {
             Clear all
           </button>
         )}
-        <Link href='/cart'>
+        <Link href='/cart' legacyBehavior>
           <div className='cart-popup-total'>
             <span>Continue</span>
             <div className='amount'>Total : {price()}</div>

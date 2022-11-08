@@ -12,7 +12,6 @@ import { VendorFilter } from '@components/ecommerce/Filter/VendorFilter';
 import { Pagination } from '@components/ecommerce/Pagination';
 import { QuickView } from '@components/ecommerce/QuickView';
 import { SingleProductList } from '@components/ecommerce/SingleProductList';
-import { WishlistModal } from '@components/ecommerce/WishlistModal';
 import { Breadcrumb2 } from '@components/layout/Breadcrumb2';
 import { Layout } from '@components/layout/layout';
 import { StoreState, useReduxStore } from '@contexts/redux-store';
@@ -214,10 +213,8 @@ const ProductsList = () => {
             </div>
           </div>
         </section>
-        <WishlistModal />
         {/* <CompareModal /> */}
         {/* <CartSidebar /> */}
-        <QuickView />
         {/* <div className="container">
                     <div className="row">
                         <div className="col-xl-6">

@@ -22,7 +22,11 @@ export const FeatchDeals = () => {
     <>
       <div className='row'>
         {deals.slice(0, 4).map((product, i) => (
-          <div className='col-xl-3 col-lg-4 col-md-6' key={i}>
+          <div
+            key={i}
+            data-wow-delay={`${100 * (i + 1)}ms`}
+            className='col-xl-3 col-lg-4 col-md-6 wow animate__animated animate__fadeInUp'
+          >
             <Deals1 product={product} />
           </div>
         ))}

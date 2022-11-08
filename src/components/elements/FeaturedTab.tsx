@@ -9,7 +9,7 @@ export const FeaturedTab = ({ products }) => {
         <div
           key={i}
           data-wow-delay={`${100 * (i + 1)}ms`}
-          className='col-lg-1-5 col-md-4 col-12 col-sm-6 wow animate__animated animate__fadeIn'
+          className='col-lg-1-5 col-md-4 col-12 col-sm-6 wow animate__animated animate__fadeInUp'
         >
           <SingleProduct product={product} />
         </div>

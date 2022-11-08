@@ -150,35 +150,29 @@ export const BlogGrid = ({ show, wide }: Props) => {
         <article
           className={
             wide
-              ? 'col-xl-3 col-lg-4 col-md-6 text-center hover-up mb-30 animated'
-              : 'col-xl-4 col-lg-6 col-md-6 text-center hover-up mb-30 animated'
+              ? 'col-xl-3 col-lg-4 col-md-6 hover-up mb-30 animated text-center'
+              : 'col-xl-4 col-lg-6 col-md-6 hover-up mb-30 animated text-center'
           }
           key={i}
         >
           <div className='post-thumb'>
             <Link href='/blog-post-right'>
-              <a>
-                <img className='border-radius-15' src={`/assets/imgs/blog/${item.img}`} alt='' />
-              </a>
+              <img className='border-radius-15' src={`/assets/imgs/blog/${item.img}`} alt='' />
             </Link>
             <div className='entry-meta'>
-              <Link href='/blog-category-grid'>
-                <a className='entry-meta meta-2'>
-                  <i className='fi-rs-heart'></i>
-                </a>
+              <Link href='/blog-category-grid' className='entry-meta meta-2'>
+                <i className='fi-rs-heart'></i>
               </Link>
             </div>
           </div>
           <div className='entry-content-2'>
-            <h6 className='mb-10 font-sm'>
-              <Link href='/blog-category-grid'>
-                <a className='entry-meta text-muted'>{item.category}</a>
+            <h6 className='font-sm mb-10'>
+              <Link href='/blog-category-grid' className='entry-meta text-muted'>
+                {item.category}
               </Link>
             </h6>
             <h4 className='post-title mb-15'>
-              <Link href='/blog-post-right'>
-                <a>{item.title}</a>
-              </Link>
+              <Link href='/blog-post-right'>{item.title}</Link>
             </h4>
             <div className='entry-meta font-xs color-grey mt-10 pb-10'>
               <div>
@@ -193,4 +187,3 @@ export const BlogGrid = ({ show, wide }: Props) => {
     </>
   );
 };
-

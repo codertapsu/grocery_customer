@@ -341,7 +341,7 @@ export class NumberFormatter {
   // Call 'formatTo' with proper arguments.
   to(input) {
     console.log(this);
-    
+
     return passAll(this._options, formatTo, input);
   }
 

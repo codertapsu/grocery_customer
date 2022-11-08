@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
-import { fingerprint } from '@helpers/fingerprint';
+import { getFingerprint } from '@helpers/fingerprint';
 import { isProduction } from '@configs';
 import { AuthResponse } from '@models/auth-response.model';
 
@@ -23,7 +23,7 @@ export class HttpClient {
     });
     this._axiosInstance.interceptors.request.use(async (config) => {
       // config.headers.Authorization = `Bearer ${Cookies.get('token-access')}`;
-      config.headers.fingerprint = await fingerprint();
+      config.headers.fingerprint = await getFingerprint();
 
       return config;
     });

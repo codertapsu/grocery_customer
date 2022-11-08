@@ -24,13 +24,9 @@ const nextConfig = {
     API_URL: process.env.API_URL,
   },
   images: {
-    domains: ['raw.githubusercontent.com'],
+    domains: ['raw.githubusercontent.com', 'nest.botble.com', 'botble.b-cdn.net'],
   },
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
+  experimental: {},
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
     // Important: return the modified config
     config.plugins.push(

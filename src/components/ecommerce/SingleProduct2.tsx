@@ -1,11 +1,20 @@
+import { FC } from 'react';
 import { toast } from 'react-toastify';
 
+import NextImage from 'next/image';
 import Link from 'next/link';
 
+import { useQuickView } from '@contexts/quick-view';
 import { useReduxStore } from '@contexts/redux-store';
+import { Product } from '@models/product.model';
 
-export const SingleProduct2 = ({ product }) => {
-  const { addToCart, addToCompare, addToWishlist, openQuickView } = useReduxStore();
+interface Props {
+  product: Product;
+}
+
+export const SingleProduct2: FC<Props> = ({ product }) => {
+  const { open } = useQuickView();
+  const { addToCart, addToCompare, addToWishlist } = useReduxStore();
 
   const handleCart = (product) => {
     addToCart(product);
@@ -21,17 +30,33 @@ export const SingleProduct2 = ({ product }) => {
     addToWishlist(product);
     toast('Added to Wishlist !');
   };
+
+  const placeholderImg = '/assets/imgs/product-holder.jpg';
+
   return (
     <>
       <div className='product-cart-wrap mb-30'>
         <div className='product-img-action-wrap'>
           <div className='product-img product-img-zoom'>
             <Link href='/products/[slug]' as={`/products/${product.slug}`}>
-              <a>
-                Holder
-                {/* <img className='default-img' src={product.medias[0].path} alt='' />
-                <img className='hover-img' src={product.medias[1].path} alt='' /> */}
-              </a>
+              <NextImage
+                width='0'
+                height='0'
+                sizes='100vw'
+                style={{ width: '100%', height: 'auto' }}
+                className='default-img'
+                src={(product.medias?.length && product.medias[0]?.path) || placeholderImg}
+                alt=''
+              />
+              <NextImage
+                width='0'
+                height='0'
+                sizes='100vw'
+                style={{ width: '100%', height: 'auto' }}
+                className='hover-img'
+                src={(product.medias?.length && product.medias[1]?.path) || placeholderImg}
+                alt=''
+              />
             </Link>
           </div>
           <div className='product-action-1'>
@@ -40,7 +65,7 @@ export const SingleProduct2 = ({ product }) => {
               className='action-btn hover-up'
               data-bs-toggle='modal'
               // data-bs-target="#quickViewModal"
-              onClick={(e) => openQuickView(product)}
+              onClick={(e) => open(product)}
             >
               <i className='fi-rs-eye'></i>
             </a>
@@ -53,22 +78,20 @@ export const SingleProduct2 = ({ product }) => {
           </div>
 
           <div className='product-badges product-badges-position product-badges-mrg'>
-            {product.trending && <span className='hot'>Hot</span>}
-            {product.created && <span className='new'>New</span>}
-            {product.totalSell > 100 && <span className='best'>Best Sell</span>}
-            {product.discount.isActive && <span className='sale'>Sale</span>}
-            {product.discount.percentage >= 5 && <span className='hot'>{product.discount.percentage}%</span>}
+            <span className='hot'>Hot</span>
+            <span className='new'>New</span>
+            <span className='best'>Best Sell</span>
+            <span className='sale'>Sale</span>
+            <span className='hot'>{10}%</span>
           </div>
         </div>
         <div className='product-content-wrap'>
           <div className='product-category'>
-            <Link href='/products'>
-              <a>{product.brand}</a>
-            </Link>
+            <Link href='/products'>{'product.brand'}</Link>
           </div>
           <h2>
             <Link href='/products/[slug]' as={`/products/${product.slug}`}>
-              <a>{product.title}</a>
+              {product.name}
             </Link>
           </h2>
 
@@ -77,8 +100,8 @@ export const SingleProduct2 = ({ product }) => {
           </div>
 
           <div className='product-price mt-10'>
-            <span>${product.price} </span>
-            <span className='old-price'>{product.oldPrice && `$ ${product.oldPrice}`}</span>
+            <span>${product.promotionalPrice} </span>
+            <span className='old-price'>{product.regularPrice && `$ ${product.regularPrice}`}</span>
           </div>
           <div className='sold mt-15 mb-15'>
             <div className='progress mb-5'>

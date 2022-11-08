@@ -13,7 +13,6 @@ export interface AuthVerifyPhoneResponse {
   };
 }
 
-
 // LoginPhone {
 //     "message": "Verification is sent!!",
 //     "phonenumber": "79031671617",

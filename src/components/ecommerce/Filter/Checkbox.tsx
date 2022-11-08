@@ -1,4 +1,4 @@
-interface Props  {
+interface Props {
   handleCheckBox: (e) => void;
   filters: any[];
   heading?: string;
@@ -28,4 +28,3 @@ export const CheckBox = ({ filters, handleCheckBox }: Props) => {
     </>
   );
 };
-

@@ -35,10 +35,8 @@ function Index2() {
                         home
                       </span>
                     </h2>
-                    <Link href='/shop-grid-right'>
-                      <a className='btn btn-xs'>
-                        Shop Now <i className='fi-rs-arrow-small-right'></i>
-                      </a>
+                    <Link href='/shop-grid-right' className='btn btn-xs'>
+                      Shop Now<i className='fi-rs-arrow-small-right'></i>
                     </Link>
                   </div>
                 </div>
@@ -65,14 +63,14 @@ function Index2() {
           </div>
         </section>
         {/* <section className="banner-2 section-padding pb-0">
-                    <div className="container">
-                        <Banner2 />
-                    </div>
-                </section> */}
+                  <div className="container">
+                      <Banner2 />
+                  </div>
+              </section> */}
 
         <section className='section-padding pb-5'>
           <div className='container'>
-            <FetchTabSlider trending={[]} featured={[]} newArrival={[]} />
+            <FetchTabSlider />
           </div>
         </section>
 
@@ -80,11 +78,8 @@ function Index2() {
           <div className='container'>
             <div className='section-title wow animate__animated animate__fadeIn' data-wow-delay='0'>
               <h3 className=''>Deals Of The Day</h3>
-              <Link href='/shop-grid-right'>
-                <a className='show-all'>
-                  All Deals
-                  <i className='fi-rs-angle-right'></i>
-                </a>
+              <Link href='/shop-grid-right' className='show-all'>
+                All Deals<i className='fi-rs-angle-right'></i>
               </Link>
             </div>
             <FeatchDeals />
@@ -96,11 +91,8 @@ function Index2() {
             <div className='section-title'>
               <div className='title'>
                 <h3>Shop by Categories</h3>
-                <Link href='/shop-grid-right'>
-                  <a className='show-all'>
-                    All Categories
-                    <i className='fi-rs-angle-right'></i>
-                  </a>
+                <Link href='/shop-grid-right' className='show-all'>
+                  All Categories<i className='fi-rs-angle-right'></i>
                 </Link>
               </div>
             </div>

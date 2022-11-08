@@ -48,24 +48,16 @@ export const Header = ({ toggleClick }: Props) => {
                 <div className='header-info'>
                   <ul>
                     <li>
-                      <Link href='/page-about'>
-                        <a>About Us</a>
-                      </Link>
+                      <Link href='/page-about'>About Us</Link>
                     </li>
                     <li>
-                      <Link href='/page-account'>
-                        <a>My Account</a>
-                      </Link>
+                      <Link href='/page-account'>My Account</Link>
                     </li>
                     <li>
-                      <Link href='/shop-wishlist'>
-                        <a>Wishlist</a>
-                      </Link>
+                      <Link href='/shop-wishlist'>Wishlist</Link>
                     </li>
                     <li>
-                      <Link href='/page-account'>
-                        <a>Order Tracking</a>
-                      </Link>
+                      <Link href='/page-account'>Order Tracking</Link>
                     </li>
                   </ul>
                 </div>
@@ -76,9 +68,7 @@ export const Header = ({ toggleClick }: Props) => {
                     <ul>
                       <li>
                         Get great devices up to 50% off
-                        <Link href='/shop-grid-right'>
-                          <a> View details</a>
-                        </Link>
+                        <Link href='/shop-grid-right'>View details</Link>
                       </li>
                     </ul>
                   </div>
@@ -91,36 +81,26 @@ export const Header = ({ toggleClick }: Props) => {
                       Need help? Call Us: <strong className='text-brand'> + 1800 900</strong>
                     </li>
                     <li>
-                      <Link href='/#'>
-                        <a className='language-dropdown-active'>
-                          <i className='fi-rs-world'></i>
-                          English
-                          <i className='fi-rs-angle-small-down'></i>
-                        </a>
+                      <Link href='/#' className='language-dropdown-active'>
+                        <i className='fi-rs-world'></i>English<i className='fi-rs-angle-small-down'></i>
                       </Link>
                       <ul className='language-dropdown'>
                         <li>
                           <Link href='/#'>
-                            <a>
-                              <img src='/assets/imgs/theme/flag-fr.png' alt='' />
-                              Français
-                            </a>
+                            <img src='/assets/imgs/theme/flag-fr.png' alt='' />
+                            Français
                           </Link>
                         </li>
                         <li>
                           <Link href='/#'>
-                            <a>
-                              <img src='/assets/imgs/theme/flag-dt.png' alt='' />
-                              Deutsch
-                            </a>
+                            <img src='/assets/imgs/theme/flag-dt.png' alt='' />
+                            Deutsch
                           </Link>
                         </li>
                         <li>
                           <Link href='/#'>
-                            <a>
-                              <img src='/assets/imgs/theme/flag-ru.png' alt='' />
-                              Pусский
-                            </a>
+                            <img src='/assets/imgs/theme/flag-ru.png' alt='' />
+                            Pусский
                           </Link>
                         </li>
                       </ul>
@@ -161,9 +141,7 @@ export const Header = ({ toggleClick }: Props) => {
             <div className='header-wrap'>
               <div className='logo logo-width-1'>
                 <Link href='/'>
-                  <a>
-                    <img src='/assets/imgs/theme/logo.svg' alt='logo' />
-                  </a>
+                  <img src='/assets/imgs/theme/logo.svg' alt='logo' />
                 </Link>
               </div>
               <div className='header-right'>
@@ -173,122 +151,90 @@ export const Header = ({ toggleClick }: Props) => {
                 <div className='header-action-right'>
                   <div className='header-action-2'>
                     {/* <div className='search-location'>
-                      <form action='#'>
-                        <select className='select-active'>
-                          <option>Your Location</option>
-                          <option>Alabama</option>
-                          <option>Alaska</option>
-                          <option>Arizona</option>
-                          <option>Delaware</option>
-                          <option>Florida</option>
-                          <option>Georgia</option>
-                          <option>Hawaii</option>
-                          <option>Indiana</option>
-                          <option>Maryland</option>
-                          <option>Nevada</option>
-                          <option>New Jersey</option>
-                          <option>New Mexico</option>
-                          <option>New York</option>
-                        </select>
-                      </form>
-                    </div> */}
+                    <form action='#'>
+                      <select className='select-active'>
+                        <option>Your Location</option>
+                        <option>Alabama</option>
+                        <option>Alaska</option>
+                        <option>Arizona</option>
+                        <option>Delaware</option>
+                        <option>Florida</option>
+                        <option>Georgia</option>
+                        <option>Hawaii</option>
+                        <option>Indiana</option>
+                        <option>Maryland</option>
+                        <option>Nevada</option>
+                        <option>New Jersey</option>
+                        <option>New Mexico</option>
+                        <option>New York</option>
+                      </select>
+                    </form>
+                  </div> */}
                     <div className='header-action-icon-2'>
                       <Link href='/shop-compare'>
-                        <a>
-                          <img className='svgInject' alt='Evara' src='/assets/imgs/theme/icons/icon-compare.svg' />
-                          <span className='pro-count blue'>{totalCompareItems}</span>
-                        </a>
+                        <img className='svgInject' alt='Evara' src='/assets/imgs/theme/icons/icon-compare.svg' />
+                        <span className='pro-count blue'>{totalCompareItems}</span>
                       </Link>
                       <Link href='/shop-compare'>
-                        <a>
-                          <span className='lable ml-0'>Compare</span>
-                        </a>
+                        <span className='lable ml-0'>Compare</span>
                       </Link>
                     </div>
                     <div className='header-action-icon-2'>
                       <Link href='/shop-wishlist'>
-                        <a>
-                          <img className='svgInject' alt='Evara' src='/assets/imgs/theme/icons/icon-heart.svg' />
-                          <span className='pro-count blue'>{totalWishlistItems}</span>
-                        </a>
+                        <img className='svgInject' alt='Evara' src='/assets/imgs/theme/icons/icon-heart.svg' />
+                        <span className='pro-count blue'>{totalWishlistItems}</span>
                       </Link>
-                      <Link href='/shop-wishlist'>
+                      <Link href='/shop-wishlist' legacyBehavior>
                         <span className='lable'>Wishlist</span>
                       </Link>
                     </div>
                     <div className='header-action-icon-2'>
-                      <Link href='/shop-cart'>
-                        <a className='mini-cart-icon'>
-                          <img alt='Evara' src='/assets/imgs/theme/icons/icon-cart.svg' />
-                          <span className='pro-count blue'>{totalCartItems}</span>
-                        </a>
+                      <Link href='/shop-cart' className='mini-cart-icon'>
+                        <img alt='Evara' src='/assets/imgs/theme/icons/icon-cart.svg' />
+                        <span className='pro-count blue'>{totalCartItems}</span>
                       </Link>
                       <Link href='/shop-cart'>
-                        <a>
-                          <span className='lable'>Cart</span>
-                        </a>
+                        <span className='lable'>Cart</span>
                       </Link>
                     </div>
 
                     <div className='header-action-icon-2'>
                       <Link href='/page-account'>
-                        <a>
-                          <img className='svgInject' alt='Nest' src='/assets/imgs/theme/icons/icon-user.svg' />
-                        </a>
+                        <img className='svgInject' alt='Nest' src='/assets/imgs/theme/icons/icon-user.svg' />
                       </Link>
                       <Link href='/page-account'>
-                        <a>
-                          <span className='lable ml-0'>Account</span>
-                        </a>
+                        <span className='lable ml-0'>Account</span>
                       </Link>
                       <div className='cart-dropdown-wrap cart-dropdown-hm2 account-dropdown'>
                         <ul>
                           <li>
                             <Link href='/page-account'>
-                              <a>
-                                <i className='fi fi-rs-user mr-10'></i>
-                                My Account
-                              </a>
+                              <i className='fi fi-rs-user mr-10'></i>My Account
                             </Link>
                           </li>
                           <li>
                             <Link href='/page-account'>
-                              <a>
-                                <i className='fi fi-rs-location-alt mr-10'></i>
-                                Order Tracking
-                              </a>
+                              <i className='fi fi-rs-location-alt mr-10'></i>Order Tracking
                             </Link>
                           </li>
                           <li>
                             <Link href='/page-account'>
-                              <a>
-                                <i className='fi fi-rs-label mr-10'></i>
-                                My Voucher
-                              </a>
+                              <i className='fi fi-rs-label mr-10'></i>My Voucher
                             </Link>
                           </li>
                           <li>
                             <Link href='/shop-wishlist'>
-                              <a>
-                                <i className='fi fi-rs-heart mr-10'></i>
-                                My Wishlist
-                              </a>
+                              <i className='fi fi-rs-heart mr-10'></i>My Wishlist
                             </Link>
                           </li>
                           <li>
                             <Link href='/page-account'>
-                              <a>
-                                <i className='fi fi-rs-settings-sliders mr-10'></i>
-                                Setting
-                              </a>
+                              <i className='fi fi-rs-settings-sliders mr-10'></i>Setting
                             </Link>
                           </li>
                           <li>
                             <Link href='/page-login'>
-                              <a>
-                                <i className='fi fi-rs-sign-out mr-10'></i>
-                                Sign out
-                              </a>
+                              <i className='fi fi-rs-sign-out mr-10'></i>Sign out
                             </Link>
                           </li>
                         </ul>
@@ -311,9 +257,7 @@ export const Header = ({ toggleClick }: Props) => {
             <div className='header-wrap header-space-between position-relative'>
               <div className='logo logo-width-1 d-block d-lg-none'>
                 <Link href='/'>
-                  <a>
-                    <img src='/assets/imgs/theme/logo.svg' alt='logo' />
-                  </a>
+                  <img src='/assets/imgs/theme/logo.svg' alt='logo' />
                 </Link>
               </div>
               <div className='header-nav d-none d-lg-flex'>
@@ -340,40 +284,32 @@ export const Header = ({ toggleClick }: Props) => {
                         <ul>
                           <li>
                             <Link href='/products'>
-                              <a>
-                                {' '}
-                                <img src='/assets/imgs/theme/icons/icon-1.svg' alt='' />
-                                Milks and Dairies
-                              </a>
+                              {' '}
+                              <img src='/assets/imgs/theme/icons/icon-1.svg' alt='' />
+                              Milks and Dairies
                             </Link>
                           </li>
                           <li>
                             <Link href='/products'>
-                              <a>
-                                {' '}
-                                <img src='/assets/imgs/theme/icons/icon-2.svg' alt='' />
-                                Clothing & beauty
-                              </a>
+                              {' '}
+                              <img src='/assets/imgs/theme/icons/icon-2.svg' alt='' />
+                              Clothing & beauty
                             </Link>
                           </li>
                         </ul>
                         <ul className='end'>
                           <li>
                             <Link href='/products'>
-                              <a>
-                                {' '}
-                                <img src='/assets/imgs/theme/icons/icon-3.svg' alt='' />
-                                Wines & Drinks
-                              </a>
+                              {' '}
+                              <img src='/assets/imgs/theme/icons/icon-3.svg' alt='' />
+                              Wines & Drinks
                             </Link>
                           </li>
                           <li>
                             <Link href='/products'>
-                              <a>
-                                {' '}
-                                <img src='/assets/imgs/theme/icons/icon-4.svg' alt='' />
-                                Fresh Seafood
-                              </a>
+                              {' '}
+                              <img src='/assets/imgs/theme/icons/icon-4.svg' alt='' />
+                              Fresh Seafood
                             </Link>
                           </li>
                         </ul>
@@ -389,102 +325,64 @@ export const Header = ({ toggleClick }: Props) => {
                     <ul>
                       <li className='hot-deals'>
                         <img src='/assets/imgs/theme/icons/icon-hot.svg' alt='hot deals' />
-                        <Link href='/products'>
-                          <a>Hot Deals</a>
-                        </Link>
+                        <Link href='/products'>Hot Deals</Link>
                       </li>
                       <li>
-                        <Link href='/'>
-                          <a className='active'>
-                            Home
-                            <i className='fi-rs-angle-down'></i>
-                          </a>
+                        <Link href='/' className='active'>
+                          Home<i className='fi-rs-angle-down'></i>
                         </Link>
                         <ul className='sub-menu'>
                           <li>
-                            <Link href='/'>
-                              <a>Home 1</a>
-                            </Link>
+                            <Link href='/'>Home 1</Link>
                           </li>
                           <li>
-                            <Link href='/index-2'>
-                              <a>Home 2</a>
-                            </Link>
+                            <Link href='/index-2'>Home 2</Link>
                           </li>
                           <li>
-                            <Link href='/index-3'>
-                              <a>Home 3</a>
-                            </Link>
+                            <Link href='/index-3'>Home 3</Link>
                           </li>
                           <li>
-                            <Link href='/index-4'>
-                              <a>Home 4</a>
-                            </Link>
+                            <Link href='/index-4'>Home 4</Link>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <Link href='/page-about'>
-                          <a>About</a>
-                        </Link>
+                        <Link href='/page-about'>About</Link>
                       </li>
                       <li>
                         <Link href='/shop-grid-right'>
-                          <a>
-                            Shop
-                            <i className='fi-rs-angle-down'></i>
-                          </a>
+                          Shop<i className='fi-rs-angle-down'></i>
                         </Link>
                         <ul className='sub-menu'>
                           <li>
-                            <Link href='/shop-grid-right'>
-                              <a>Shop Grid – Right Sidebar</a>
-                            </Link>
+                            <Link href='/shop-grid-right'>Shop Grid – Right Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/products'>
-                              <a>Shop Grid – Left Sidebar</a>
-                            </Link>
+                            <Link href='/products'>Shop Grid – Left Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/shop-list-right'>
-                              <a>Shop List – Right Sidebar</a>
-                            </Link>
+                            <Link href='/shop-list-right'>Shop List – Right Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/shop-list-left'>
-                              <a>Shop List – Left Sidebar</a>
-                            </Link>
+                            <Link href='/shop-list-left'>Shop List – Left Sidebar</Link>
                           </li>
                           <li>
-                            <Link href='/shop-fullwidth'>
-                              <a>Shop - Wide</a>
-                            </Link>
+                            <Link href='/shop-fullwidth'>Shop - Wide</Link>
                           </li>
                           <li>
-                            <Link href='/shop-filter'>
-                              <a>Shop - Filter</a>
-                            </Link>
+                            <Link href='/shop-filter'>Shop - Filter</Link>
                           </li>
                           <li>
-                            <Link href='/shop-wishlist'>
-                              <a>Shop – Wishlist</a>
-                            </Link>
+                            <Link href='/shop-wishlist'>Shop – Wishlist</Link>
                           </li>
                           <li>
-                            <Link href='/shop-cart'>
-                              <a>Shop – Cart</a>
-                            </Link>
+                            <Link href='/shop-cart'>Shop – Cart</Link>
                           </li>
                           <li>
-                            <Link href='/shop-checkout'>
-                              <a>Shop – Checkout</a>
-                            </Link>
+                            <Link href='/shop-checkout'>Shop – Checkout</Link>
                           </li>
                           <li>
-                            <Link href='/shop-compare'>
-                              <a>Shop – Compare</a>
-                            </Link>
+                            <Link href='/shop-compare'>Shop – Compare</Link>
                           </li>
                         </ul>
                       </li>
@@ -495,34 +393,23 @@ export const Header = ({ toggleClick }: Props) => {
                         </a>
                         <ul className='sub-menu'>
                           <li>
-                            <Link href='/vendors'>
-                              <a>Vendors Grid</a>
-                            </Link>
+                            <Link href='/vendors'>Vendors Grid</Link>
                           </li>
                           <li>
-                            <Link href='/vendors-list'>
-                              <a>Vendors List</a>
-                            </Link>
+                            <Link href='/vendors-list'>Vendors List</Link>
                           </li>
                           <li>
-                            <Link href='/vendor-dashboard'>
-                              <a>Vendor Dashboard</a>
-                            </Link>
+                            <Link href='/vendor-dashboard'>Vendor Dashboard</Link>
                           </li>
                           <li>
-                            <Link href='/vendor-guide'>
-                              <a>Vendor Guide</a>
-                            </Link>
+                            <Link href='/vendor-guide'>Vendor Guide</Link>
                           </li>
                         </ul>
                       </li>
 
                       <li className='position-static'>
                         <Link href='/#'>
-                          <a>
-                            Mega menu
-                            <i className='fi-rs-angle-down'></i>
-                          </a>
+                          Mega menu<i className='fi-rs-angle-down'></i>
                         </Link>
                         <ul className='mega-menu'>
                           <li className='sub-mega-menu sub-mega-menu-width-22'>
@@ -631,54 +518,34 @@ export const Header = ({ toggleClick }: Props) => {
                       </li>
                       <li>
                         <Link href='/blog-category-grid'>
-                          <a>
-                            Blog
-                            <i className='fi-rs-angle-down'></i>
-                          </a>
+                          Blog<i className='fi-rs-angle-down'></i>
                         </Link>
                         <ul className='sub-menu'>
                           <li>
-                            <Link href='/blog-category-grid'>
-                              <a>Blog Category Grid</a>
-                            </Link>
+                            <Link href='/blog-category-grid'>Blog Category Grid</Link>
                           </li>
                           <li>
-                            <Link href='/blog-category-list'>
-                              <a>Blog Category List</a>
-                            </Link>
+                            <Link href='/blog-category-list'>Blog Category List</Link>
                           </li>
                           <li>
-                            <Link href='/blog-category-big'>
-                              <a>Blog Category Big</a>
-                            </Link>
+                            <Link href='/blog-category-big'>Blog Category Big</Link>
                           </li>
                           <li>
-                            <Link href='/blog-category-fullwidth'>
-                              <a>Blog Category Wide</a>
-                            </Link>
+                            <Link href='/blog-category-fullwidth'>Blog Category Wide</Link>
                           </li>
                           <li>
                             <Link href='/#'>
-                              <a>
-                                Single Post
-                                <i className='fi-rs-angle-right'></i>
-                              </a>
+                              Single Post<i className='fi-rs-angle-right'></i>
                             </Link>
                             <ul className='level-menu level-menu-modify'>
                               <li>
-                                <Link href='/blog-post-left'>
-                                  <a>Left Sidebar</a>
-                                </Link>
+                                <Link href='/blog-post-left'>Left Sidebar</Link>
                               </li>
                               <li>
-                                <Link href='/blog-post-right'>
-                                  <a>Right Sidebar</a>
-                                </Link>
+                                <Link href='/blog-post-right'>Right Sidebar</Link>
                               </li>
                               <li>
-                                <Link href='/blog-post-fullwidth'>
-                                  <a>No Sidebar</a>
-                                </Link>
+                                <Link href='/blog-post-fullwidth'>No Sidebar</Link>
                               </li>
                             </ul>
                           </li>
@@ -686,58 +553,37 @@ export const Header = ({ toggleClick }: Props) => {
                       </li>
                       <li>
                         <Link href='/#'>
-                          <a>
-                            Pages
-                            <i className='fi-rs-angle-down'></i>
-                          </a>
+                          Pages<i className='fi-rs-angle-down'></i>
                         </Link>
                         <ul className='sub-menu'>
                           <li>
-                            <Link href='/page-about'>
-                              <a>About Us</a>
-                            </Link>
+                            <Link href='/page-about'>About Us</Link>
                           </li>
                           <li>
-                            <Link href='/page-contact'>
-                              <a>Contact</a>
-                            </Link>
+                            <Link href='/page-contact'>Contact</Link>
                           </li>
                           <li>
-                            <Link href='/page-account'>
-                              <a>My Account</a>
-                            </Link>
+                            <Link href='/page-account'>My Account</Link>
                           </li>
                           <li>
-                            <Link href='/page-login-register'>
-                              <a>login/register</a>
-                            </Link>
+                            <Link href='/page-login-register'>login/register</Link>
                           </li>
                           <li>
-                            <Link href='/page-purchase-guide'>
-                              <a>Purchase Guide</a>
-                            </Link>
+                            <Link href='/page-purchase-guide'>Purchase Guide</Link>
                           </li>
                           <li>
-                            <Link href='/page-privacy-policy'>
-                              <a>Privacy Policy</a>
-                            </Link>
+                            <Link href='/page-privacy-policy'>Privacy Policy</Link>
                           </li>
                           <li>
-                            <Link href='/page-terms'>
-                              <a>Terms of Service</a>
-                            </Link>
+                            <Link href='/page-terms'>Terms of Service</Link>
                           </li>
                           <li>
-                            <Link href='/page-404'>
-                              <a>404 Page</a>
-                            </Link>
+                            <Link href='/page-404'>404 Page</Link>
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <Link href='/page-contact'>
-                          <a>Contact</a>
-                        </Link>
+                        <Link href='/page-contact'>Contact</Link>
                       </li>
                     </ul>
                   </nav>
@@ -763,34 +609,26 @@ export const Header = ({ toggleClick }: Props) => {
                 <div className='header-action-2'>
                   <div className='header-action-icon-2'>
                     <Link href='/shop-wishlist'>
-                      <a>
-                        <img alt='Evara' src='/assets/imgs/theme/icons/icon-heart.svg' />
-                        <span className='pro-count white'>{totalWishlistItems}</span>
-                      </a>
+                      <img alt='Evara' src='/assets/imgs/theme/icons/icon-heart.svg' />
+                      <span className='pro-count white'>{totalWishlistItems}</span>
                     </Link>
                   </div>
                   <div className='header-action-icon-2'>
-                    <Link href='/shop-cart'>
-                      <a className='mini-cart-icon'>
-                        <img alt='Evara' src='/assets/imgs/theme/icons/icon-cart.svg' />
-                        <span className='pro-count white'>{totalCartItems}</span>
-                      </a>
+                    <Link href='/shop-cart' className='mini-cart-icon'>
+                      <img alt='Evara' src='/assets/imgs/theme/icons/icon-cart.svg' />
+                      <span className='pro-count white'>{totalCartItems}</span>
                     </Link>
                     <div className='cart-dropdown-wrap cart-dropdown-hm2'>
                       <ul>
                         <li>
                           <div className='shopping-cart-img'>
                             <Link href='/shop-grid-right'>
-                              <a>
-                                <img alt='Evara' src='/assets/imgs/shop/thumbnail-3.jpg' />
-                              </a>
+                              <img alt='Evara' src='/assets/imgs/shop/thumbnail-3.jpg' />
                             </Link>
                           </div>
                           <div className='shopping-cart-title'>
                             <h4>
-                              <Link href='/shop-grid-right'>
-                                <a>Plain Striola Shirts</a>
-                              </Link>
+                              <Link href='/shop-grid-right'>Plain Striola Shirts</Link>
                             </h4>
                             <h3>
                               <span>1 × </span>
@@ -799,25 +637,19 @@ export const Header = ({ toggleClick }: Props) => {
                           </div>
                           <div className='shopping-cart-delete'>
                             <Link href='/#'>
-                              <a>
-                                <i className='fi-rs-cross-small'></i>
-                              </a>
+                              <i className='fi-rs-cross-small'></i>
                             </Link>
                           </div>
                         </li>
                         <li>
                           <div className='shopping-cart-img'>
                             <Link href='/shop-grid-right'>
-                              <a>
-                                <img alt='Evara' src='/assets/imgs/shop/thumbnail-4.jpg' />
-                              </a>
+                              <img alt='Evara' src='/assets/imgs/shop/thumbnail-4.jpg' />
                             </Link>
                           </div>
                           <div className='shopping-cart-title'>
                             <h4>
-                              <Link href='/shop-grid-right'>
-                                <a>Macbook Pro 2022</a>
-                              </Link>
+                              <Link href='/shop-grid-right'>Macbook Pro 2022</Link>
                             </h4>
                             <h3>
                               <span>1 × </span>
@@ -826,9 +658,7 @@ export const Header = ({ toggleClick }: Props) => {
                           </div>
                           <div className='shopping-cart-delete'>
                             <Link href='/#'>
-                              <a>
-                                <i className='fi-rs-cross-small'></i>
-                              </a>
+                              <i className='fi-rs-cross-small'></i>
                             </Link>
                           </div>
                         </li>
@@ -841,12 +671,8 @@ export const Header = ({ toggleClick }: Props) => {
                           </h4>
                         </div>
                         <div className='shopping-cart-button'>
-                          <Link href='/shop-cart'>
-                            <a>View cart</a>
-                          </Link>
-                          <Link href='/shop-checkout'>
-                            <a>Checkout</a>
-                          </Link>
+                          <Link href='/shop-cart'>View cart</Link>
+                          <Link href='/shop-checkout'>Checkout</Link>
                         </div>
                       </div>
                     </div>

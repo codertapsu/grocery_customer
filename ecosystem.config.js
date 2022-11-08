@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'NextJS Apps',
+      name: 'grocery_customer',
       script: 'node_modules/next/dist/bin/next',
       args: 'start -p 3005', //running on port 3005
       cwd: '.',

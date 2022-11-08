@@ -1,5 +1,6 @@
 import React from 'react';
-import Select2 from 'react-select2-wrapper';
+import RSelect from 'react-select';
+// import Select2 from 'react-select2-wrapper';
 
 import type { Item } from './models/options.model';
 
@@ -31,21 +32,33 @@ function formatCountry(country) {
 
 export function Select<T = number>({ placeholder, disabled, multiple, items, value, onChange }: Props<T>) {
   return (
-    <Select2
-      className='form-control select-active'
-      multiple={!!multiple}
-      options={{
-        disabled,
-        placeholder: placeholder || 'Select an option...',
-        // templateResult: formatCountry,
-      }}
-      value={value}
-      data={items || []}
-      onChange={(e) => {
-        if (onChange) {
-          onChange((e.target as HTMLSelectElement).value as T);
-        }
-      }}
-    />
+    <>
+      <RSelect
+        className='basic-single'
+        classNamePrefix='select'
+        isDisabled={disabled}
+        isClearable={true}
+        isMulti={multiple}
+        isSearchable={true}
+        name='color'
+        options={items}
+      />
+    </>
+    // <Select2
+    //   className='form-control select-active'
+    //   multiple={!!multiple}
+    //   options={{
+    //     disabled,
+    //     placeholder: placeholder || 'Select an option...',
+    //     // templateResult: formatCountry,
+    //   }}
+    //   value={value}
+    //   data={items || []}
+    //   onChange={(e) => {
+    //     if (onChange) {
+    //       onChange((e.target as HTMLSelectElement).value as T);
+    //     }
+    //   }}
+    // />
   );
 }

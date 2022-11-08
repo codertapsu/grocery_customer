@@ -9,7 +9,7 @@ export const Intro1 = () => {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={0}
+        spaceBetween={12}
         pagination={true}
         navigation={{
           prevEl: '.custom_prev_i1',
@@ -76,4 +76,3 @@ export const Intro1 = () => {
     </>
   );
 };
-

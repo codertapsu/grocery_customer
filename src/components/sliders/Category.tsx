@@ -1,107 +1,39 @@
-import Image from 'next/future/image';
+import { FC } from 'react';
+
+import NextImage from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import SwiperCore, { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useSWR from 'swr/immutable';
 
 import { useReduxStore } from '@contexts/redux-store';
-
-const bgColors = () => {
-  const colors = [
-    '#fddde4',
-    '#cdebbc',
-    '#d1e8f2',
-    '#cdd4f8',
-    '#f6dbf6',
-    '#fff2e5',
-    '#d77f7a',
-    '#63a2c1',
-    '#f2fce4',
-    '#fffceb',
-    '#ecffec',
-    '#feefea',
-    '#fff3eb',
-    '#fff3ff',
-    '#f2fce4',
-  ];
-
-  return colors[Math.floor(Math.random() * colors.length)];
-};
+import { Category } from '@models/category.model';
 
 SwiperCore.use([Navigation, Autoplay]);
-const data = [
-  {
-    id: 1,
-    title: 'Cake & Milk',
-    slug: 'jeans',
-    img: 'cat-13.png',
-    bg: 'bg-9',
-  },
-  {
-    id: 2,
-    title: 'Oganic Kiwi',
-    slug: 'shoe',
-    img: 'cat-12.png',
-    bg: 'bg-10',
-  },
-  {
-    id: 3,
-    title: 'Peach',
-    slug: 'jacket',
-    img: 'cat-11.png',
-    bg: 'bg-11',
-  },
-  {
-    id: 4,
-    title: 'Red Apple',
-    img: 'cat-9.png',
-    bg: 'bg-12',
-  },
-  {
-    id: 5,
-    title: 'Snack',
-    img: 'cat-3.png',
-    bg: 'bg-13',
-  },
-  {
-    id: 6,
-    title: 'Vegetables',
-    img: 'cat-1.png',
-    bg: 'bg-14',
-  },
-  {
-    id: 7,
-    title: 'Strawberry',
-    img: 'cat-2.png',
-    bg: 'bg-15',
-  },
-  {
-    id: 8,
-    title: 'Black plum',
-    img: 'cat-4.png',
-    bg: 'bg-12',
-  },
-  {
-    id: 9,
-    title: 'Custard apple',
-    img: 'cat-5.png',
-    bg: 'bg-10',
-  },
-  {
-    id: 10,
-    title: 'Coffe & Tea',
-    img: 'cat-14.png',
-    bg: 'bg-12',
-  },
-  {
-    id: 11,
-    title: 'Headphone',
-    img: 'cat-15.png',
-    bg: 'bg-11',
-  },
-];
-export const CategorySlider = () => {
+
+const fetcher = (url) =>
+  fetch(url)
+    .then((r) => r.json())
+    .then((r) =>
+      ((r.data as any[]) || []).map(
+        (item) =>
+          ({
+            id: item.id,
+            image: item.image,
+            thumbnail: item.thumbnail,
+            name: item.name,
+            slug: item.url,
+            backgroundColor: item.background_color,
+            productCount: item.products_count_text,
+          } as Category),
+      ),
+    );
+
+export const CategorySlider: FC = () => {
   const { updateProductCategory } = useReduxStore();
   const router = useRouter();
+  const { data, error } = useSWR('/static/categories.json', fetcher);
 
   const selectCategory = (e, category) => {
     e.preventDefault();
@@ -115,6 +47,10 @@ export const CategorySlider = () => {
     });
   };
 
+  if (!data) {
+    return <div>loading...</div>;
+  }
+
   return (
     <>
       <Swiper
@@ -124,9 +60,10 @@ export const CategorySlider = () => {
           nextEl: '.custom_next_ct1',
         }}
         className='custom-class'
+        slidesPerView={2.5}
         breakpoints={{
           480: {
-            slidesPerView: 2,
+            slidesPerView: 2.5,
           },
           640: {
             slidesPerView: 3,
@@ -142,34 +79,32 @@ export const CategorySlider = () => {
           },
         }}
       >
-        {data.map((item, i) => (
-          <SwiperSlide key={i}>
-            <div>
-              <div
-                data-wow-delay={0}
-                className='card-2 wow animate__animated animate__fadeInUp'
-                style={{
-                  backgroundColor: '#fddde4',
-                }}
-                onClick={(e) => selectCategory(e, item.slug)}
-              >
-                <figure className=' img-hover-scale overflow-hidden'>
-                  <a>
-                    <Image
-                      width='0'
-                      height='0'
-                      sizes='100vw'
-                      style={{ width: '100%', height: 'auto' }}
-                      src={`/assets/imgs/shop/${item.img}`}
-                      alt=''
-                    />
-                  </a>
-                </figure>
-                <h6>
-                  <a>{item.title}</a>
-                </h6>
-                <span>26 items</span>
-              </div>
+        {data.map((item, index) => (
+          <SwiperSlide key={item.id}>
+            <div
+              data-wow-delay={`${index * 0.1}s`}
+              className={`card-2 wow animate__animated animate__fadeInUp`}
+              style={{
+                backgroundColor: item.backgroundColor,
+              }}
+              onClick={(e) => selectCategory(e, item.slug)}
+            >
+              <figure className=' img-hover-scale overflow-hidden'>
+                <Link href={''}>
+                  <NextImage
+                    width='0'
+                    height='0'
+                    sizes='100vw'
+                    style={{ width: '100%', height: 'auto' }}
+                    src={item.thumbnail}
+                    alt=''
+                  />
+                </Link>
+              </figure>
+              <h6 className='text-truncate px-2'>
+                <Link href={''}>{item.name}</Link>
+              </h6>
+              <span>{item.productCount}</span>
             </div>
           </SwiperSlide>
         ))}
@@ -186,7 +121,6 @@ export const CategorySlider = () => {
     </>
   );
 };
-
 
 // import SwiperCore, { Navigation } from "swiper";
 // import { Swiper, SwiperSlide } from "swiper/react";
@@ -222,4 +156,3 @@ export const CategorySlider = () => {
 //         </>
 //     );
 // };
-

@@ -1,4 +1,7 @@
 .next
+out
 node_modules
 public
 package-lock.json
+**/ethers-contracts
+**/*.scss

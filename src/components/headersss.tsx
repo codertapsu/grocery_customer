@@ -53,7 +53,7 @@ export const Header = () => {
             <span>
               <small>Signed in as</small>
               <br />
-              <strong>{user.email ?? user.username}</strong>
+              <strong>{user.email ?? user.name}</strong>
             </span>
             <button onClick={logout}>Logout</button>
             {/* <a

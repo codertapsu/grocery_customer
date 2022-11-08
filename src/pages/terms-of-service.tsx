@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
-import {BlogSidebar} from '@components/elements/BlogSidebar';
-import {Layout} from '@components/layout/layout';
+import { BlogSidebar } from '@components/elements/BlogSidebar';
+import { Layout } from '@components/layout/layout';
 
 const TermsOfService: NextPage = () => {
   return (

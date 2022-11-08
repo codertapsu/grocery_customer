@@ -92,6 +92,8 @@ export interface Product {
   tags: Tag[];
   labels: Label[];
   medias: Media[];
+  thumbnail: string;
+  qrImage: string;
   categories: Category[];
   currency: Currency;
   reviews: any[];

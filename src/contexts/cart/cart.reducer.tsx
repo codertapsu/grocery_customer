@@ -39,7 +39,7 @@ export const cartReducer = (state: CartState, action: CartAction) => {
       const existingCartItem = cartItems.find((item) => item.product.id === newCartItem.product.id);
 
       if (existingCartItem) {
-        existingCartItem.quantity += newCartItem.quantity;
+        existingCartItem.quantity = newCartItem.quantity;
       } else {
         cartItems.push(newCartItem);
       }

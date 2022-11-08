@@ -2,7 +2,7 @@ import { Image } from './image';
 
 export const AdsBanner = () => {
   return (
-    <div className='container ads-banner'>
+    <div className='ads-banner container'>
       <div className='row'>
         <div className='col-lg-6'>
           <div className='banner banner-overlay banner-overlay-light'>

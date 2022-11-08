@@ -211,7 +211,6 @@ const Products = () => {
         {/* <WishlistModal /> */}
         {/* <CompareModal /> */}
         {/* <CartSidebar /> */}
-        <QuickView />
         {/* <div className="container">
                     <div className="row">
                         <div className="col-xl-6">

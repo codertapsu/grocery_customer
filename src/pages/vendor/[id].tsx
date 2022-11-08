@@ -135,8 +135,8 @@ const Products = () => {
                           <span className='text-muted'>Since 2012</span>
                         </div>
                         <h4 className='mb-5'>
-                          <Link href='/vendor/1'>
-                            <a className='text-heading'>{singleStore.title}</a>
+                          <Link href='/vendor/1' className='text-heading'>
+                            {singleStore.title}
                           </Link>
                         </h4>
 
@@ -192,10 +192,8 @@ const Products = () => {
                               <span>(+91) - 540-025-124553</span>
                             </li>
                           </ul>
-                          <Link href='/vendor/1'>
-                            <a className='btn btn-xs'>
-                              Contact Seller <i className='i-rs-arrow-small-right'></i>
-                            </a>
+                          <Link href='/vendor/1' className='btn btn-xs'>
+                            Contact Seller<i className='i-rs-arrow-small-right'></i>
                           </Link>
                         </div>
                       </div>
@@ -295,34 +293,33 @@ const Products = () => {
         {/* <WishlistModal /> */}
         {/* <CompareModal /> */}
         {/* <CartSidebar /> */}
-        <QuickView />
         {/* <div className="container">
-                    <div className="row">
-                        <div className="col-xl-6">
-                            <Search />
-                        </div>
-                        <div className="col-xl-6">
-                            <SideBarIcons />
-                        </div>
-                    </div>
-                    <div className="row justify-content-center text-center">
-                        <div className="col-xl-6">
-                            <CategoryProduct />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xl-3">
-                            
-                        </div>
-                        <div className="col-md-9">
-                            
+                  <div className="row">
+                      <div className="col-xl-6">
+                          <Search />
+                      </div>
+                      <div className="col-xl-6">
+                          <SideBarIcons />
+                      </div>
+                  </div>
+                  <div className="row justify-content-center text-center">
+                      <div className="col-xl-6">
+                          <CategoryProduct />
+                      </div>
+                  </div>
+                  <div className="row">
+                      <div className="col-xl-3">
+                          
+                      </div>
+                      <div className="col-md-9">
+                          
 
-                            
+                          
 
-                            
-                        </div>
-                    </div>
-                </div> */}
+                          
+                      </div>
+                  </div>
+              </div> */}
       </Layout>
     </>
   );

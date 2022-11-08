@@ -1,55 +1,55 @@
+import { Product } from '@models/product.model';
 import { useEffect, useState } from 'react';
+import useSWR from 'swr/immutable';
 
 import { FeaturedTab } from '../elements/FeaturedTab';
 import { NewArrivalTab } from '../elements/NewArrivalTab';
 import { TrendingTab } from '../elements/TrendingTab';
 
+const fetcher = (url) =>
+  fetch(url)
+    .then((r) => r.json())
+    .then((r) =>
+      ((r.data as any[]) || []).map(
+        (i) =>
+          ({
+            id: i.id,
+            name: i.name,
+            promotionalPrice: i.sale_price,
+            regularPrice: i.price,
+            slug: i.url,
+            medias: [
+              {
+                path: i.image,
+              },
+              {
+                path: i.hover_image,
+              },
+            ],
+            reviews: Array.from({ length: i.reviews.count }).fill(''),
+            ratingScore: i.reviews.abg,
+          } as Product),
+      ),
+    );
+
 export const CategoryTab = () => {
+  const { data, error } = useSWR('/static/products.json', fetcher);
+
   const [active, setActive] = useState('1');
-  const [catAll, setCatAll] = useState([]);
-  const [cat1, setCat1] = useState([]);
-  const [cat2, setCat2] = useState([]);
-  const [cat3, setCat3] = useState([]);
 
-  const catPAll = async () => {
-    const request = await fetch(`/static/product.json`);
-    const allProducts = await request.json();
-    const catAllItem = allProducts.filter((item) => item.category);
-    setCatAll(catAllItem);
-    setActive('1');
-  };
-  const catP1 = async () => {
-    const request = await fetch(`/static/product.json`);
-    const allProducts = await request.json();
-    const cat1Item = allProducts.filter((item) => item.category == 'jeans');
-    setCat1(cat1Item);
-    setActive('2');
-  };
+  // useEffect(() => {
+  //   catPAll();
+  // }, []);
 
-  const catP2 = async () => {
-    const request = await fetch(`/static/product.json`);
-    const allProducts = await request.json();
-    const cat2Item = allProducts.filter((item) => item.category == 'shoe');
-    setCat2(cat2Item);
-    setActive('3');
-  };
-  const catP3 = async () => {
-    const request = await fetch(`/static/product.json`);
-    const allProducts = await request.json();
-    const cat3Item = allProducts.filter((item) => item.category == 'jacket');
-    setCat3(cat3Item);
-    setActive('4');
-  };
-
-  useEffect(() => {
-    catPAll();
-  }, []);
+  if (!data) {
+    return <div>loading...</div>;
+  }
 
   return (
     <>
       <div className='section-title style-2'>
         <h3>Popular Products</h3>
-        <ul className='nav nav-tabs links' id='myTab' role='tablist'>
+        {/* <ul className='nav nav-tabs links' id='myTab' role='tablist'>
           <li className='nav-item wow animate__animated animate__fadeIn' role='presentation'>
             <button className={active === '1' ? 'nav-link active' : 'nav-link'} onClick={catPAll}>
               All
@@ -70,30 +70,30 @@ export const CategoryTab = () => {
               New added
             </button>
           </li>
-        </ul>
+        </ul> */}
       </div>
 
       <div className='tab-content'>
         <div className={active === '1' ? 'tab-pane fade show active' : 'tab-pane fade'}>
           <div className='row product-grid-4'>
-            <FeaturedTab products={catAll} />
+            <FeaturedTab products={data} />
           </div>
         </div>
 
         <div className={active === '2' ? 'tab-pane fade show active' : 'tab-pane fade'}>
           <div className='row product-grid-4'>
-            <FeaturedTab products={cat1} />
+            <FeaturedTab products={data} />
           </div>
         </div>
 
         <div className={active === '3' ? 'tab-pane fade show active' : 'tab-pane fade'}>
           <div className='row product-grid-4'>
-            <TrendingTab products={cat2} />
+            <TrendingTab products={data} />
           </div>
         </div>
         <div className={active === '4' ? 'tab-pane fade show active' : 'tab-pane fade'}>
           <div className='row product-grid-4'>
-            <NewArrivalTab products={cat3} />
+            <NewArrivalTab products={data} />
           </div>
         </div>
       </div>

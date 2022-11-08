@@ -151,46 +151,40 @@ export const BlogGridBig = ({ show }) => {
             </span>
             <div className='post-thumb border-radius-15'>
               <Link href='/blog-post-right'>
-                <a>
-                  <img className='border-radius-15' src={`/assets/imgs/blog/${item.img}`} alt='' />
-                </a>
+                <img className='border-radius-15' src={`/assets/imgs/blog/${item.img}`} alt='' />
               </Link>
             </div>
           </div>
           <div className='entry-content'>
             <h2 className='post-title mb-20'>
-              <Link href='/blog-post-right'>
-                <a>{item.title} </a>
-              </Link>
+              <Link href='/blog-post-right'>{item.title}</Link>
             </h2>
-            <p className='post-exerpt font-medium text-muted mb-30'>{item.desc}</p>
-            <div className='mb-20 entry-meta meta-2'>
+            <p className='post-exerpt text-muted mb-30 font-medium'>{item.desc}</p>
+            <div className='entry-meta meta-2 mb-20'>
               <div className='entry-meta meta-1 mb-30'>
                 <div className='font-sm'>
                   <span>
-                    <span className='mr-10 text-muted'>
+                    <span className='text-muted mr-10'>
                       <i className='fi-rs-eye'></i>
                     </span>
                     23k
                   </span>
                   <span className='ml-30'>
-                    <span className='mr-10 text-muted'>
+                    <span className='text-muted mr-10'>
                       <i className='fi-rs-comment-alt'></i>
                     </span>
                     17k
                   </span>
                   <span className='ml-30'>
-                    <span className='mr-10 text-muted'>
+                    <span className='text-muted mr-10'>
                       <i className='fi-rs-share'></i>
                     </span>
                     18k
                   </span>
                 </div>
               </div>
-              <Link href='/blog-post-right'>
-                <a className='btn btn-sm'>
-                  Read more<i className='fi-rs-arrow-right ml-10'></i>
-                </a>
+              <Link href='/blog-post-right' className='btn btn-sm'>
+                Read more<i className='fi-rs-arrow-right ml-10'></i>
               </Link>
             </div>
           </div>
@@ -199,4 +193,3 @@ export const BlogGridBig = ({ show }) => {
     </>
   );
 };
-

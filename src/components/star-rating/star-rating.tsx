@@ -5,7 +5,7 @@ export const StarRating: React.FC = () => {
   const name = useId();
   const [rate, setRate] = useState<number>(0);
 
-  return (            
+  return (
     <div className={styles['rating']}>
       <input
         type='radio'

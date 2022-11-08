@@ -25,9 +25,7 @@ export const CompareTable = ({ data, features, deleteFromCompare }) => {
             </th>
             {data.map((product) =>
               feature == 'preview' ? (
-                <td className='row_img'>
-                  {/* <img src={product.medias[0].path} /> */}
-                </td>
+                <td className='row_img'>{/* <img src={product.medias[0].path} /> */}</td>
               ) : feature == 'name' ? (
                 <td className='product_name'>
                   <h5>
@@ -81,7 +79,7 @@ export const CompareTable = ({ data, features, deleteFromCompare }) => {
                       Add to cart
                     </button>
                   ) : (
-                    <Link href='/contact'>
+                    <Link href='/contact' legacyBehavior>
                       <button className='btn  btn-sm btn-secondary'>
                         <i className='fi-rs-headset mr-5'></i>
                         Contact Us

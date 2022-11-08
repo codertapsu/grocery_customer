@@ -3,7 +3,7 @@ import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
 
 import { NextPage } from 'next';
 
-import {Layout} from '@components/layout/layout';
+import { Layout } from '@components/layout/layout';
 import { useRouter } from 'next/router';
 
 interface FormValue {

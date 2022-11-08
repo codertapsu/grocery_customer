@@ -82,15 +82,11 @@ export const CategorySlider2 = () => {
             <div className='card-1'>
               <figure className=' img-hover-scale overflow-hidden'>
                 <Link href='/shop-grid-right'>
-                  <a>
-                    <img src={`assets/imgs/theme/icons/${item.img}`} alt='' />
-                  </a>
+                  <img src={`assets/imgs/theme/icons/${item.img}`} alt='' />
                 </Link>
               </figure>
               <h6>
-                <Link href='/shop-grid-right'>
-                  <a>{item.title}</a>
-                </Link>
+                <Link href='/shop-grid-right'>{item.title}</Link>
               </h6>
               <span>26 items</span>
             </div>
@@ -109,4 +105,3 @@ export const CategorySlider2 = () => {
     </>
   );
 };
-

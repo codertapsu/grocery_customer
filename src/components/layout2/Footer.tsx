@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/future/image';
+import NextImage from 'next/image';
 
 export const Footer = () => {
   return (
@@ -26,7 +26,7 @@ export const Footer = () => {
                       </button>
                     </form>
                   </div>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -48,7 +48,7 @@ export const Footer = () => {
                   data-wow-delay='0'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -69,7 +69,7 @@ export const Footer = () => {
                   data-wow-delay='.1s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -90,7 +90,7 @@ export const Footer = () => {
                   data-wow-delay='.2s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -111,7 +111,7 @@ export const Footer = () => {
                   data-wow-delay='.3s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -132,7 +132,7 @@ export const Footer = () => {
                   data-wow-delay='.4s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -153,7 +153,7 @@ export const Footer = () => {
                   data-wow-delay='.5s'
                 >
                   <div className='banner-icon'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -172,7 +172,7 @@ export const Footer = () => {
           </div>
         </section>
         <section className='section-padding footer-mid'>
-          <div className='container pt-15 pb-20'>
+          <div className='pt-15 container pb-20'>
             <div className='row'>
               <div className='col'>
                 <div
@@ -180,23 +180,21 @@ export const Footer = () => {
                   data-wow-delay='0'
                 >
                   <div className='logo  mb-30'>
-                    <Link href='/'>
-                      <a className='mb-15'>
-                        <Image
-                          width='0'
-                          height='0'
-                          sizes='100vw'
-                          style={{ width: 'auto', height: 'auto' }}
-                          src='/assets/imgs/theme/logo.svg'
-                          alt='logo'
-                        />
-                      </a>
+                    <Link href='/' className='mb-15'>
+                      <NextImage
+                        width='0'
+                        height='0'
+                        sizes='100vw'
+                        style={{ width: 'auto', height: 'auto' }}
+                        src='/assets/imgs/theme/logo.svg'
+                        alt='logo'
+                      />
                     </Link>
                     <p className='font-lg text-heading'>Awesome grocery store website template</p>
                   </div>
                   <ul className='contact-infor'>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -208,7 +206,7 @@ export const Footer = () => {
                       <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -220,7 +218,7 @@ export const Footer = () => {
                       <span>(+91) - 540-025-124553</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -232,7 +230,7 @@ export const Footer = () => {
                       <span>sale@Nest.com</span>
                     </li>
                     <li>
-                      <Image
+                      <NextImage
                         width='0'
                         height='0'
                         sizes='100vw'
@@ -358,7 +356,7 @@ export const Footer = () => {
                 <p className=''>From App Store or Google Play</p>
                 <div className='download-app '>
                   <a href='#' className='hover-up mb-sm-2 mb-lg-0'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -369,7 +367,7 @@ export const Footer = () => {
                     />
                   </a>
                   <a href='#' className='hover-up mb-sm-2'>
-                    <Image
+                    <NextImage
                       width='0'
                       height='0'
                       sizes='100vw'
@@ -380,7 +378,7 @@ export const Footer = () => {
                   </a>
                 </div>
                 <p className='mb-20 '>Secured Payment Gateways</p>
-                <Image
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -393,7 +391,7 @@ export const Footer = () => {
             </div>
           </div>
         </section>
-        <div className='container pb-30  wow animate__animated animate__fadeInUp' data-wow-delay='0'>
+        <div className='pb-30 wow  animate__animated animate__fadeInUp container' data-wow-delay='0'>
           <div className='row align-items-center'>
             <div className='col-12 mb-30'>
               <div className='footer-bottom'></div>
@@ -404,9 +402,9 @@ export const Footer = () => {
                 All rights reserved
               </p>
             </div>
-            <div className='col-xl-4 col-lg-6 text-center d-none d-xl-block'>
+            <div className='col-xl-4 col-lg-6 d-none d-xl-block text-center'>
               <div className='hotline d-lg-inline-flex mr-30'>
-                <Image
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -419,7 +417,7 @@ export const Footer = () => {
                 </p>
               </div>
               <div className='hotline d-lg-inline-flex'>
-                <Image
+                <NextImage
                   width='0'
                   height='0'
                   sizes='100vw'
@@ -432,11 +430,11 @@ export const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className='col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block'>
+            <div className='col-xl-4 col-lg-6 col-md-6 d-none d-md-block text-end'>
               <div className='mobile-social-icon'>
                 <h6>Follow Us</h6>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -446,7 +444,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -456,7 +454,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -466,7 +464,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'
@@ -476,7 +474,7 @@ export const Footer = () => {
                   />
                 </a>
                 <a href='#'>
-                  <Image
+                  <NextImage
                     width='0'
                     height='0'
                     sizes='100vw'

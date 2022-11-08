@@ -118,9 +118,7 @@ const Blank = () => {
                     <div className='vendor-img-action-wrap'>
                       <div className='vendor-img'></div>
                       <Link href={`vendor/${item.id}`}>
-                        <a>
-                          <img className='default-img' src={`assets/imgs/vendor/${item.img}`} alt='' />
-                        </a>
+                        <img className='default-img' src={`assets/imgs/vendor/${item.img}`} alt='' />
                       </Link>
                     </div>
                     <div className='product-badges product-badges-position product-badges-mrg'>
@@ -134,9 +132,7 @@ const Blank = () => {
                           <span className='text-muted'>Since 2012</span>
                         </div>
                         <h4 className='mb-5'>
-                          <Link href={`vendor/${item.id}`}>
-                            <a>{item.title}</a>
-                          </Link>
+                          <Link href={`vendor/${item.id}`}>{item.title}</Link>
                         </h4>
 
                         <div className='product-rate-cover'>
@@ -166,10 +162,8 @@ const Blank = () => {
                         </li>
                       </ul>
                     </div>
-                    <Link href={`vendor/${item.id}`}>
-                      <a className='btn btn-xs'>
-                        Visit Store <i className='fi-rs-arrow-small-right'></i>
-                      </a>
+                    <Link href={`vendor/${item.id}`} className='btn btn-xs'>
+                      Visit Store<i className='fi-rs-arrow-small-right'></i>
                     </Link>
                   </div>
                 </div>

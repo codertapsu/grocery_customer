@@ -1,5 +1,5 @@
 import { ServicesBanner } from '@components/services-banner';
-import Image from 'next/image';
+import NextImage from 'next/image';
 
 const Footer = () => {
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -8,22 +8,27 @@ import { Product } from '@models/product.model';
 import { ProductTab } from '../elements/ProductTab';
 import { RelatedSlider } from '../sliders/Related';
 import { ThumbSlider } from '../sliders/Thumb';
+import { QuantityCounter } from '@components/quantity-counter';
+import { useCart } from '@contexts/cart';
 
 interface Props {
   product: Product;
-  quickView?: Product;
+  isQuickView?: boolean;
 }
 
-export const ProductDetails = ({ product, quickView }: Props) => {
-  const cartItems = useSelector<StoreState, StoreState['cart']>((state) => state.cart);
+export const ProductDetails = ({ product, isQuickView }: Props) => {
   const [quantity, setQuantity] = useState(1);
+  const { addProduct, items: cartItems } = useCart();
 
-  const { addToCompare, addToWishlist, addToCart, increaseQuantity, decreaseQuantity } = useReduxStore();
+  const { addToCompare, addToWishlist, increaseQuantity, decreaseQuantity } = useReduxStore();
 
   const dispatch = useDispatch();
 
-  const handleCart = (product) => {
-    addToCart(product);
+  const addToCart = () => {
+    addProduct({
+      product,
+      quantity,
+    });
     toast('Product added to Cart !');
   };
 
@@ -37,7 +42,12 @@ export const ProductDetails = ({ product, quickView }: Props) => {
     toast('Added to Wishlist !');
   };
 
-  const inCart = cartItems.find((cartItem) => cartItem.id === product.id);
+  useEffect(() => {
+    const inCart = cartItems.find((cartItem) => cartItem.product.id === product.id);
+    if (inCart) {
+      setQuantity(inCart.quantity);
+    }
+  }, []);
 
   return (
     <>
@@ -48,7 +58,7 @@ export const ProductDetails = ({ product, quickView }: Props) => {
               {/* <span className='zoom-icon'>
               <i className='fi-rs-search'></i>
             </span> */}
-              <div className='product-image-slider'>
+              <div className=''>
                 <ThumbSlider product={product} />
               </div>
             </div>
@@ -114,33 +124,13 @@ export const ProductDetails = ({ product, quickView }: Props) => {
               </div>
               <div className='bt-1 border-color-1 mt-30 mb-30'></div>
               <div className='detail-extralink'>
-                <div className='detail-qty radius border'>
-                  <a
-                    onClick={(e) =>
-                      !inCart ? setQuantity(quantity > 1 ? quantity - 1 : 1) : decreaseQuantity(product?.id)
-                    }
-                    className='qty-down'
-                  >
-                    <i className='fi-rs-angle-small-down'></i>
-                  </a>
-                  <span className='qty-val'>{inCart?.quantity || quantity}</span>
-                  <a
-                    onClick={() => (!inCart ? setQuantity(quantity + 1) : increaseQuantity(product.id))}
-                    className='qty-up'
-                  >
-                    <i className='fi-rs-angle-small-up'></i>
-                  </a>
-                </div>
+                <QuantityCounter
+                  quantity={quantity}
+                  increase={(value) => setQuantity(value)}
+                  decrease={(value) => setQuantity(value)}
+                />
                 <div className='product-extra-link2'>
-                  <button
-                    onClick={(e) =>
-                      handleCart({
-                        ...product,
-                        quantity: quantity || 1,
-                      })
-                    }
-                    className='button button-add-to-cart'
-                  >
+                  <button onClick={addToCart} className='button button-add-to-cart'>
                     Add to cart
                   </button>
                   <a
@@ -175,7 +165,7 @@ export const ProductDetails = ({ product, quickView }: Props) => {
           </div>
         </div>
 
-        {quickView ? null : (
+        {isQuickView ? null : (
           <>
             <ProductTab />
             <div className='row mt-60'>

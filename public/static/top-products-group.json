@@ -1,0 +1,184 @@
+{
+  "data": [
+    {
+      "title": "Top Selling",
+      "products": [
+        {
+          "id": 14,
+          "name": "Organic Frozen Triple Berry Blend",
+          "url": "organic-frozen-triple-berry-blend",
+          "image": "https://botble.b-cdn.net/nest/storage/products/14-400x400.jpg",
+          "price": "$113.00",
+          "sale_price": "$65.54",
+          "reviews_avg": 1,
+          "reviews_count": 3
+        },
+        {
+          "id": 7,
+          "name": "Canada Dry Ginger Ale – 2 L Bottle",
+          "url": "canada-dry-ginger-ale-2-l-bottle",
+          "image": "https://botble.b-cdn.net/nest/storage/products/7-1-400x400.jpg",
+          "price": "$120.00",
+          "sale_price": "$55.20",
+          "reviews_avg": 2.8333333333333335,
+          "reviews_count": 6
+        },
+        {
+          "id": 17,
+          "name": "Angie’s Boomchickapop Sweet & Salty Kettle Corn (Digital)",
+          "url": "angies-boomchickapop-sweet-salty-kettle-corn",
+          "image": "https://botble.b-cdn.net/nest/storage/products/17-400x400.jpg",
+          "price": "$117.00",
+          "sale_price": "$43.29",
+          "reviews_avg": 3.1666666666666665,
+          "reviews_count": 6
+        },
+        {
+          "id": 21,
+          "name": "Chen Watermelon (Digital)",
+          "url": "chen-watermelon",
+          "image": "https://botble.b-cdn.net/nest/storage/products/21-1-400x400.jpg",
+          "price": "$119.00",
+          "sale_price": "$65.45",
+          "reviews_avg": 2.5,
+          "reviews_count": 4
+        }
+      ]
+    },
+    {
+      "title": "Trending Products",
+      "products": [
+        {
+          "id": 12,
+          "name": "Naturally Flavored Cinnamon Vanilla Light Roast Coffee",
+          "url": "naturally-flavored-cinnamon-vanilla-light-roast-coffee",
+          "image": "https://botble.b-cdn.net/nest/storage/products/12-400x400.jpg",
+          "price": "$110.00",
+          "sale_price": "$25.08",
+          "reviews_avg": 3.4,
+          "reviews_count": 5
+        },
+        {
+          "id": 2,
+          "name": "All Natural Italian-Style Chicken Meatballs",
+          "url": "all-natural-italian-style-chicken-meatballs",
+          "image": "https://botble.b-cdn.net/nest/storage/products/2-400x400.jpg",
+          "price": "$464.00",
+          "sale_price": "$190.24",
+          "reviews_avg": 4.285714285714286,
+          "reviews_count": 7
+        },
+        {
+          "id": 8,
+          "name": "Encore Seafoods Stuffed Alaskan",
+          "url": "encore-seafoods-stuffed-alaskan",
+          "image": "https://botble.b-cdn.net/nest/storage/products/8-400x400.jpg",
+          "price": "$112.00",
+          "sale_price": "$37.18",
+          "reviews_avg": 3.5,
+          "reviews_count": 2
+        },
+        {
+          "id": 10,
+          "name": "Haagen-Dazs Caramel Cone Ice Cream",
+          "url": "haagen-dazs-caramel-cone-ice-cream",
+          "image": "https://botble.b-cdn.net/nest/storage/products/10-400x400.jpg",
+          "price": "$423.00",
+          "sale_price": "$253.80",
+          "reviews_avg": 3.3333333333333335,
+          "reviews_count": 6
+        }
+      ]
+    },
+    {
+      "title": "Recently Added",
+      "products": [
+        {
+          "id": 1,
+          "name": "Seeds of Change Organic Quinoe (Digital)",
+          "url": "seeds-of-change-organic-quinoe",
+          "image": "https://botble.b-cdn.net/nest/storage/products/1-400x400.jpg",
+          "price": "$224.00",
+          "sale_price": "$94.08",
+          "reviews_avg": 2.5,
+          "reviews_count": 4
+        },
+        {
+          "id": 2,
+          "name": "All Natural Italian-Style Chicken Meatballs",
+          "url": "all-natural-italian-style-chicken-meatballs",
+          "image": "https://botble.b-cdn.net/nest/storage/products/2-400x400.jpg",
+          "price": "$464.00",
+          "sale_price": "$190.24",
+          "reviews_avg": 4.285714285714286,
+          "reviews_count": 7
+        },
+        {
+          "id": 3,
+          "name": "Angie’s Boomchickapop Sweet & Salty Kettle Corn",
+          "url": "angies-boomchickapop-sweet-salty-kettle-corn",
+          "image": "https://botble.b-cdn.net/nest/storage/products/3-400x400.jpg",
+          "price": "$289.00",
+          "sale_price": "$121.38",
+          "reviews_avg": 4,
+          "reviews_count": 1
+        },
+        {
+          "id": 4,
+          "name": "Foster Farms Takeout Crispy Classic",
+          "url": "foster-farms-takeout-crispy-classic",
+          "image": "https://botble.b-cdn.net/nest/storage/products/4-400x400.jpg",
+          "price": "$88.00",
+          "sale_price": "$24.64",
+          "reviews_avg": 2.7,
+          "reviews_count": 10
+        }
+      ]
+    },
+    {
+      "title": "Top Rated",
+      "products": [
+        {
+          "id": 2,
+          "name": "All Natural Italian-Style Chicken Meatballs",
+          "url": "all-natural-italian-style-chicken-meatballs",
+          "image": "https://botble.b-cdn.net/nest/storage/products/2-400x400.jpg",
+          "price": "$464.00",
+          "sale_price": "$190.24",
+          "reviews_avg": 4.2857140000000005,
+          "reviews_count": 7
+        },
+        {
+          "id": 3,
+          "name": "Angie’s Boomchickapop Sweet & Salty Kettle Corn",
+          "url": "angies-boomchickapop-sweet-salty-kettle-corn",
+          "image": "https://botble.b-cdn.net/nest/storage/products/3-400x400.jpg",
+          "price": "$289.00",
+          "sale_price": "$121.38",
+          "reviews_avg": 4,
+          "reviews_count": 1
+        },
+        {
+          "id": 23,
+          "name": "Colorful Banana",
+          "url": "colorful-banana",
+          "image": "https://botble.b-cdn.net/nest/storage/products/23-400x400.jpg",
+          "price": "$118.00",
+          "sale_price": null,
+          "reviews_avg": 3.8,
+          "reviews_count": 5
+        },
+        {
+          "id": 11,
+          "name": "Nestle Original Coffee-Mate Coffee Creamer",
+          "url": "nestle-original-coffee-mate-coffee-creamer",
+          "image": "https://botble.b-cdn.net/nest/storage/products/11-400x400.jpg",
+          "price": "$121.00",
+          "sale_price": "$60.50",
+          "reviews_avg": 3.5,
+          "reviews_count": 4
+        }
+      ]
+    }
+  ]
+}

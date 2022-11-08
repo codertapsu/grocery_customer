@@ -2,8 +2,7 @@ import { FieldErrorsImpl, RegisterOptions, useForm } from 'react-hook-form';
 
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
-import NextImage from 'next/future/image';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import Link from 'next/link';
 
 import { Layout } from '@components/layout/layout';
@@ -13,6 +12,9 @@ import { PlatformService } from '@contexts/platform';
 import { useToast } from '@contexts/toast';
 import { randomIntegerNumber } from '@helpers/math.helper';
 import { User } from '@models/user.model';
+import { useWallet } from '@contexts/wallet';
+import { useEffect } from 'react';
+import { getFingerprint } from '@helpers/fingerprint';
 
 enum SocialId {
   Google = 'google',
@@ -55,10 +57,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
 const Login: NextPage<Props> = ({ randomCode }) => {
   const apiEndpoint = APP_CONFIG.API_ENDPOINT;
   const toast = useToast();
+  const { connect, address } = useWallet();
+
   const { register, handleSubmit, formState, control, reset } = useForm<FormValue>({
     mode: 'onBlur',
   });
-  const { login, loginWithSocial } = useAuth();
+  const { login, loginWithSocial, loginWithWallet } = useAuth();
 
   const registerOptions: Record<keyof FormValue, RegisterOptions> = {
     email: { required: 'Email is required' },
@@ -85,6 +89,11 @@ const Login: NextPage<Props> = ({ randomCode }) => {
   };
   const handleError = (errors: FieldErrorsImpl<FormValue>) => {
     console.log(errors);
+  };
+
+  const handleConnectWallet = async () => {
+    await connect();
+    console.log(address);
   };
 
   const handleSocialLogin = (event: MessageEvent) => {
@@ -132,6 +141,12 @@ const Login: NextPage<Props> = ({ randomCode }) => {
     }
   };
 
+  useEffect(() => {
+    if (address) {
+      loginWithWallet(address);
+    }
+  }, [address]);
+
   return (
     <>
       <Layout parent='Home' sub='Pages' subChild='Login & Register'>
@@ -157,10 +172,7 @@ const Login: NextPage<Props> = ({ randomCode }) => {
                         <div className='heading_s1'>
                           <h1 className='mb-5'>Login</h1>
                           <p className='mb-30'>
-                            Don&lsquo;t have an account?{' '}
-                            <Link href='/register'>
-                              <a>Create here</a>
-                            </Link>
+                            Don&lsquo;t have an account? <Link href='/register'>Create here</Link>
                           </p>
                         </div>
                         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
@@ -215,8 +227,8 @@ const Login: NextPage<Props> = ({ randomCode }) => {
                                 </label>
                               </div>
                             </div>
-                            <Link href='/forgot-password'>
-                              <a className='text-muted'>Forgot password?</a>
+                            <Link href='/forgot-password' className='text-muted'>
+                              Forgot password?
                             </Link>
                           </div>
                           <div className='form-group'>
@@ -246,13 +258,30 @@ const Login: NextPage<Props> = ({ randomCode }) => {
                             className='social-login google-login'
                             onClick={() => onSocialLogin(SocialId.Google)}
                           >
-                            <Image
-                              width={'28px'}
-                              height={'28px'}
+                            <NextImage
+                              width='0'
+                              height='0'
+                              sizes='100vw'
+                              style={{ width: '28px', height: '28px' }}
                               src='/assets/imgs/theme/icons/logo-google.svg'
                               alt=''
                             />
                             <span className='ms-2'>Continue with Google</span>
+                          </button>
+                          <button
+                            type='button'
+                            className='social-login google-login'
+                            onClick={() => handleConnectWallet()}
+                          >
+                            <NextImage
+                              width='0'
+                              height='0'
+                              sizes='100vw'
+                              style={{ width: '28px', height: '28px' }}
+                              src='/assets/icons/bitcoin.svg'
+                              alt=''
+                            />
+                            <span className='ms-2'>Or connect your wallet</span>
                           </button>
                         </div>
                       </div>

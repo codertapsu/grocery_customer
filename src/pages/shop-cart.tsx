@@ -64,9 +64,7 @@ const Cart = () => {
 
                           <td className='product-des product-name'>
                             <h6 className='product-name'>
-                              <Link href='/products'>
-                                <a>{item.title}</a>
-                              </Link>
+                              <Link href='/products'>{item.title}</Link>
                             </h6>
                             <div className='product-rate-cover'>
                               <div className='product-rate d-inline-block'>
@@ -465,11 +463,8 @@ const Cart = () => {
                           </tbody>
                         </table>
                       </div>
-                      <Link href='/shop-checkout'>
-                        <a className='btn '>
-                          <i className='fi-rs-box-alt mr-10'></i>
-                          Proceed To CheckOut
-                        </a>
+                      <Link href='/shop-checkout' className='btn '>
+                        <i className='fi-rs-box-alt mr-10'></i>Proceed To CheckOut
                       </Link>
                     </div>
                   </div>

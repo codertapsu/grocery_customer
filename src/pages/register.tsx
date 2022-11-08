@@ -142,16 +142,13 @@ const Register: NextPage<Props> = ({ randomCode }) => {
                         <div className='heading_s1'>
                           <h1 className='mb-5'>Create an Account</h1>
                           <p className='mb-30'>
-                            Already have an account?{' '}
-                            <Link href='/login'>
-                              <a>Login</a>
-                            </Link>
+                            Already have an account? <Link href='/login'>Login</Link>
                           </p>
                         </div>
                         <form onSubmit={handleSubmit(handleRegistration, handleError)}>
                           {/* <div className='form-group'>
-                            <input type='text' name='username' placeholder='Username' {...register('username', registerOptions.username)} />
-                          </div> */}
+                          <input type='text' name='username' placeholder='Username' {...register('username', registerOptions.username)} />
+                        </div> */}
                           <div className='form-group'>
                             <input
                               type='text'
@@ -262,24 +259,24 @@ const Register: NextPage<Props> = ({ randomCode }) => {
                             <p className='font-xs'>
                               Your personal data will be used to support your experience throughout this website, to
                               manage access to your account, and for other purposes described in our{' '}
-                              <Link href='/privacy-policy'>
-                                <a target='_blank'>privacy policy</a>
+                              <Link href='/privacy-policy' target='_blank'>
+                                privacy policy
                               </Link>
                               .
                             </p>
                             {/* <div className='chek-form'>
-                              <div className='custome-checkbox'>
-                                <input
-                                  className='form-check-input'
-                                  type='checkbox'
-                                  name='checkbox'
-                                  id='exampleCheckbox12'
-                                />
-                                <label className='form-check-label' htmlFor='exampleCheckbox12'>
-                                  <span>I agree to terms &amp; Policy.</span>
-                                </label>
-                              </div>
-                            </div> */}
+                            <div className='custome-checkbox'>
+                              <input
+                                className='form-check-input'
+                                type='checkbox'
+                                name='checkbox'
+                                id='exampleCheckbox12'
+                              />
+                              <label className='form-check-label' htmlFor='exampleCheckbox12'>
+                                <span>I agree to terms &amp; Policy.</span>
+                              </label>
+                            </div>
+                          </div> */}
                           </div>
                           <div className='form-group mb-30'>
                             <button

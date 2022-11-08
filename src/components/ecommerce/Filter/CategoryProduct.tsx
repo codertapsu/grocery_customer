@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import NextImage from 'next/image';
 import { useRouter } from 'next/router';
 
 import { useReduxStore } from '@contexts/redux-store';
@@ -26,7 +26,7 @@ export const CategoryProduct = () => {
         </li>
         <li onClick={(e) => selectCategory(e, 'jeans')}>
           <a>
-            <Image
+            <NextImage
               width='0'
               height='0'
               sizes='100vw'
@@ -40,7 +40,7 @@ export const CategoryProduct = () => {
         </li>
         <li onClick={(e) => selectCategory(e, 'shoe')}>
           <a>
-            <Image
+            <NextImage
               width='0'
               height='0'
               sizes='100vw'
@@ -54,7 +54,7 @@ export const CategoryProduct = () => {
         </li>
         <li onClick={(e) => selectCategory(e, 'jacket')}>
           <a>
-            <Image
+            <NextImage
               width='0'
               height='0'
               sizes='100vw'
@@ -70,4 +70,3 @@ export const CategoryProduct = () => {
     </>
   );
 };
-

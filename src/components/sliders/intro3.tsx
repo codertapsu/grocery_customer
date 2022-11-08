@@ -34,8 +34,8 @@ export const Intro3 = () => {
                   <h2 className='animated fw-900'>Supper Value Deals</h2>
                   <h1 className='animated fw-900 text-brand'>On All Products</h1>
                   <p className='animated'>Save more with coupons & up to 70% off</p>
-                  <Link href='/shop-product-right'>
-                    <a className='animated btn btn-brush btn-brush-3'>Shop Now</a>
+                  <Link href='/shop-product-right' className='animated btn btn-brush btn-brush-3'>
+                    Shop Now
                   </Link>
                 </div>
                 <div className='slider-img'>
@@ -54,8 +54,8 @@ export const Intro3 = () => {
                   <h2 className='animated fw-900'>Tech Trending</h2>
                   <h1 className='animated fw-900 text-brand'>Great Collection</h1>
                   <p className='animated'>Save more with coupons & up to 20% off</p>
-                  <Link href='/shop-product-right'>
-                    <a className='animated btn btn-brush btn-brush-3'>Shop Now</a>
+                  <Link href='/shop-product-right' className='animated btn btn-brush btn-brush-3'>
+                    Shop Now
                   </Link>
                 </div>
                 <div className='slider-img'>
@@ -78,4 +78,3 @@ export const Intro3 = () => {
     </>
   );
 };
-

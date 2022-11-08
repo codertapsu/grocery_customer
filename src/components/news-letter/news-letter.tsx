@@ -1,4 +1,4 @@
-import { Image } from '@components/image';
+import { Image } from '../image';
 import NextImage from 'next/image';
 
 const NewsLetter = () => {

@@ -1,10 +1,10 @@
-import {Layout} from '@components/layout/layout';
+import { Layout } from '@components/layout/layout';
 
 function About() {
   return (
     <>
       <Layout parent='Home' sub='Pages' subChild='About'>
-        <div className='container  pt-50'>
+        <div className='pt-50  container'>
           <div className='row'>
             <div className='col-xl-10 col-lg-12 m-auto'>
               <section className='row align-items-center mb-50'>
@@ -34,7 +34,7 @@ function About() {
                   </div>
                 </div>
               </section>
-              <section className='text-center mb-50'>
+              <section className='mb-50 text-center'>
                 <h2 className='title style-3 mb-40'>What We Provide?</h2>
                 <div className='row'>
                   <div className='col-lg-4 col-md-6 mb-24'>
@@ -111,7 +111,7 @@ function About() {
                     <img src='/assets/imgs/page/about-5.png' alt='' className='mb-md-3 mb-lg-0 mb-sm-4' />
                   </div>
                   <div className='col-lg-5'>
-                    <h4 className='mb-20 text-muted'>Our performance</h4>
+                    <h4 className='text-muted mb-20'>Our performance</h4>
                     <h1 className='heading-1 mb-40'>Your Partner for e-commerce grocery solution</h1>
                     <p className='mb-30'>
                       Ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -150,9 +150,9 @@ function About() {
             </div>
           </div>
         </div>
-        <section className='container mb-50 d-none d-md-block'>
+        <section className='mb-50 d-none d-md-block container'>
           <div className='row about-count'>
-            <div className='col-lg-1-5 col-md-6 text-center mb-lg-0 mb-md-5'>
+            <div className='col-lg-1-5 col-md-6 mb-lg-0 mb-md-5 text-center'>
               <h1 className='heading-1'>
                 <span className='count'>12</span>+
               </h1>
@@ -176,7 +176,7 @@ function About() {
               </h1>
               <h4>Team advisor</h4>
             </div>
-            <div className='col-lg-1-5 text-center d-none d-lg-block'>
+            <div className='col-lg-1-5 d-none d-lg-block text-center'>
               <h1 className='heading-1'>
                 <span className='count'>26</span>+
               </h1>
@@ -191,7 +191,7 @@ function About() {
                 <h2 className='title style-3 mb-40 text-center'>Our Team</h2>
                 <div className='row'>
                   <div className='col-lg-4 mb-lg-0 mb-md-5 mb-sm-5'>
-                    <h6 className='mb-5 text-brand'>Our Team</h6>
+                    <h6 className='text-brand mb-5'>Our Team</h6>
                     <h1 className='mb-30'>Meet Our Expert Team</h1>
                     <p className='mb-30'>
                       Proin ullamcorper pretium orci. Donec necscele risque leo. Nam massa dolor imperdiet neccon

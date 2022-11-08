@@ -63,10 +63,8 @@ function Account() {
                           </a>
                         </li>
                         <li className='nav-item'>
-                          <Link href='/page-login'>
-                            <a className='nav-link'>
-                              <i className='fi-rs-sign-out mr-10'></i>Logout
-                            </a>
+                          <Link href='/page-login' className='nav-link'>
+                            <i className='fi-rs-sign-out mr-10'></i>Logout
                           </Link>
                         </li>
                       </ul>
@@ -237,10 +235,7 @@ function Account() {
                           </div>
                           <div className='card-body'>
                             <p>
-                              Already have an account?{' '}
-                              <Link href='/page-login'>
-                                <a>Log in instead!</a>
-                              </Link>
+                              Already have an account? <Link href='/page-login'>Log in instead!</Link>
                             </p>
                             <form method='post' name='enq'>
                               <div className='row'>

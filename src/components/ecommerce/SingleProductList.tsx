@@ -1,11 +1,15 @@
 import { toast } from 'react-toastify';
 
+import NextImage from 'next/image';
 import Link from 'next/link';
 
+import { placeholderImg } from '@configs';
+import { useQuickView } from '@contexts/quick-view';
 import { useReduxStore } from '@contexts/redux-store';
 
 export const SingleProductList = ({ product }) => {
-  const { addToCart, addToCompare, addToWishlist, openQuickView } = useReduxStore();
+  const { open } = useQuickView();
+  const { addToCart, addToCompare, addToWishlist } = useReduxStore();
   const handleCart = (product) => {
     addToCart(product);
     toast('Product added to Cart !');
@@ -29,11 +33,24 @@ export const SingleProductList = ({ product }) => {
             <div className='product-img product-img-zoom'>
               <div className='product-img-inner'>
                 <Link href='/[id]' as={`/${product.id}`}>
-                  <a>
-                    Holder
-                    {/* <img className='default-img' src={product.medias[0].path} alt='' />
-                    <img className='hover-img' src={product.medias[1].path} alt='' /> */}
-                  </a>
+                  <NextImage
+                    width='0'
+                    height='0'
+                    sizes='100vw'
+                    style={{ width: '100%', height: 'auto' }}
+                    className='default-img'
+                    src={(product.medias?.length && product.medias[0]?.path) || placeholderImg}
+                    alt=''
+                  />
+                  <NextImage
+                    width='0'
+                    height='0'
+                    sizes='100vw'
+                    style={{ width: '100%', height: 'auto' }}
+                    className='hover-img'
+                    src={(product.medias?.length && product.medias[1]?.path) || placeholderImg}
+                    alt=''
+                  />
                 </Link>
               </div>
             </div>
@@ -43,7 +60,7 @@ export const SingleProductList = ({ product }) => {
                 className='action-btn hover-up'
                 data-bs-toggle='modal'
                 // data-bs-target="#quickViewModal"
-                onClick={(e) => openQuickView(product)}
+                onClick={(e) => open(product)}
               >
                 <i className='fi-rs-eye'></i>
               </a>
@@ -65,20 +82,18 @@ export const SingleProductList = ({ product }) => {
           </div>
           <div className='product-content-wrap'>
             <div className='product-category'>
-              <Link href='/products'>
-                <a>{product.brand}</a>
-              </Link>
+              <Link href='/products'>{product.brand}</Link>
             </div>
             <h2>
               <Link href='/[id]' as={`/${product.id}`}>
-                <a>{product.title}</a>
+                {product.title}
               </Link>
             </h2>
             <div className='product-rate-cover'>
               <div className='product-rate d-inline-block'>
                 <div className='product-rating' style={{ width: '90%' }}></div>
               </div>
-              <span className='font-small ml-5 text-muted'> (4.0)</span>
+              <span className='font-small text-muted ml-5'> (4.0)</span>
               <span className='ml-30'>500g</span>
             </div>
             <p className='mt-15 mb-15'>
@@ -111,4 +126,3 @@ export const SingleProductList = ({ product }) => {
     </>
   );
 };
-

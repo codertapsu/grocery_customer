@@ -8,7 +8,6 @@ import { SortSelect } from '@components/ecommerce/Filter/SortSelect';
 import { Pagination } from '@components/ecommerce/Pagination';
 import { QuickView } from '@components/ecommerce/QuickView';
 import { SingleProduct } from '@components/ecommerce/SingleProduct';
-import { WishlistModal } from '@components/ecommerce/WishlistModal';
 import { Layout } from '@components/layout/layout';
 import { BestSellerSlider } from '@components/sliders/BestSeller';
 import { StoreState, useReduxStore } from '@contexts/redux-store';
@@ -243,8 +242,6 @@ const ProductsFullWidth = () => {
             </div>
           </div>
         </section>
-        <WishlistModal />
-        <QuickView />
       </Layout>
     </>
   );

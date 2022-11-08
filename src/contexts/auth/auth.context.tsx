@@ -12,11 +12,13 @@ import { authInitialState, authReducer } from './auth.reducer';
 import { AuthActionType } from './models/auth-action-type.model';
 import { AuthAction } from './models/auth-action.model';
 import { AuthState } from './models/auth-state.model';
+import { getFingerprint } from '@helpers/fingerprint';
 
 interface Context extends AuthState {
   isOpenAuthDialog: boolean;
   login: (email: string, password: string) => Promise<void>;
   loginWithSocial: (user: User) => void | PromiseLike<void>;
+  loginWithWallet: (address: string) => void | PromiseLike<void>;
   logout: () => Promise<void>;
   register: () => Promise<void>;
   forgotPassword: () => Promise<void>;
@@ -68,6 +70,11 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
         accessToken: '',
       },
     });
+  };
+
+  const loginWithWallet = async (address: string) => {
+    const fingerprint = await getFingerprint();
+    const response = await httpClient.post<User>('/auth/wallet', { address, fingerprint });
   };
 
   const logout = useCallback(async () => {
@@ -128,7 +135,10 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
             accessToken: '',
           },
         });
-      } catch (error) {}
+      } catch (error) {
+        const res = await nextAuthSignOut({ redirect: false });
+        console.log(res);
+      }
     };
     initialize();
 
@@ -156,6 +166,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const value: Context = {
     login,
     loginWithSocial,
+    loginWithWallet,
     logout,
     register,
     forgotPassword,

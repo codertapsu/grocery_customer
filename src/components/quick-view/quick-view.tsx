@@ -31,8 +31,10 @@ export const QuickView = () => {
                   <a key={item} href={`#${uuid}-${index}`} className={`carousel-dot d-block`}>
                     <NextImage
                       objectFit='contain'
-                      width={'40px'}
-                      height={'40px'}
+                      width='0'
+                      height='0'
+                      sizes='100vw'
+                      style={{ width: '40px', height: '40px' }}
                       src='/assets/images/products/product-4-thumb.jpg'
                       alt=''
                     />
@@ -112,16 +114,20 @@ export const QuickView = () => {
               <label htmlFor='size'>color:</label>
               <a href='#' className='active'>
                 <NextImage
-                  width={'100%'}
-                  height={'100%'}
+                  width='0'
+                  height='0'
+                  sizes='100vw'
+                  style={{ width: '100%', height: 'auto' }}
                   src='/assets/images/products/product-4-thumb.jpg'
                   alt='product desc'
                 />
               </a>
               <a href='#'>
                 <NextImage
-                  width={'100%'}
-                  height={'100%'}
+                  width='0'
+                  height='0'
+                  sizes='100vw'
+                  style={{ width: '100%', height: 'auto' }}
                   src='/assets/images/products/product-5-thumb.jpg'
                   alt='product desc'
                 />

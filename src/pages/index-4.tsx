@@ -32,11 +32,8 @@ function Test() {
               <section className='section-padding pb-5'>
                 <div className='section-title' data-wow-delay='0'>
                   <h3 className=''>Deals Of The Day</h3>
-                  <Link href='/shop-grid-right'>
-                    <a className='show-all'>
-                      All Deals
-                      <i className='fi-rs-angle-right'></i>
-                    </a>
+                  <Link href='/shop-grid-right' className='show-all'>
+                    All Deals<i className='fi-rs-angle-right'></i>
                   </Link>
                 </div>
                 <FeatchDeals />
@@ -147,11 +144,8 @@ function Test() {
             <div className='section-title'>
               <div className='title'>
                 <h3>Shop by Categories</h3>
-                <Link href='/shop-grid-right'>
-                  <a className='show-all'>
-                    All Categories
-                    <i className='fi-rs-angle-right'></i>
-                  </a>
+                <Link href='/shop-grid-right' className='show-all'>
+                  All Categories<i className='fi-rs-angle-right'></i>
                 </Link>
               </div>
             </div>

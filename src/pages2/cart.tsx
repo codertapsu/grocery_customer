@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
+import NextImage from 'next/image';
 import Link from 'next/link';
 
 import { Breadcrumb } from '@components/breadcrumb';
 import { ButtonLink } from '@components/button';
-import { Image } from '@components/image';
 import { Layout } from '@components/layout2';
-import { useCart } from '@contexts/cart';
 import { PageHeader } from '@components/page-header';
+import { placeholderImg } from '@configs';
+import { useCart } from '@contexts/cart';
 
 const Cart: NextPage = () => {
   const { items, totalPrice } = useCart();
@@ -38,17 +39,20 @@ const Cart: NextPage = () => {
                         <td className='product-col'>
                           <div className='product'>
                             <figure className='product-media'>
-                              <Link href={`/products/${item.product.id}`}>
-                                <a className='d-flex'>
-                                  Holder
-                                  {/* <Image src={item.product.medias[0].path} alt='Product image' responsive={false} /> */}
-                                </a>
+                              <Link href={`/products/${item.product.id}`} className='d-flex'>
+                                <NextImage
+                                  width='0'
+                                  height='0'
+                                  sizes='100vw'
+                                  style={{ width: 'auto', height: '100%' }}
+                                  className='img-fluid'
+                                  src={(item.product.medias?.length && item.product.medias[1]?.path) || placeholderImg}
+                                  alt=''
+                                />
                               </Link>
                             </figure>
                             <h3 className='product-title'>
-                              <Link href={`/products/${item.product.id}`}>
-                                <a>{item.product.name}</a>
-                              </Link>
+                              <Link href={`/products/${item.product.id}`}>{item.product.name}</Link>
                             </h3>
                           </div>
                         </td>
@@ -156,9 +160,7 @@ const Cart: NextPage = () => {
                         <td>
                           Estimate for Your Country
                           <br />
-                          <Link href='/dashboard'>
-                            <a>Change address</a>
-                          </Link>
+                          <Link href='/dashboard'>Change address</Link>
                         </td>
                         <td>&nbsp;</td>
                       </tr>

@@ -31,7 +31,7 @@ const Faq: NextPage = () => {
                     </a>
                   </h2>
                 </div>
-                <div id='collapse-1' className='collapse show' aria-labelledby='heading-1' data-parent='#accordion-1'>
+                <div id='collapse-1' className='show collapse' aria-labelledby='heading-1' data-parent='#accordion-1'>
                   <div className='card-body'>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
                     Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a,
@@ -302,11 +302,9 @@ const Faq: NextPage = () => {
                     <p className='cta-desc text-white'>Quisque volutpat mattis eros</p>
                   </div>
                   <div className='col-auto'>
-                    <Link href='/contact'>
-                      <a className='btn btn-outline-white'>
-                        <span>CONTACT US</span>
-                        <i className='icon-long-arrow-right' />
-                      </a>
+                    <Link href='/contact' className='btn btn-outline-white'>
+                      <span>CONTACT US</span>
+                      <i className='icon-long-arrow-right' />
                     </Link>
                   </div>
                 </div>

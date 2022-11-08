@@ -37,7 +37,7 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
           // Returning token to set in session
           return {
             token: JSON.parse(user),
-          };
+          } as any;
         },
       }),
       // CredentialsProvider({
@@ -184,12 +184,12 @@ const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse): NextAuthOpt
       // },
       jwt: async ({ token, user, account, profile, isNewUser }) => {
         if (user) {
-          token.user = user.token;
+          token.user = (user as any).token;
         }
         return token;
       },
       session: async ({ session, token, user }) => {
-        session.user = token.user; // Setting token in session
+        session.user = token.user as any; // Setting token in session
         return session;
       },
     },

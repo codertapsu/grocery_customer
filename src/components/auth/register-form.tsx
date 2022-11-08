@@ -9,7 +9,7 @@ interface Props {
   onRegisterSuccess: () => void;
 }
 
-export const RegisterForm = ({onRegisterSuccess}: Props) => {
+export const RegisterForm = ({ onRegisterSuccess }: Props) => {
   const { register, handleSubmit, formState, control } = useForm<FormValue>({
     mode: 'onBlur',
   });

@@ -75,3 +75,29 @@ TABLE CONTENT
 .modal {
   --bs-modal-width: 90vw;
 }
+
+button.scroll-up {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  color: #253D4E;
+  right: 30px;
+  bottom: 30px;
+  border-radius: 30px;
+  text-align: center;
+  overflow: hidden;
+  z-index: 999 !important;
+  border: 2px solid #253D4E;
+  background-color: #fff;
+  padding: 0;
+
+  i {
+    display: block;
+    line-height: 32px !important;
+    font-size: 25px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}

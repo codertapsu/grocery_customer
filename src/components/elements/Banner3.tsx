@@ -13,9 +13,7 @@ export const Banner3 = () => {
               Autumn Hat
             </h4>
             <Link href='/products'>
-              <a>
-                Shop Now <i className='fi-rs-arrow-right'></i>
-              </a>
+              Shop Now<i className='fi-rs-arrow-right'></i>
             </Link>
           </div>
         </div>
@@ -30,9 +28,7 @@ export const Banner3 = () => {
               Women&lsquo;s socks
             </h4>
             <Link href='/products'>
-              <a>
-                Shop Now <i className='fi-rs-arrow-right'></i>
-              </a>
+              Shop Now<i className='fi-rs-arrow-right'></i>
             </Link>
           </div>
         </div>
@@ -45,9 +41,7 @@ export const Banner3 = () => {
               Eardrop
             </h4>
             <Link href='/products'>
-              <a>
-                Shop Now <i className='fi-rs-arrow-right'></i>
-              </a>
+              Shop Now<i className='fi-rs-arrow-right'></i>
             </Link>
           </div>
         </div>
@@ -55,4 +49,3 @@ export const Banner3 = () => {
     </>
   );
 };
-

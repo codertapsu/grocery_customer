@@ -12,22 +12,32 @@ import '../../public/assets/sass/main.scss';
 
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { AnimatePresence } from 'framer-motion';
 
+import { AnimatePresence } from 'framer-motion';
 import { SessionProvider } from 'next-auth/react';
 
 import { StorageWrapper } from '@components/ecommerce/storage-wrapper';
 import { Preloader } from '@components/elements/Preloader';
+import { APP_CONFIG } from '@configs';
 import { AuthContextProvider } from '@contexts/auth';
 import { CartContextProvider } from '@contexts/cart';
+import { CreditCardsContextProvider } from '@contexts/credit-cards';
 import { HttpClientProvider } from '@contexts/http-client';
+import { QuickViewContextProvider } from '@contexts/quick-view';
 import { ReduxStoreContextProvider, store } from '@contexts/redux-store';
 import { SettingsContextProvider } from '@contexts/settings';
 import { ToastProvider } from '@contexts/toast';
 import { WalletProvider } from '@contexts/wallet';
+import { WishlistContextProvider } from '@contexts/wishlist';
+import { delay } from '@helpers/delay.helper';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
-import Script from 'next/script';
+
+interface StripeConfig {
+  publishKey: string;
+  currency: string;
+}
 
 export const gtmVirtualPageView = (rest) => {
   (window as any).dataLayer?.push({
@@ -47,13 +57,7 @@ export function reportWebVitals({ id, name, label, value }: NextWebVitalsMetric)
 
 function MyApp({ Component, router, pageProps: { session, ...pageProps } }: AppProps) {
   const url = `https://taphoa.toampk.xyz${router.route}`;
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+  const [stripe, setStripe] = useState<Stripe>(null);
 
   useEffect(() => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -86,6 +90,23 @@ function MyApp({ Component, router, pageProps: { session, ...pageProps } }: AppP
     gtmVirtualPageView(mainDataLayer);
   }, [pageProps]);
 
+  useEffect(() => {
+    const loadConfig = async () => {
+      const result = await fetch(`${APP_CONFIG.API_ENDPOINT}/api/credit-cards/config`);
+      const config: StripeConfig = await result.json();
+
+      return config;
+    };
+    Promise.all([loadConfig(), delay(2000)])
+      .then(([config]) => loadStripe(config.publishKey))
+      .then((stripe) => {
+        setStripe(stripe);
+      })
+      .catch((e) => {
+        //
+      });
+  }, []);
+
   return (
     <>
       <ToastProvider>
@@ -96,17 +117,26 @@ function MyApp({ Component, router, pageProps: { session, ...pageProps } }: AppP
                 {/* <SocketProvider> */}
                 <WalletProvider>
                   <CartContextProvider>
-                    {/* <Component {...pageProps} /> */}
-                    {!loading ? (
-                      <Provider store={store}>
-                        <StorageWrapper>
-                          <ReduxStoreContextProvider>
-                            <AnimatePresence mode='wait' initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-                              <Component {...pageProps} canonical={url} key={url} />
-                            </AnimatePresence>
-                          </ReduxStoreContextProvider>
-                        </StorageWrapper>
-                      </Provider>
+                    {stripe ? (
+                      <CreditCardsContextProvider stripe={stripe}>
+                        <Provider store={store}>
+                          <StorageWrapper>
+                            <ReduxStoreContextProvider>
+                              <WishlistContextProvider>
+                                <QuickViewContextProvider>
+                                  <AnimatePresence
+                                    mode='wait'
+                                    initial={false}
+                                    onExitComplete={() => window.scrollTo(0, 0)}
+                                  >
+                                    <Component {...pageProps} canonical={url} key={url} />
+                                  </AnimatePresence>
+                                </QuickViewContextProvider>
+                              </WishlistContextProvider>
+                            </ReduxStoreContextProvider>
+                          </StorageWrapper>
+                        </Provider>
+                      </CreditCardsContextProvider>
                     ) : (
                       <Preloader />
                     )}

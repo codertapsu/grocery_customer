@@ -12,7 +12,7 @@ enum SocialId {
   Twitter = 'twitter',
 }
 
-interface Props {     
+interface Props {
   onLoginSuccess: () => void;
   onLoginFailed: (error: unknown) => void;
 }
@@ -27,7 +27,7 @@ export const SocialLogin = ({ onLoginSuccess, onLoginFailed }: Props) => {
     ) {
       return;
     }
-    let userData: any;      
+    let userData: any;
     try {
       userData = JSON.parse(event.data);
     } catch (error) {

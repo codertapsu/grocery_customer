@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { AuthForm } from '@components/auth/auth-form';
-import { NewsLetter } from '@components/news-letter';
-import { Overlay } from '@components/overlay';
+import { AuthForm } from '../auth/auth-form';
+import { NewsLetter } from '../news-letter';
+import { Overlay } from '../overlay';
 import { useAuth } from '@contexts/auth';
 import { isClientSide } from '@helpers/detect-browser';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
 
 import { Footer } from '../footer';
 import { Header } from '../header';
-import { BootstrapModal } from '@components/bootstrap-modal';
+import { BootstrapModal } from '../bootstrap-modal';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [mounted, setMounted] = useState(true);

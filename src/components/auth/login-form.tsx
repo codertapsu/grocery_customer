@@ -28,7 +28,7 @@ export const LoginForm = ({ onLoginSuccess, onLoginFailed }: Props) => {
       .then(() => {
         onLoginSuccess();
       })
-      .catch(error => onLoginFailed(error));
+      .catch((error) => onLoginFailed(error));
   };
   const handleError = (errors: FieldErrorsImpl<FormValue>) => {
     console.log(errors);

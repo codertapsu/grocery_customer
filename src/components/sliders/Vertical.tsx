@@ -20,9 +20,7 @@ export const VerticalSlider = () => {
           <SwiperSlide>
             <li>
               Get great devices up to 50% off
-              <Link href='/shop-grid-right'>
-                <a>View details</a>
-              </Link>
+              <Link href='/shop-grid-right'>View details</Link>
             </li>
           </SwiperSlide>
           <SwiperSlide>
@@ -31,9 +29,7 @@ export const VerticalSlider = () => {
           <SwiperSlide>
             <li>
               Trendy 25silver jewelry, save up 35% off today
-              <Link href='/shop-grid-right'>
-                <a>Shop now</a>
-              </Link>
+              <Link href='/shop-grid-right'>Shop now</Link>
             </li>
           </SwiperSlide>
         </ul>

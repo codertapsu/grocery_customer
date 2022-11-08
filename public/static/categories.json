@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Milks and Dairies",
+      "url": "milks-and-dairies",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-1.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-1-400x400.png",
+      "products_count_text": "2 items",
+      "background_color": "#F2FCE4"
+    },
+    {
+      "id": 2,
+      "name": "Clothing & beauty",
+      "url": "clothing-beauty",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-2.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-2-400x400.png",
+      "products_count_text": "1 items",
+      "background_color": "#FFFCEB"
+    },
+    {
+      "id": 3,
+      "name": "Pet Toy",
+      "url": "pet-toy",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-3.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-3-400x400.png",
+      "products_count_text": "1 items",
+      "background_color": "#ECFFEC"
+    },
+    {
+      "id": 4,
+      "name": "Baking material",
+      "url": "baking-material",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-4.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-4-400x400.png",
+      "products_count_text": "0 items",
+      "background_color": "#FEEFEA"
+    },
+    {
+      "id": 5,
+      "name": "Fresh Fruit",
+      "url": "fresh-fruit",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-5.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-5-400x400.png",
+      "products_count_text": "1 items",
+      "background_color": "#FFF3EB"
+    },
+    {
+      "id": 6,
+      "name": "Wines & Drinks",
+      "url": "wines-drinks",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-6.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-6-400x400.png",
+      "products_count_text": "3 items",
+      "background_color": "#FFF3FF"
+    },
+    {
+      "id": 7,
+      "name": "Fresh Seafood",
+      "url": "fresh-seafood",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-7.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-7-400x400.png",
+      "products_count_text": "0 items",
+      "background_color": "#F2FCE4"
+    },
+    {
+      "id": 8,
+      "name": "Fast food",
+      "url": "fast-food",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-8.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-8-400x400.png",
+      "products_count_text": "3 items",
+      "background_color": "#FFFCEB"
+    },
+    {
+      "id": 9,
+      "name": "Vegetables",
+      "url": "vegetables",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-9.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-9-400x400.png",
+      "products_count_text": "3 items",
+      "background_color": "#ECFFEC"
+    },
+    {
+      "id": 10,
+      "name": "Bread and Juice",
+      "url": "bread-and-juice",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-10.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-10-400x400.png",
+      "products_count_text": "2 items",
+      "background_color": "#FEEFEA"
+    },
+    {
+      "id": 11,
+      "name": "Cake & Milk",
+      "url": "cake-milk",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-11.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-11-400x400.png",
+      "products_count_text": "1 items",
+      "background_color": "#FFF3EB"
+    },
+    {
+      "id": 12,
+      "name": "Coffee & Teas",
+      "url": "coffee-teas",
+      "image": "https://botble.b-cdn.net/nest/storage/product-categories/image-12.png",
+      "thumbnail": "https://botble.b-cdn.net/nest/storage/product-categories/image-12-400x400.png",
+      "products_count_text": "1 items",
+      "background_color": "#FFF3FF"
+    }
+  ]
+}

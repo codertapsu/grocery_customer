@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
-import { Image } from '@components/image';
+import { Image } from '../image';
 import { mergeClassNames } from '@helpers/merge-class-names.helper';
 
 import styles from './styles.module.scss';
@@ -87,24 +87,20 @@ export const DealDay = ({ countTo }: Props) => {
                 <div key={item} className='col-6 deal-product text-center'>
                   <figure className='product-media'>
                     <Link href={`/products/${1}`}>
-                      <a>
-                        <Image src='/assets/images/deal/product-1.jpg' alt='Product image' className='product-image' />
-                      </a>
+                      <Image src='/assets/images/deal/product-1.jpg' alt='Product image' className='product-image' />
                     </Link>
                   </figure>
                   <div className={mergeClassNames('product-body', styles['product-body'])}>
                     <h3 className={mergeClassNames('product-title', styles['product-title'])}>
-                      <Link href={`/products/${1}`}>
-                        <a>Elasticated cotton shorts</a>
-                      </Link>
+                      <Link href={`/products/${1}`}>Elasticated cotton shorts</Link>
                     </h3>
                     <div className={mergeClassNames('product-price', styles['product-price'])}>
                       <span className={mergeClassNames('new-price', styles['new-price'])}>Now $24.99</span>
                       <span className={mergeClassNames('old-price', styles['old-price'])}>Was $30.99</span>
                     </div>
                   </div>
-                  <Link href={`/products/${1}`}>
-                    <a className={mergeClassNames('action', styles['action'])}>shop now</a>
+                  <Link href={`/products/${1}`} className={mergeClassNames('action', styles['action'])}>
+                    shop now
                   </Link>
                 </div>
               ))}

@@ -36,20 +36,19 @@ type ButtonProps = {
 const ButtonLink = forwardRef<HTMLAnchorElement, ButtonProps>(
   ({ children, className, href, cornerType = 'square', fillType = 'filled', themeType = 'primary', ...rest }, ref) => {
     return (
-      <Link href={href}>
-        <a
-          ref={ref}
-          className={mergeClassNames(
-            styles['btn'],
-            cornerType ? styles[`btn-${cornerType}`] : '',
-            fillType ? styles[`btn-${fillType}`] : '',
-            themeType ? styles[`btn-${themeType}`] : '',
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </a>
+      <Link
+        href={href}
+        ref={ref}
+        className={mergeClassNames(
+          styles['btn'],
+          cornerType ? styles[`btn-${cornerType}`] : '',
+          fillType ? styles[`btn-${fillType}`] : '',
+          themeType ? styles[`btn-${themeType}`] : '',
+          className,
+        )}
+        {...rest}
+      >
+        {children}
       </Link>
     );
   },

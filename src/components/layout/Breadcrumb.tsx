@@ -13,9 +13,7 @@ export const Breadcrumb = ({ parent, sub, subChild, noBreadcrumb }: Props) => {
       <div className={`page-header breadcrumb-wrap ${noBreadcrumb}`}>
         <div className='container'>
           <div className='breadcrumb'>
-            <Link href='/'>
-              <a>{parent}</a>
-            </Link>
+            <Link href='/'>{parent}</Link>
             <span></span> {sub}
             <span></span> {subChild}
           </div>

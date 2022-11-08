@@ -11,6 +11,9 @@ interface Props {
 }
 
 export const TrendingSlider = ({ products }: Props) => {
+  if (!products || !products.length) {
+    return <></>;
+  }
   return (
     <>
       <Swiper

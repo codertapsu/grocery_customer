@@ -614,10 +614,8 @@ const Header = () => {
                 <span className='visually-hidden'>Toggle mobile menu</span>
                 <i className='icon-bars' />
               </button>
-              <Link href={{ pathname: '/' }}>
-                <a className='logo'>
-                  <NextImage src='/assets/images/demos/demo-2/logo.png' alt='Molla Logo' width={105} height={25} />
-                </a>
+              <Link href={{ pathname: '/' }} className='logo'>
+                <NextImage src='/assets/images/demos/demo-2/logo.png' alt='Molla Logo' width={105} height={25} />
               </Link>
             </div>
             <div className='header-center'>
@@ -771,92 +769,92 @@ const Header = () => {
               </div>
 
               {/* <div className='account'>
-                <a href='dashboard.html' title='My account'>
-                  <div className='icon'>
-                    <i className='icon-user' />
-                  </div>
-                  <p>Account</p>
-                </a>
-              </div>
-              <div className='wishlist'>
-                <a href='wishlist.html' title='Wishlist'>
-                  <div className='icon'>
-                    <i className='icon-heart-o' />
-                    <span className='wishlist-count badge'>3</span>
-                  </div>
-                  <p>Wishlist</p>
-                </a>
-              </div>
-              <div className='dropdown cart-dropdown'>
-                <a
-                  href='#'
-                  className='dropdown-toggle'
-                  role='button'
-                  data-bs-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
-                  data-display='static'
-                >
-                  <div className='icon'>
-                    <i className='icon-shopping-cart' />
-                    <span className='cart-count'>2</span>
-                  </div>
-                  <p>Cart</p>
-                </a>
-                <div className='dropdown-menu dropdown-menu-right'>
-                  <div className='dropdown-cart-products'>
-                    <div className='product'>
-                      <div className='product-cart-details'>
-                        <h4 className='product-title'>
-                          <a href='product.html'>Beige knitted elastic runner shoes</a>
-                        </h4>
-                        <span className='cart-product-info'>
-                          <span className='cart-product-qty'>1</span>x $84.00
-                        </span>
-                      </div>
-                      <figure className='product-image-container'>
-                        <a href='product.html' className='product-image'>
-                          <Image src='/assets/images/products/product-1.jpg' alt='product' />
-                        </a>
-                      </figure>
-                      <a href='#' className='btn-remove' title='Remove Product'>
-                        <i className='icon-close' />
-                      </a>
+              <a href='dashboard.html' title='My account'>
+                <div className='icon'>
+                  <i className='icon-user' />
+                </div>
+                <p>Account</p>
+              </a>
+            </div>
+            <div className='wishlist'>
+              <a href='wishlist.html' title='Wishlist'>
+                <div className='icon'>
+                  <i className='icon-heart-o' />
+                  <span className='wishlist-count badge'>3</span>
+                </div>
+                <p>Wishlist</p>
+              </a>
+            </div>
+            <div className='dropdown cart-dropdown'>
+              <a
+                href='#'
+                className='dropdown-toggle'
+                role='button'
+                data-bs-toggle='dropdown'
+                aria-haspopup='true'
+                aria-expanded='false'
+                data-display='static'
+              >
+                <div className='icon'>
+                  <i className='icon-shopping-cart' />
+                  <span className='cart-count'>2</span>
+                </div>
+                <p>Cart</p>
+              </a>
+              <div className='dropdown-menu dropdown-menu-right'>
+                <div className='dropdown-cart-products'>
+                  <div className='product'>
+                    <div className='product-cart-details'>
+                      <h4 className='product-title'>
+                        <a href='product.html'>Beige knitted elastic runner shoes</a>
+                      </h4>
+                      <span className='cart-product-info'>
+                        <span className='cart-product-qty'>1</span>x $84.00
+                      </span>
                     </div>
-                    <div className='product'>
-                      <div className='product-cart-details'>
-                        <h4 className='product-title'>
-                          <a href='product.html'>Blue utility pinafore denim dress</a>
-                        </h4>
-                        <span className='cart-product-info'>
-                          <span className='cart-product-qty'>1</span>x $76.00
-                        </span>
-                      </div>
-                      <figure className='product-image-container'>
-                        <a href='product.html' className='product-image'>
-                          <Image src='/assets/images/products/product-1.jpg' alt='product' />
-                        </a>
-                      </figure>
-                      <a href='#' className='btn-remove' title='Remove Product'>
-                        <i className='icon-close' />
+                    <figure className='product-image-container'>
+                      <a href='product.html' className='product-image'>
+                        <Image src='/assets/images/products/product-1.jpg' alt='product' />
                       </a>
-                    </div>
-                  </div>
-                  <div className='dropdown-cart-total'>
-                    <span>Total</span>
-                    <span className='cart-total-price'>$160.00</span>
-                  </div>
-                  <div className='dropdown-cart-action'>
-                    <a href='cart.html' className='btn btn-primary'>
-                      View Cart
+                    </figure>
+                    <a href='#' className='btn-remove' title='Remove Product'>
+                      <i className='icon-close' />
                     </a>
-                    <a href='checkout.html' className='btn btn-outline-primary-2'>
-                      <span>Checkout</span>
-                      <i className='icon-long-arrow-right' />
+                  </div>
+                  <div className='product'>
+                    <div className='product-cart-details'>
+                      <h4 className='product-title'>
+                        <a href='product.html'>Blue utility pinafore denim dress</a>
+                      </h4>
+                      <span className='cart-product-info'>
+                        <span className='cart-product-qty'>1</span>x $76.00
+                      </span>
+                    </div>
+                    <figure className='product-image-container'>
+                      <a href='product.html' className='product-image'>
+                        <Image src='/assets/images/products/product-1.jpg' alt='product' />
+                      </a>
+                    </figure>
+                    <a href='#' className='btn-remove' title='Remove Product'>
+                      <i className='icon-close' />
                     </a>
                   </div>
                 </div>
-              </div> */}
+                <div className='dropdown-cart-total'>
+                  <span>Total</span>
+                  <span className='cart-total-price'>$160.00</span>
+                </div>
+                <div className='dropdown-cart-action'>
+                  <a href='cart.html' className='btn btn-primary'>
+                    View Cart
+                  </a>
+                  <a href='checkout.html' className='btn btn-outline-primary-2'>
+                    <span>Checkout</span>
+                    <i className='icon-long-arrow-right' />
+                  </a>
+                </div>
+              </div>
+            </div> */}
             </div>
           </div>
         </div>
@@ -963,124 +961,184 @@ const Header = () => {
         </div>
       </header>
       {/* <header className='header'>
-        <div className='header-top'>
-          <div className='container'>
-            <div className='header-left'>
-              <div className='header-dropdown'>
-                <a href='#'>Usd</a>
-                <div className='header-menu'>
-                  <ul>
-                    <li>
-                      <a href='#'>Eur</a>
-                    </li>
-                    <li>
-                      <a href='#'>Usd</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className='header-dropdown'>
-                <a href='#'>Eng</a>
-                <div className='header-menu'>
-                  <ul>
-                    <li>
-                      <a href='#'>English</a>
-                    </li>
-                    <li>
-                      <a href='#'>French</a>
-                    </li>
-                    <li>
-                      <a href='#'>Spanish</a>
-                    </li>
-                  </ul>
-                </div>
+      <div className='header-top'>
+        <div className='container'>
+          <div className='header-left'>
+            <div className='header-dropdown'>
+              <a href='#'>Usd</a>
+              <div className='header-menu'>
+                <ul>
+                  <li>
+                    <a href='#'>Eur</a>
+                  </li>
+                  <li>
+                    <a href='#'>Usd</a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className='header-right'>
-              <ul className='top-menu'>
-                <li>
-                  <a href='#'>Links</a>
-                  <ul>
-                    <li>
-                      <a href='tel:#'>
-                        <i className='icon-phone' />
-                        Call: +0123 456 789
-                      </a>
-                    </li>
-                    <li>
-                      <a href='wishlist.html'>
-                        <i className='icon-heart-o' />
-                        Wishlist <span>(3)</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='about.html'>About Us</a>
-                    </li>
-                    <li>
-                      <a href='contact.html'>Contact Us</a>
-                    </li>
-                    {!user && (
-                      <li>
-                        <button
-                          className={mergeClassNames('border-0', 'bg-transparent', 'p-0')}
-                          onClick={openAuthDialog}
-                        >
-                          <i className='icon-user' />
-                          Login
-                        </button>
-                      </li>
-                    )}
-                  </ul>
-                </li>
-              </ul>
+            <div className='header-dropdown'>
+              <a href='#'>Eng</a>
+              <div className='header-menu'>
+                <ul>
+                  <li>
+                    <a href='#'>English</a>
+                  </li>
+                  <li>
+                    <a href='#'>French</a>
+                  </li>
+                  <li>
+                    <a href='#'>Spanish</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='header-middle sticky-header'>
-          <div className='container'>
-            <div className='header-left'>
-              <button className='mobile-menu-toggler'>
-                <span className='visually-hidden'>Toggle mobile menu</span>
-                <i className='icon-bars' />
-              </button>
-              <Link href='/'>
-                <a className='logo'>
-                  <NextImage src='/assets/images/logo.png' alt='Molla Logo' width={105} height={25} />
-                </a>
-              </Link>
-            </div>
-            <div className='header-right'>
-              <div className='header-search'>
-                <button
-                  className={mergeClassNames(
-                    'search-toggle',
-                    'border-0',
-                    'bg-transparent',
-                    'p-0',
-                    isOpenSearch ? 'active' : '',
+          <div className='header-right'>
+            <ul className='top-menu'>
+              <li>
+                <a href='#'>Links</a>
+                <ul>
+                  <li>
+                    <a href='tel:#'>
+                      <i className='icon-phone' />
+                      Call: +0123 456 789
+                    </a>
+                  </li>
+                  <li>
+                    <a href='wishlist.html'>
+                      <i className='icon-heart-o' />
+                      Wishlist <span>(3)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='about.html'>About Us</a>
+                  </li>
+                  <li>
+                    <a href='contact.html'>Contact Us</a>
+                  </li>
+                  {!user && (
+                    <li>
+                      <button
+                        className={mergeClassNames('border-0', 'bg-transparent', 'p-0')}
+                        onClick={openAuthDialog}
+                      >
+                        <i className='icon-user' />
+                        Login
+                      </button>
+                    </li>
                   )}
-                  type='button'
-                  title='Search'
-                  onClick={handleSearch}
-                >
-                  <i className='icon-search' />
-                </button>
-                <form noValidate onSubmit={submitSearch}>
-                  <div className={mergeClassNames('header-search-wrapper', isOpenSearch ? 'show' : '')}>
-                    <label htmlFor='search' className='visually-hidden'>
-                      Search
-                    </label>
-                    <input
-                      ref={inputSearchRef}
-                      type='search'
-                      className='form-control'
-                      name='search'
-                      id='search'
-                      placeholder='Search in...'
-                    />
-                  </div>
-                </form>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className='header-middle sticky-header'>
+        <div className='container'>
+          <div className='header-left'>
+            <button className='mobile-menu-toggler'>
+              <span className='visually-hidden'>Toggle mobile menu</span>
+              <i className='icon-bars' />
+            </button>
+            <Link href='/'>
+              <a className='logo'>
+                <NextImage src='/assets/images/logo.png' alt='Molla Logo' width={105} height={25} />
+              </a>
+            </Link>
+          </div>
+          <div className='header-right'>
+            <div className='header-search'>
+              <button
+                className={mergeClassNames(
+                  'search-toggle',
+                  'border-0',
+                  'bg-transparent',
+                  'p-0',
+                  isOpenSearch ? 'active' : '',
+                )}
+                type='button'
+                title='Search'
+                onClick={handleSearch}
+              >
+                <i className='icon-search' />
+              </button>
+              <form noValidate onSubmit={submitSearch}>
+                <div className={mergeClassNames('header-search-wrapper', isOpenSearch ? 'show' : '')}>
+                  <label htmlFor='search' className='visually-hidden'>
+                    Search
+                  </label>
+                  <input
+                    ref={inputSearchRef}
+                    type='search'
+                    className='form-control'
+                    name='search'
+                    id='search'
+                    placeholder='Search in...'
+                  />
+                </div>
+              </form>
+            </div>
+            <div className='dropdown cart-dropdown'>
+              <button
+                className='dropdown-toggle border-0 bg-transparent p-0'
+                role='button'
+                data-bs-toggle='dropdown'
+                aria-haspopup='true'
+                aria-expanded='false'
+                data-display='static'
+              >
+                <i className='icon-shopping-cart' />
+                <span className='cart-count'>{items.length}</span>
+              </button>
+              <div className='dropdown-menu dropdown-menu-right'>
+                <div className='dropdown-cart-products'>
+                  {items.map((item) => (
+                    <div key={item.product.id} className='product'>
+                      <div className='product-cart-details'>
+                        <h4 className='product-title'>
+                          <Link href={{ pathname: `/products/${item.product.id}` }}>
+                            <a>{item.product.title}</a>
+                          </Link>
+                        </h4>
+                        <span className='cart-product-info'>
+                          <span className='cart-product-qty'>{item.quantity}</span>x ${item.product.price}
+                        </span>
+                      </div>
+                      <figure className='product-image-container'>
+                        <a href='product.html' className='product-image'>
+                          <Image src={item.product.images[0]} alt='product' responsive={false} />
+                        </a>
+                      </figure>
+                      <button
+                        type='button'
+                        className='btn-remove border-0 bg-transparent p-0'
+                        title='Remove Product'
+                        onClick={() => handleRemoveProduct(item)}
+                      >
+                        <i className='icon-close' />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <div className='dropdown-cart-total'>
+                  <span>Total</span>
+                  <span className='cart-total-price'>${totalPrice}</span>
+                </div>
+                <div className='dropdown-cart-action'>
+                  <Link href={{ pathname: 'cart' }}>
+                    <a className='btn btn-primary'>View Cart</a>
+                  </Link>
+                  <Link href={{ pathname: 'checkout' }}>
+                    <a className='btn btn-outline-primary-2'>
+                      <span>Checkout</span>
+                      <i className='icon-long-arrow-right' />
+                    </a>
+                  </Link>
+                </div>
               </div>
+            </div>
+            {user && (
               <div className='dropdown cart-dropdown'>
                 <button
                   className='dropdown-toggle border-0 bg-transparent p-0'
@@ -1090,82 +1148,22 @@ const Header = () => {
                   aria-expanded='false'
                   data-display='static'
                 >
-                  <i className='icon-shopping-cart' />
-                  <span className='cart-count'>{items.length}</span>
+                  <i className='icon-user' />
                 </button>
                 <div className='dropdown-menu dropdown-menu-right'>
-                  <div className='dropdown-cart-products'>
-                    {items.map((item) => (
-                      <div key={item.product.id} className='product'>
-                        <div className='product-cart-details'>
-                          <h4 className='product-title'>
-                            <Link href={{ pathname: `/products/${item.product.id}` }}>
-                              <a>{item.product.title}</a>
-                            </Link>
-                          </h4>
-                          <span className='cart-product-info'>
-                            <span className='cart-product-qty'>{item.quantity}</span>x ${item.product.price}
-                          </span>
-                        </div>
-                        <figure className='product-image-container'>
-                          <a href='product.html' className='product-image'>
-                            <Image src={item.product.images[0]} alt='product' responsive={false} />
-                          </a>
-                        </figure>
-                        <button
-                          type='button'
-                          className='btn-remove border-0 bg-transparent p-0'
-                          title='Remove Product'
-                          onClick={() => handleRemoveProduct(item)}
-                        >
-                          <i className='icon-close' />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                  <div className='dropdown-cart-total'>
-                    <span>Total</span>
-                    <span className='cart-total-price'>${totalPrice}</span>
-                  </div>
                   <div className='dropdown-cart-action'>
-                    <Link href={{ pathname: 'cart' }}>
-                      <a className='btn btn-primary'>View Cart</a>
-                    </Link>
-                    <Link href={{ pathname: 'checkout' }}>
-                      <a className='btn btn-outline-primary-2'>
-                        <span>Checkout</span>
+                      <button type='button' className='btn btn-outline-primary-2' onClick={logout}>
+                        <span>Log out</span>
                         <i className='icon-long-arrow-right' />
-                      </a>
-                    </Link>
+                      </button>
                   </div>
                 </div>
               </div>
-              {user && (
-                <div className='dropdown cart-dropdown'>
-                  <button
-                    className='dropdown-toggle border-0 bg-transparent p-0'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    aria-haspopup='true'
-                    aria-expanded='false'
-                    data-display='static'
-                  >
-                    <i className='icon-user' />
-                  </button>
-                  <div className='dropdown-menu dropdown-menu-right'>
-                    <div className='dropdown-cart-action'>
-                        <button type='button' className='btn btn-outline-primary-2' onClick={logout}>
-                          <span>Log out</span>
-                          <i className='icon-long-arrow-right' />
-                        </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
-      </header> */}
+      </div>
+    </header> */}
     </>
   );
 };

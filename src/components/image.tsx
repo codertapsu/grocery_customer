@@ -7,6 +7,8 @@ type VoidFunction = () => void;
 interface Props {
   priority?: boolean;
   loading?: 'lazy' | 'eager';
+  width?: string;
+  height?: string;
   src: string;
   alt?: string;
   className?: string;
@@ -49,6 +51,8 @@ const Image = ({
   alt,
   title,
   className,
+  width = 'auto',
+  height = 'auto',
   responsive = true,
   objectFit = 'contain',
   priority,
@@ -82,7 +86,7 @@ const Image = ({
 
   return (
     <>
-      <NextImage
+      {/* <NextImage
         width={dimension?.width || '100%'}
         height={dimension?.height || '100%'}
         loading={loading}
@@ -100,7 +104,8 @@ const Image = ({
             });
           }
         }}
-      />
+      /> */}
+      <NextImage width='0' height='0' sizes='100vw' style={{ width, height }} src={src} alt={alt} />
     </>
   );
 };

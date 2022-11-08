@@ -38,9 +38,11 @@ export const FeaturedSlider = ({ products }: Props) => {
           },
         }}
       >
-        {products.map((product, i) => (
-          <SwiperSlide key={i}>
-            <SingleProduct2 product={product} />
+        {(products || []).map((product, index) => (
+          <SwiperSlide key={index}>
+            <div data-wow-delay={`${index * 0.1}s`} className={`wow animate__animated animate__fadeInUp`}>
+              <SingleProduct2 product={product} />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
